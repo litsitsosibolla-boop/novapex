@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novapex — The 2026 Business Model</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14120F;
+    --paper:#F7F5F1;
+    --crimson:#A2201C;
+    --stone:#8C8880;
+    --hairline:#DAD5C9;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{ font-family:'Space Grotesk',sans-serif; font-weight:700; }
+  .wrap{ max-width:820px; margin:0 auto; padding:0 32px; }
+
+  .hero{
+    background:var(--ink); color:var(--paper);
+    padding:100px 0 80px;
+    position:relative; overflow:hidden;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
+  }
+  .hero::after{
+    content:""; position:absolute; top:0; right:0;
+    width:0; height:0;
+    border-style:solid; border-width:0 110px 110px 0;
+    border-color: transparent var(--crimson) transparent transparent;
+  }
+  .mark{ width:52px; height:52px; display:block; margin-bottom:24px; }
+  .eyebrow{ font-size:13px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B0ACA4; margin-bottom:18px; }
+  .hero h1{ font-size:42px; line-height:1.15; max-width:600px; }
+  .hero .sub{ margin-top:20px; max-width:520px; font-size:17px; color:#CFCBC3; font-style:italic; }
+
+  section{ padding:56px 0; }
+  section + section{ border-top:1px solid var(--hairline); }
+  .label{ font-size:13px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--crimson); margin-bottom:16px; }
+  .section-title{ font-size:26px; max-width:600px; margin-bottom:18px; }
+  .lede{ font-size:17px; max-width:680px; color:var(--ink); margin-bottom:14px; }
+
+  .item{ margin-top:26px; padding-left:22px; border-left:3px solid var(--crimson); }
+  .item h3{ font-size:18px; margin-bottom:6px; }
+  .item p{ font-size:15.5px; color:var(--stone); max-width:640px; }
+
+  .gap-item{ margin-top:18px; }
+  .gap-item .k{ font-weight:600; font-size:16px; color:var(--ink); }
+  .gap-item p{ font-size:15.5px; color:var(--stone); max-width:660px; margin-top:4px; }
+
+  .no-box{
+    background:var(--ink); color:var(--paper);
+    clip-path: polygon(0 24px, 100% 0, 100% 100%, 0 100%);
+  }
+  .no-box .wrap{ padding-top:24px; }
+  .no-box .label{ color:#CFCBC3; }
+  .no-box .item{ border-left:3px solid var(--crimson); }
+  .no-box .item h3{ color:var(--paper); }
+  .no-box .item p{ color:#CFCBC3; }
+  .no-box .closer{ margin-top:30px; font-size:16px; color:var(--paper); max-width:640px; font-style:italic; }
+
+  .map-item{ margin-top:16px; font-size:16px; }
+  .map-item b{ color:var(--crimson); }
+  .map-item span{ color:var(--stone); }
+
+  .closing{
+    background:var(--ink); color:var(--paper);
+    padding:70px 0 60px;
+    clip-path: polygon(0 0, 100% 32px, 100% 100%, 0 100%);
+  }
+  .closing .wrap{ padding-top:16px; }
+  .closing h2{ font-size:26px; max-width:560px; margin-bottom:16px; }
+  .closing p{ font-size:16px; color:#CFCBC3; max-width:600px; }
+  footer{ text-align:center; padding:24px 0; color:var(--stone); font-size:13px; }
+
+  @media (max-width:640px){
+    .hero{ padding:70px 0 60px; }
+    .hero h1{ font-size:30px; }
+    .section-title{ font-size:22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="Novapex mark">
+      <path d="M100,25 L175,175 L25,175 Z M154.6,170.5 L78.6,57.5 L65.4,66.5 L141.4,179.5 Z" fill-rule="evenodd" fill="#A2201C"/>
+    </svg>
+    <div class="eyebrow">Novapex &middot; Internal</div>
+    <h1>The 2026 Business Model</h1>
+    <p class="sub">Global standard. Local edge. Nothing too futuristic to actually sell.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="label">The Core Bet</div>
+    <p class="lede">Most local businesses are stuck between two bad options. Option one: post and pray, no strategy, no system, just content going out and hoping something sticks. Option two: hire someone who read a global trends report and now wants to sell a Fortune 500 tech stack to a shop that doesn't have the infrastructure to use it.</p>
+    <p class="lede">Novapex is the third option: take what's already proven to work in bigger markets, and bring only the parts that are actually usable here, right now. Skip the hype. Import the results.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label">What's Still Happening Locally</div>
+    <h2 class="section-title">The actual gap, not a guess.</h2>
+
+    <div class="gap-item">
+      <div class="k">Post and pray is still the default.</div>
+      <p>Most businesses post content with no plan behind it, no system for what goes out next, and no link between posting and actual sales.</p>
+    </div>
+    <div class="gap-item">
+      <div class="k">Vanity metrics still run the show.</div>
+      <p>Likes and reach get reported. Leads, cost per lead, and customer lifetime value almost never do.</p>
+    </div>
+    <div class="gap-item">
+      <div class="k">WhatsApp is huge, but almost nobody has systemized it.</div>
+      <p>Many businesses already sell through WhatsApp DMs and catalogue photos, but almost none have built saved replies, a real catalogue, or automated answers.</p>
+    </div>
+    <div class="gap-item">
+      <div class="k">Agency retainers are vague on purpose.</div>
+      <p>"Social media management" gets sold with no real breakdown of deliverables or ownership of results. The vagueness is often the business model.</p>
+    </div>
+    <div class="gap-item">
+      <div class="k">Leadership buy-in is the biggest blocker.</div>
+      <p>Good strategy dies when the person paying was never brought into the thinking, so the budget gets pulled the moment results aren't instant.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label">Ready To Import Now</div>
+    <h2 class="section-title">Proven elsewhere. Buildable here today.</h2>
+
+    <div class="item">
+      <h3>1. Systems over tactics</h3>
+      <p>A content plan, a measurement plan, and a feedback loop that all talk to each other, instead of disconnected one-off posts. This is the whole idea Novapex is built on.</p>
+    </div>
+    <div class="item">
+      <h3>2. Fix what happens after someone shows up</h3>
+      <p>A clearer offer, a faster reply, an easier way to buy, often beats spending more money trying to reach new people. Locally, almost everyone is still focused only on reach.</p>
+    </div>
+    <div class="item">
+      <h3>3. Own the relationship instead of renting it</h3>
+      <p>A real list, a real catalogue, a real record of who's interested, instead of depending entirely on a platform's algorithm. The tools already exist here, they're just not being used this way.</p>
+    </div>
+    <div class="item">
+      <h3>4. Small, real communities beat big, empty audiences</h3>
+      <p>Smaller, closer-knit audiences who trust a brand outperform huge, disengaged follower counts, in both trust and sales.</p>
+    </div>
+    <div class="item">
+      <h3>5. Content series instead of one-off posts</h3>
+      <p>A recognizable format people come back for, not a random post every few days. Cheap to build, almost nobody local is doing it on purpose.</p>
+    </div>
+    <div class="item">
+      <h3>6. Smaller, real creators over big, expensive names</h3>
+      <p>Better results for a fraction of the cost. This region is full of small, trusted creators most businesses have never thought to work with properly.</p>
+    </div>
+    <div class="item">
+      <h3>7. Human-led content beats generic AI</h3>
+      <p>Everyone has AI tools now, so audiences have started distrusting fully-AI content. A real human voice out front is a direct advantage, not a disadvantage.</p>
+    </div>
+  </div>
+</section>
+
+<div class="no-box">
+  <div class="wrap">
+    <div class="label">What We Deliberately Don't Sell Yet</div>
+    <h2 class="section-title" style="color:var(--paper)">Discipline is part of the pitch.</h2>
+
+    <div class="item">
+      <h3>Full AI-agent-run marketing</h3>
+      <p>Needs data systems and tech infrastructure most local businesses are years away from having.</p>
+    </div>
+    <div class="item">
+      <h3>Automated ad-buying across streaming TV and retail networks</h3>
+      <p>Needs an ad-tech and e-commerce backbone that doesn't exist here yet.</p>
+    </div>
+    <div class="item">
+      <h3>Heavy cross-channel measurement modeling</h3>
+      <p>Needs years of historical data most local businesses haven't collected.</p>
+    </div>
+    <div class="item">
+      <h3>Full shoppable livestream commerce</h3>
+      <p>Needs payment infrastructure and creator systems that aren't mature here yet.</p>
+    </div>
+
+    <p class="closer">We watch all of these. We don't sell them until they're actually usable here. That's the difference between staying current and chasing trends.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="label">How This Becomes The Offer</div>
+    <h2 class="section-title">Every service line already maps to this.</h2>
+
+    <div class="map-item"><b>Content Systems</b> <span>&rarr; content-series thinking, replacing post-and-pray with an actual plan.</span></div>
+    <div class="map-item"><b>Brand Intelligence Dashboards</b> <span>&rarr; owning the relationship, measuring real outcomes instead of vanity metrics.</span></div>
+    <div class="map-item"><b>Campaign Mechanic Design</b> <span>&rarr; small, real communities and signature formats, not generic one-off campaigns.</span></div>
+    <div class="map-item"><b>Executive &amp; Personal Brand Systems</b> <span>&rarr; the human-led content advantage, real voice beats generic AI output.</span></div>
+    <div class="map-item"><b>WhatsApp Commerce Systems</b> <span>&rarr; a new, standalone opportunity: turning DM chaos into a real structured system.</span></div>
+  </div>
+</section>
+
+<div class="closing">
+  <div class="wrap">
+    <h2>Why this is the right bet for 2026</h2>
+    <p>Novapex isn't importing ideas that need five more years to matter here. Every item on the "ready to import" list is buildable today, with tools that already exist in this market. Internationally credible thinking, applied to what this market can actually use right now, not what looks good in a trends report nobody local can act on yet.</p>
+  </div>
+</div>
+
+<footer>Novapex &middot; Internal &middot; Maseru, Lesotho &middot; 2026</footer>
+
+</body>
+</html>
