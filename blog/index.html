@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novapex — Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{ --ink:#14120F; --paper:#F7F5F1; --crimson:#A2201C; --stone:#8C8880; --hairline:#DAD5C9; --card:#FFFFFF; }
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{ background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.65; -webkit-font-smoothing:antialiased; }
+h1,h2,h3{ font-family:'Space Grotesk',sans-serif; font-weight:700; }
+a{ color:inherit; text-decoration:none; }
+.wrap{ max-width:1080px; margin:0 auto; padding:0 32px; }
+.narrow{ max-width:760px; }
+
+/* NAV */
+.navbar{ position:sticky; top:0; z-index:50; background:rgba(247,245,241,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--hairline); }
+.nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:16px 32px; max-width:1080px; margin:0 auto; }
+.nav-logo{ display:flex; align-items:center; gap:10px; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px; }
+.nav-logo svg{ width:26px; height:26px; }
+.nav-links{ display:flex; gap:30px; font-size:15px; font-weight:500; }
+.nav-links a:hover{ color:var(--crimson); }
+.nav-cta{ background:var(--ink); color:var(--paper); padding:10px 20px; border-radius:4px; font-size:14px; font-weight:600; }
+.nav-toggle{ display:none; }
+@media (max-width:760px){
+  .nav-links{ display:none; }
+  .nav-cta{ padding:8px 14px; font-size:13px; }
+}
+
+/* HERO */
+.hero{ background:var(--ink); color:var(--paper); padding:100px 0 90px; position:relative; overflow:hidden;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 44px), 0 100%); }
+.hero::after{ content:""; position:absolute; top:0; right:0; width:0; height:0;
+  border-style:solid; border-width:0 120px 120px 0; border-color: transparent var(--crimson) transparent transparent; }
+.mark{ width:56px; height:56px; display:block; margin-bottom:24px; }
+.eyebrow{ font-size:13px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#B0ACA4; margin-bottom:18px; }
+.hero h1{ font-size:48px; line-height:1.12; max-width:680px; }
+.hero .sub{ margin-top:22px; max-width:560px; font-size:18px; color:#CFCBC3; }
+.hero-cta-row{ display:flex; gap:16px; margin-top:34px; flex-wrap:wrap; }
+
+.btn{ display:inline-block; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15.5px; padding:15px 28px; border-radius:4px; cursor:pointer; border:none; }
+.btn-primary{ background:var(--crimson); color:var(--paper); }
+.btn-secondary{ background:transparent; color:var(--paper); border:1.5px solid #4a473f; }
+.btn-dark{ background:var(--ink); color:var(--paper); }
+
+section{ padding:72px 0; }
+section + section{ border-top:1px solid var(--hairline); }
+.label{ font-size:13px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--crimson); margin-bottom:16px; }
+.section-title{ font-size:30px; max-width:640px; margin-bottom:18px; }
+.lede{ font-size:17.5px; max-width:680px; color:var(--ink); }
+.lede.muted{ color:var(--stone); }
+
+/* CARD GRID (services teaser / why) */
+.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:32px 44px; margin-top:36px; }
+.grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:36px; }
+.card{ background:var(--card); border:1px solid var(--hairline); border-radius:8px; padding:26px; }
+.card h3{ font-size:19px; margin-bottom:10px; }
+.card p{ color:var(--stone); font-size:15px; }
+.card a.more{ display:inline-block; margin-top:14px; font-size:14px; font-weight:600; color:var(--crimson); }
+
+/* STATS */
+.stats-box{ background:var(--ink); color:var(--paper); clip-path: polygon(0 30px, 100% 0, 100% 100%, 0 100%); }
+.stats-box .wrap{ padding-top:30px; }
+.stat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:32px; margin-top:32px; }
+.stat-num{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:38px; color:var(--crimson); line-height:1; }
+.stat-label{ margin-top:10px; font-size:14px; color:#CFCBC3; }
+
+/* WHY */
+.why-grid{ display:grid; grid-template-columns:1fr 1fr; gap:30px 44px; margin-top:36px; }
+.why-item{ border-left:3px solid var(--crimson); padding-left:20px; }
+.why-item h3{ font-size:18px; margin-bottom:8px; }
+.why-item p{ color:var(--stone); font-size:15px; }
+
+/* PRICING */
+.price-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:40px; }
+.price-card{ background:var(--card); border:1px solid var(--hairline); border-radius:10px; padding:30px 26px; display:flex; flex-direction:column; }
+.price-card.featured{ border:2px solid var(--crimson); position:relative; }
+.price-card.featured::before{ content:"MOST POPULAR"; position:absolute; top:-13px; left:26px; background:var(--crimson); color:var(--paper);
+  font-size:11px; font-weight:700; letter-spacing:0.08em; padding:4px 10px; border-radius:3px; }
+.price-name{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; }
+.price-tagline{ font-size:14px; color:var(--stone); margin:8px 0 20px; min-height:36px; }
+.price-num{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:36px; }
+.price-per{ font-size:13px; color:var(--stone); margin-bottom:20px; }
+.price-card ul{ list-style:none; flex-grow:1; }
+.price-card li{ font-size:14.5px; padding:7px 0 7px 24px; position:relative; }
+.price-card li::before{ content:"\2713"; position:absolute; left:0; color:var(--crimson); font-weight:700; }
+.price-card .btn{ margin-top:20px; text-align:center; }
+
+/* CALCULATOR */
+.calc-box{ background:var(--card); border:1px solid var(--hairline); border-radius:8px; padding:32px; margin-top:50px; }
+.calc-box h3{ font-size:20px; margin-bottom:6px; }
+.calc-sub{ font-size:14.5px; color:var(--stone); margin-bottom:20px; }
+.calc-row{ display:flex; align-items:center; justify-content:space-between; padding:11px 0; border-bottom:1px solid var(--hairline); font-size:15.5px; }
+.calc-row label{ display:flex; align-items:center; gap:12px; cursor:pointer; }
+.calc-row input[type=checkbox]{ width:18px; height:18px; accent-color:var(--crimson); }
+.calc-price{ color:var(--stone); font-size:14px; }
+.calc-total{ margin-top:22px; padding-top:18px; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:baseline; }
+.calc-total .t-label{ font-size:15.5px; font-weight:600; }
+.calc-total .t-value{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:32px; color:var(--crimson); }
+
+/* BLOG */
+.blog-list{ margin-top:36px; }
+.blog-item{ padding:26px 0; border-bottom:1px solid var(--hairline); }
+.blog-item .tag{ font-size:12.5px; color:var(--crimson); font-weight:600; letter-spacing:0.06em; text-transform:uppercase; }
+.blog-item h3{ font-size:22px; margin:8px 0 8px; }
+.blog-item p{ color:var(--stone); font-size:15.5px; }
+.blog-item a.read{ display:inline-block; margin-top:10px; font-weight:600; font-size:14.5px; color:var(--ink); }
+article.post p{ font-size:17px; margin-bottom:18px; max-width:720px; }
+article.post h2{ font-size:24px; margin:34px 0 14px; max-width:720px; }
+
+/* CLOSING */
+.closing{ background:var(--ink); color:var(--paper); padding:80px 0 64px; clip-path: polygon(0 0, 100% 36px, 100% 100%, 0 100%); text-align:center; }
+.closing .wrap{ padding-top:16px; }
+.closing h2{ font-size:30px; max-width:600px; margin:0 auto 16px; }
+.closing p{ font-size:16.5px; color:#CFCBC3; max-width:560px; margin:0 auto; }
+.closing .btn{ margin-top:28px; }
+footer{ text-align:center; padding:26px 0; color:var(--stone); font-size:13px; }
+
+@media (max-width:900px){
+  .grid-4{ grid-template-columns:1fr 1fr; }
+  .stat-grid{ grid-template-columns:1fr 1fr; }
+  .price-grid{ grid-template-columns:1fr; }
+}
+@media (max-width:640px){
+  .hero{ padding:70px 0 60px; } .hero h1{ font-size:30px; }
+  .grid-2, .grid-4, .why-grid{ grid-template-columns:1fr; }
+  .stat-grid{ grid-template-columns:1fr 1fr; }
+  section{ padding:52px 0; }
+}
+</style>
+
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><span style="width:22px;height:22px;display:inline-block;color:#A2201C"><svg viewBox="0 0 200 200" fill-rule="evenodd"><path d="M100,25 L175,175 L25,175 Z M154.6,170.5 L78.6,57.5 L65.4,66.5 L141.4,179.5 Z"/></svg></span>novapex</a>
+    <div class="nav-links">
+      <a href="/services">Services</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+    </div>
+    <a href="/#contact" class="nav-cta">Get In Touch</a>
+  </div>
+</nav>
+
+
+<div class="hero" style="padding:80px 0 60px;">
+  <div class="wrap">
+    <div class="eyebrow">Blog</div>
+    <h1 style="font-size:38px;">Notes on systems, not shortcuts.</h1>
+    <p class="sub">Real thinking on what actually works in marketing right now, written plainly, without the hype.</p>
+  </div>
+</div>
+<section>
+  <div class="wrap narrow">
+    <div class="blog-list">
+      
+<div class="blog-item">
+  <div class="tag">Strategy</div>
+  <h3>The Post-and-Pray Problem</h3>
+  <p>Most businesses don't have a content problem. They have a system problem, and no amount of extra posting fixes that.</p>
+  <a href="/blog/post-and-pray-problem" class="read">Read the full post &rarr;</a>
+</div>
+
+
+<div class="blog-item">
+  <div class="tag">Philosophy</div>
+  <h3>Why We Don't Sell What Everyone Else Is Selling</h3>
+  <p>There's a version of this business that sells AI automation, programmatic ad buying, and every trend in the latest report. We deliberately don't.</p>
+  <a href="/blog/why-we-dont-sell-everything" class="read">Read the full post &rarr;</a>
+</div>
+
+
+<div class="blog-item">
+  <div class="tag">Proof</div>
+  <h3>What Actually Works: Proof Over Promises</h3>
+  <p>Anyone can promise results. We'd rather show you a system that already produced them, before we ever ask for a Maloti.</p>
+  <a href="/blog/proof-over-promises" class="read">Read the full post &rarr;</a>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<footer>Novapex &middot; Maseru, Lesotho &middot; 2026</footer>
+</body>
+</html>
