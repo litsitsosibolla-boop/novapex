@@ -10,48 +10,87 @@
 <style>
   :root{ --ink:#14120F; --paper:#F7F5F1; --crimson:#A2201C; --stone:#8C8880; --hairline:#DAD5C9; }
   *{ box-sizing:border-box; margin:0; padding:0; }
-  body{ background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.65; -webkit-font-smoothing:antialiased; }
   h1,h2,h3{ font-family:'Space Grotesk',sans-serif; font-weight:700; }
-  .wrap{ max-width:820px; margin:0 auto; padding:0 32px; }
+  .wrap{ max-width:800px; margin:0 auto; padding:0 32px; }
+  .cta-btn{
+    display:inline-block; background:var(--crimson); color:var(--paper); font-family:'Space Grotesk',sans-serif;
+    font-weight:700; font-size:16px; padding:16px 32px; border-radius:4px; text-decoration:none; border:none; cursor:pointer;
+    margin-top:20px;
+  }
+  .cta-sub{ font-size:13px; color:var(--stone); margin-top:10px; }
 
-  .hero{ background:var(--ink); color:var(--paper); padding:100px 0 90px; position:relative; overflow:hidden;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%); }
+  .hero{ background:var(--ink); color:var(--paper); padding:90px 0 70px; position:relative; overflow:hidden;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 36px), 0 100%); }
   .hero::after{ content:""; position:absolute; top:0; right:0; width:0; height:0;
-    border-style:solid; border-width:0 110px 110px 0; border-color: transparent var(--crimson) transparent transparent; }
-  .mark{ width:52px; height:52px; display:block; margin-bottom:24px; }
-  .eyebrow{ font-size:13px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#B0ACA4; margin-bottom:18px; }
-  .hero h1{ font-size:38px; line-height:1.2; max-width:620px; }
-  .hero .sub{ margin-top:22px; max-width:560px; font-size:17px; color:#CFCBC3; }
+    border-style:solid; border-width:0 100px 100px 0; border-color: transparent var(--crimson) transparent transparent; }
+  .mark{ width:46px; height:46px; display:block; margin-bottom:20px; }
+  .eyebrow{ font-size:13px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#B0ACA4; margin-bottom:16px; }
+  .hero h1{ font-size:36px; line-height:1.2; max-width:660px; }
+  .hero .sub{ margin-top:18px; max-width:600px; font-size:17px; color:#CFCBC3; }
 
-  section{ padding:56px 0; }
+  section{ padding:52px 0; }
   section + section{ border-top:1px solid var(--hairline); }
   .label{ font-size:13px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--crimson); margin-bottom:16px; }
-  .section-title{ font-size:26px; max-width:620px; margin-bottom:16px; }
-  .lede{ font-size:17px; max-width:680px; color:var(--ink); }
+  .section-title{ font-size:25px; max-width:640px; margin-bottom:16px; }
+  .lede{ font-size:16.5px; max-width:680px; color:var(--ink); margin-bottom:14px; }
+
+  .ladder{ list-style:none; margin-top:20px; }
+  .ladder li{ font-size:17px; padding:10px 0 10px 30px; position:relative; border-bottom:1px dashed var(--hairline); }
+  .ladder li:last-child{ border-bottom:none; font-weight:600; padding-top:18px; }
+  .ladder li::before{ content:"\2713"; position:absolute; left:0; color:var(--crimson); font-weight:700; }
+
+  .mech-box{ background:#EFEBE3; border-left:4px solid var(--crimson); padding:22px 24px; margin:24px 0; }
+  .mech-box .name{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; margin-bottom:8px; }
 
   .steps{ margin-top:24px; }
-  .step{ display:flex; gap:20px; margin-bottom:22px; align-items:flex-start; }
+  .step{ display:flex; gap:20px; margin-bottom:24px; align-items:flex-start; }
   .step-num{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; color:var(--crimson); width:36px; flex-shrink:0; }
-  .step p{ font-size:16px; color:var(--ink); max-width:600px; }
+  .step p{ font-size:16px; color:var(--ink); max-width:620px; }
   .step b{ display:block; font-size:17px; margin-bottom:4px; font-family:'Space Grotesk',sans-serif; }
 
-  .stats{ background:var(--ink); color:var(--paper); clip-path: polygon(0 28px, 100% 0, 100% 100%, 0 100%); }
-  .stats .wrap{ padding-top:28px; }
-  .stat-grid{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; margin-top:30px; }
-  .stat-num{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:32px; color:var(--crimson); line-height:1; }
-  .stat-label{ margin-top:10px; font-size:13.5px; color:#CFCBC3; }
+  .stats-box{ background:var(--ink); color:var(--paper); clip-path: polygon(0 26px, 100% 0, 100% 100%, 0 100%); padding-bottom:8px; }
+  .stats-box .wrap{ padding-top:26px; }
+  .stats-box p{ font-size:16px; color:#CFCBC3; max-width:680px; }
 
-  .closing{ background:var(--ink); color:var(--paper); padding:70px 0 60px; clip-path: polygon(0 0, 100% 32px, 100% 100%, 0 100%); }
-  .closing .wrap{ padding-top:16px; }
-  .closing h2{ font-size:26px; max-width:560px; margin-bottom:14px; }
-  .closing p.offer{ font-size:16px; color:#CFCBC3; max-width:600px; margin-bottom:36px; }
-  .contact-row{ display:flex; flex-wrap:wrap; gap:32px; font-size:15px; }
+  .offer-box{ background:#EFEBE3; border:2px solid var(--crimson); border-radius:6px; padding:32px; margin-top:24px; }
+  .offer-box .price-label{ font-size:14px; text-transform:uppercase; letter-spacing:0.12em; color:var(--crimson); font-weight:600; }
+  .offer-box .price{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:44px; margin:8px 0 4px; }
+  .offer-box .price-per{ font-size:14px; color:var(--stone); margin-bottom:18px; }
+  .offer-box ul{ list-style:none; }
+  .offer-box li{ padding:6px 0 6px 26px; position:relative; font-size:15.5px; }
+  .offer-box li::before{ content:"\2713"; position:absolute; left:0; color:var(--crimson); font-weight:700; }
+
+  .calc-box{ background:#FFFFFF; border:1px solid var(--hairline); border-radius:6px; padding:28px; margin-top:30px; }
+  .calc-box h3{ font-size:18px; margin-bottom:6px; }
+  .calc-box .calc-sub{ font-size:14px; color:var(--stone); margin-bottom:18px; }
+  .calc-row{ display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--hairline); font-size:15.5px; }
+  .calc-row label{ display:flex; align-items:center; gap:10px; cursor:pointer; }
+  .calc-row input[type=checkbox]{ width:18px; height:18px; accent-color:var(--crimson); }
+  .calc-price{ color:var(--stone); font-size:14px; }
+  .calc-total{ margin-top:20px; padding-top:16px; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:baseline; }
+  .calc-total .t-label{ font-size:15px; font-weight:600; }
+  .calc-total .t-value{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; color:var(--crimson); }
+
+  .scarcity{ background:var(--crimson); color:var(--paper); padding:20px 24px; border-radius:6px; margin-top:26px; font-size:15px; }
+  .scarcity b{ display:block; font-family:'Space Grotesk',sans-serif; font-size:16px; margin-bottom:4px; }
+
+  .guarantee{ margin-top:24px; padding:20px 24px; border:1px dashed var(--stone); border-radius:6px; font-size:15px; color:var(--ink); }
+  .guarantee b{ display:block; font-family:'Space Grotesk',sans-serif; font-size:16px; margin-bottom:4px; color:var(--ink); }
+
+  .closing{ background:var(--ink); color:var(--paper); padding:64px 0 56px; clip-path: polygon(0 0, 100% 30px, 100% 100%, 0 100%); text-align:center; }
+  .closing .wrap{ padding-top:14px; }
+  .closing h2{ font-size:28px; max-width:600px; margin:0 auto 14px; }
+  .closing p{ font-size:16px; color:#CFCBC3; max-width:560px; margin:0 auto 8px; }
+  .contact-row{ display:flex; flex-wrap:wrap; gap:32px; font-size:15px; margin-top:28px; justify-content:center; }
   .contact-row div .k{ color:#8f8b83; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; }
   .contact-row div .v{ font-weight:500; }
-  footer{ text-align:center; padding:24px 0; color:var(--stone); font-size:13px; }
+  footer{ text-align:center; padding:22px 0; color:var(--stone); font-size:13px; }
 
   @media (max-width:640px){
-    .hero{ padding:70px 0 60px; } .hero h1{ font-size:28px; } .stat-grid{ grid-template-columns:1fr; }
+    .hero{ padding:64px 0 50px; } .hero h1{ font-size:26px; }
+    .calc-row{ flex-direction:column; align-items:flex-start; gap:4px; }
   }
 </style>
 </head>
@@ -64,45 +103,118 @@
     </svg>
     <div class="eyebrow">For Food & Beverage Founders</div>
     <h1>Your product earned its shelf space. Your story never got the chance to.</h1>
-    <p class="sub">You built something real, from nothing, and it's sitting on real shelves right now. But every new retail partner still comes from a handshake and a cold visit, because nobody's ever properly told the story of how you got here.</p>
+    <p class="sub">You built something real from nothing. It's time the story caught up to the product.</p>
+    <a href="#offer" class="cta-btn">See Your Price &amp; Start Now</a>
   </div>
 </div>
+
+<section>
+  <div class="wrap">
+    <div class="label">Read This If</div>
+    <ul class="ladder">
+      <li>You've walked into a new retail partner cold, with nothing but the product itself and a handshake.</li>\n<li>You've had a customer taste your product and say 'this is amazing, how did you even start this,' and given a shorter answer than it deserved.</li>\n<li>You know your actual story, how you really built this, is more compelling than almost any ad you could buy.</li>\n<li>You've thought about 'branding' before and quietly decided there wasn't time for it.</li>\n<li>If that's true, this was built for exactly your situation.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label">What's Actually Happening</div>
+    <p class="lede">Picture the next retail buyer meeting. Two products, nearly identical on the shelf, competing for the same limited space. One has a founder story the buyer's already half-familiar with, a real narrative that makes the product feel inevitable. Yours has excellent taste and nothing else on paper. The buyer picks the one that feels like a safer bet, and it isn't always the better product that wins that moment.</p>\n<p class="lede">This happens at every stage, not just the big pitch. New customers deciding between two shelf options. New partners deciding who to trust with distribution. Every one of those moments is a small, silent vote, and right now most of them are being decided without your story even in the room.</p>\n<p class="lede">Meanwhile, the story is sitting right there, fully formed, in your own memory, completely unused, while competitors with thinner stories but louder marketing keep closing the gap.</p>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
     <div class="label">The Real Problem</div>
     <h2 class="section-title">People don't just buy the product. They buy who made it.</h2>
-    <p class="lede">Two nearly identical products sit on a shelf. One has a founder story people actually know. That one wins, every time, before anyone's even tasted either.</p>
+    <p class="lede">Two nearly identical products sit on a shelf. One has a founder story people actually know and repeat to their friends. That one wins, consistently, often before anyone's even tasted either, because the story does half the selling before the product ever gets the chance to.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="label">How This Actually Works</div>
-    <h2 class="section-title">What we actually build for you</h2>
+    <div class="label">The System</div>
+    <div class="mech-box">
+      <div class="name">The Founder Proof System</div>
+      <div>Built to take the story that's already sitting in your memory and turn it into the thing that opens doors before you even walk through them.</div>
+    </div>
     <div class="steps">
-      <div class="step"><div class="step-num">01</div><p><b>Tell the founder story properly, once. </b>So every future retail pitch starts with trust already built.</p></div>
-      <div class="step"><div class="step-num">02</div><p><b>Build content that supports the sales team. </b>Not replacing the handshake, giving it something to stand on.</p></div>
-      <div class="step"><div class="step-num">03</div><p><b>Package the story for new markets. </b>Ready to use the next time you're pitching a retailer who's never heard of you.</p></div>
+      <div class="step"><div class="step-num">01</div><p><b>We capture the real story, properly, once</b>Not a marketing fiction. The actual, specific story of how this started, told well enough that every future pitch begins with trust already half-built.</p></div>\n<div class="step"><div class="step-num">02</div><p><b>We build content that backs up the sales team</b>Not replacing the handshake and the relationship-building you already do well, giving it something solid to stand on when you walk into the room.</p></div>\n<div class="step"><div class="step-num">03</div><p><b>We package it for every new market</b>Ready to use the next time you're pitching a retailer, an export partner, or a customer who's never heard of you before.</p></div>\n<div class="step"><div class="step-num">04</div><p><b>We keep it consistent as you grow</b>So the story doesn't get diluted or forgotten as the business scales past the size where you can tell it personally, every time.</p></div>
     </div>
   </div>
 </section>
 
-<div class="stats">
+<div class="stats-box">
   <div class="wrap">
     <div class="label" style="color:#CFCBC3">Proof, Not Theory</div>
-    <div class="stat-grid">
-      <div><div class="stat-num">1,000,000+</div><div class="stat-label">Impressions built from a platform starting at zero</div></div>
-      <div><div class="stat-num">6</div><div class="stat-label">Industries where this same approach has already worked</div></div>
-      <div><div class="stat-num">5+</div><div class="stat-label">Years of hands-on experience behind the system</div></div>
-    </div>
+    <p>This same story-first approach helped build a separate platform to over a million impressions starting from absolutely nothing, and the underlying system has now worked across six completely different industries. A real story, told properly, is one of the few marketing assets that gets more valuable the more it's repeated.</p>
   </div>
 </div>
 
-<div class="closing" id="contact">
+<section id="offer">
   <div class="wrap">
-    <h2>One founder story, drafted free.</h2>
-    <p class="offer">Tell us how you actually started. We'll draft the story, no charge, and you decide if it's worth using.</p>
+    <div class="label">The Offer</div>
+    <h2 class="section-title">One clear price. No confusion about what you're getting.</h2>
+
+    <div class="offer-box">
+      <div class="price-label">The Full Founder Proof Build</div>
+      <div class="price">M11,500<span class="price-per">/month</span></div>
+      <ul>
+        <li>A fully captured and written founder story</li>\n<li>A retail and partner-ready pitch package</li>\n<li>Ongoing content connecting the story to new products or markets</li>\n<li>Support material for your next three retail or export pitches</li>
+      </ul>
+      <a href="mailto:marketing@novapex.co.ls?subject=Ready%20to%20start%20-%20For%20Food%20&%20Beverage%20Founders" class="cta-btn">Claim This Now</a>
+      <div class="cta-sub">One email starts the conversation. No obligation until you say go.</div>
+    </div>
+
+    <div class="calc-box">
+      <h3>Or build your own package</h3>
+      <div class="calc-sub">Tick what you need. The price updates as you go.</div>
+
+      <div class="calc-row">
+        <label><input type="checkbox" class="addon" data-price="0" checked disabled> Core Content System (included)</label>
+        <span class="calc-price">M0</span>
+      </div>
+      <div class="calc-row">
+        <label><input type="checkbox" class="addon" data-price="8000" onchange="updateQuote()"> Brand Intelligence Dashboard</label>
+        <span class="calc-price">+M8,000</span>
+      </div>
+      <div class="calc-row">
+        <label><input type="checkbox" class="addon" data-price="6000" onchange="updateQuote()"> Campaign Mechanic Design</label>
+        <span class="calc-price">+M6,000</span>
+      </div>
+      <div class="calc-row">
+        <label><input type="checkbox" class="addon" data-price="5000" onchange="updateQuote()"> Executive &amp; Personal Brand Layer</span></label>
+        <span class="calc-price">+M5,000</span>
+      </div>
+      <div class="calc-row">
+        <label><input type="checkbox" class="addon" data-price="4000" onchange="updateQuote()"> WhatsApp Commerce System</label>
+        <span class="calc-price">+M4,000</span>
+      </div>
+
+      <div class="calc-total">
+        <div class="t-label">Your Estimated Monthly Investment</div>
+        <div class="t-value" id="quoteTotal">M5000</div>
+      </div>
+      <a href="mailto:marketing@novapex.co.ls?subject=Custom%20quote%20-%20For%20Food%20&%20Beverage%20Founders" class="cta-btn">Get This Exact Package</a>
+    </div>
+
+    <div class="scarcity">
+      <b>Limited Capacity</b>
+      We take on a limited number of founders each quarter, since a real story takes real time to capture properly. If this quarter's full, the next one is yours.
+    </div>
+
+    <div class="guarantee">
+      <b>No-Risk Start</b>
+      We'll draft your founder story for free, based on one real conversation. You decide afterward if it's worth using, no pressure either way.
+    </div>
+  </div>
+</section>
+
+<div class="closing">
+  <div class="wrap">
+    <h2>Your next retail pitch deserves more than a handshake.</h2>
+    <p>Walk in with the story ready this time. Start today.</p>
     <div class="contact-row">
       <div><div class="k">Website</div><div class="v">novapex.co.ls</div></div>
       <div><div class="k">Email</div><div class="v">marketing@novapex.co.ls</div></div>
@@ -112,6 +224,17 @@
 </div>
 
 <footer>Novapex &middot; Maseru, Lesotho &middot; 2026</footer>
+
+<script>
+  const BASE_PRICE = 5000;
+  function updateQuote(){
+    let total = BASE_PRICE;
+    document.querySelectorAll('.addon').forEach(cb => {
+      if(cb.checked && !cb.disabled) total += parseInt(cb.getAttribute('data-price'));
+    });
+    document.getElementById('quoteTotal').textContent = 'M' + total.toLocaleString();
+  }
+</script>
 
 </body>
 </html>
