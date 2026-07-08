@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novapex — Case Study: 2,000,000+ Views, Zero Paid Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14120F; --paper:#F7F5F1; --crimson:#A2201C; --stone:#8C8880; --hairline:#DAD5C9;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:'Space Grotesk',sans-serif; font-weight:700; }
+  .wrap{ max-width:820px; margin:0 auto; padding:0 32px; }
+
+  .hero{
+    background:var(--ink); color:var(--paper); padding:100px 0 90px;
+    position:relative; overflow:hidden;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
+  }
+  .hero::after{
+    content:""; position:absolute; top:0; right:0; width:0; height:0;
+    border-style:solid; border-width:0 110px 110px 0;
+    border-color: transparent var(--crimson) transparent transparent;
+  }
+  .mark{ width:52px; height:52px; display:block; margin-bottom:24px; }
+  .eyebrow{ font-size:13px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B0ACA4; margin-bottom:18px; }
+  .hero h1{ font-size:44px; line-height:1.12; max-width:600px; }
+  .hero .sub{ margin-top:20px; max-width:520px; font-size:17px; color:#CFCBC3; }
+
+  section{ padding:56px 0; }
+  section + section{ border-top:1px solid var(--hairline); }
+  .label{ font-size:13px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--crimson); margin-bottom:16px; }
+  .section-title{ font-size:26px; max-width:600px; margin-bottom:16px; }
+  .lede{ font-size:17px; max-width:680px; color:var(--ink); }
+
+  .steps{ margin-top:24px; }
+  .step{ display:flex; gap:20px; margin-bottom:22px; align-items:flex-start; }
+  .step-num{
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; color:var(--crimson);
+    width:36px; flex-shrink:0;
+  }
+  .step p{ font-size:16px; color:var(--ink); max-width:600px; }
+  .step b{ display:block; font-size:17px; margin-bottom:4px; font-family:'Space Grotesk',sans-serif; }
+
+  .stats{ background:var(--ink); color:var(--paper); clip-path: polygon(0 28px, 100% 0, 100% 100%, 0 100%); }
+  .stats .wrap{ padding-top:28px; }
+  .stat-grid{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:36px; margin-top:30px; }
+  .stat-num{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:38px; color:var(--crimson); line-height:1; }
+  .stat-label{ margin-top:10px; font-size:14px; color:#CFCBC3; }
+
+  .closing{ background:var(--ink); color:var(--paper); padding:70px 0 60px; clip-path: polygon(0 0, 100% 32px, 100% 100%, 0 100%); }
+  .closing .wrap{ padding-top:16px; }
+  .closing h2{ font-size:26px; max-width:560px; margin-bottom:16px; }
+  .closing p{ font-size:16px; color:#CFCBC3; max-width:600px; margin-bottom:36px; }
+  .contact-row{ display:flex; flex-wrap:wrap; gap:32px; font-size:15px; }
+  .contact-row div .k{ color:#8f8b83; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; }
+  .contact-row div .v{ font-weight:500; }
+  footer{ text-align:center; padding:24px 0; color:var(--stone); font-size:13px; }
+
+  @media (max-width:640px){
+    .hero{ padding:70px 0 60px; }
+    .hero h1{ font-size:30px; }
+    .stat-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="Novapex mark">
+      <path d="M100,25 L175,175 L25,175 Z M154.6,170.5 L78.6,57.5 L65.4,66.5 L141.4,179.5 Z" fill-rule="evenodd" fill="#A2201C"/>
+    </svg>
+    <div class="eyebrow">Case Study</div>
+    <h1>2,000,000+ views. Zero paid media. 60 days.</h1>
+    <p class="sub">How one content system turned a public figure's page into one of the most-watched pages in its category, without spending a single Maloti on ads.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="label">The Situation</div>
+    <p class="lede">A high-profile public figure needed a real online presence, not a paid-for one, a real one. No ad budget, no boosted posts. Just content, and whatever attention it could genuinely earn.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label">The Usual Approach</div>
+    <h2 class="section-title">Most pages in this position do the obvious thing.</h2>
+    <p class="lede">Post whenever something happens. Hope it lands. Measure success by likes. That's post-and-pray, and it rarely builds anything that lasts past the next post.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label">The System</div>
+    <h2 class="section-title">Every post followed the same repeatable shape.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <p><b>Start with something people already cared about.</b>A real, local, everyday concern, not a manufactured talking point.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <p><b>Connect it to a bigger pattern.</b>Show how one moment fit into something larger, so the post said more than it looked like it said.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <p><b>Land somewhere that built trust.</b>Not just attention for its own sake, credibility that carried into the next post.</p>
+      </div>
+    </div>
+    <p class="lede" style="margin-top:20px;">This wasn't random content. It was a mechanic, the same kind of repeatable system Novapex now builds for every client, proven here before Novapex existed.</p>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="label" style="color:#CFCBC3">The Results</div>
+    <div class="stat-grid">
+      <div>
+        <div class="stat-num">2,000,000+</div>
+        <div class="stat-label">Organic views in 60 days</div>
+      </div>
+      <div>
+        <div class="stat-num">M0</div>
+        <div class="stat-label">Spent on paid media or ads</div>
+      </div>
+      <div>
+        <div class="stat-num">1</div>
+        <div class="stat-label">Repeatable system behind every post</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="label">Why It Matters</div>
+    <h2 class="section-title">Attention isn't the hard part. Systems are.</h2>
+    <p class="lede">This is the proof behind Novapex's whole approach. The same systems-thinking that built this now goes into every content system, dashboard, and campaign mechanic we build for clients today.</p>
+  </div>
+</section>
+
+<div class="closing" id="contact">
+  <div class="wrap">
+    <h2>Want a system like this built for your brand?</h2>
+    <p>Quiet confidence. No hype. Either it's for you, or it isn't.</p>
+    <div class="contact-row">
+      <div><div class="k">Website</div><div class="v">novapex.co.ls</div></div>
+      <div><div class="k">Email</div><div class="v">marketing@novapex.co.ls</div></div>
+      <div><div class="k">LinkedIn</div><div class="v">Novapex LS</div></div>
+    </div>
+  </div>
+</div>
+
+<footer>Novapex &middot; Maseru, Lesotho &middot; 2026</footer>
+
+</body>
+</html>
