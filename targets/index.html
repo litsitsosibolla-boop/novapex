@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novapex — 10 Target Client Profiles (Internal)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#14120F; --paper:#F7F5F1; --crimson:#A2201C; --stone:#8C8880; --hairline:#DAD5C9; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:'Space Grotesk',sans-serif; font-weight:700; }
+  .wrap{ max-width:860px; margin:0 auto; padding:0 32px; }
+
+  .hero{ background:var(--ink); color:var(--paper); padding:90px 0 70px; position:relative; overflow:hidden;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 36px), 0 100%); }
+  .hero::after{ content:""; position:absolute; top:0; right:0; width:0; height:0;
+    border-style:solid; border-width:0 100px 100px 0; border-color: transparent var(--crimson) transparent transparent; }
+  .mark{ width:48px; height:48px; display:block; margin-bottom:22px; }
+  .eyebrow{ font-size:13px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B0ACA4; margin-bottom:16px; }
+  .hero h1{ font-size:38px; line-height:1.15; max-width:600px; }
+  .hero .sub{ margin-top:18px; max-width:560px; font-size:16px; color:#CFCBC3; }
+
+  .rule-box{ background:var(--ink); color:var(--paper); padding:32px 0; }
+  .rule-box .wrap{ font-size:16px; color:#CFCBC3; }
+  .rule-box b{ color:var(--paper); }
+
+  .profile{ padding:48px 0; border-top:1px solid var(--hairline); }
+  .profile-num{ font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600; color:var(--crimson); letter-spacing:0.15em; margin-bottom:10px; }
+  .profile h2{ font-size:24px; margin-bottom:6px; }
+  .profile .role{ font-size:15px; color:var(--stone); margin-bottom:16px; }
+  .profile .narrative{ font-size:16px; margin-bottom:20px; max-width:680px; }
+
+  .check-title{ font-size:13px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--crimson); margin-bottom:10px; margin-top:20px; }
+  .checklist{ list-style:none; }
+  .checklist li{ font-size:15px; padding:6px 0 6px 26px; position:relative; color:var(--ink); max-width:680px; }
+  .checklist li::before{ content:"\2610"; position:absolute; left:0; color:var(--crimson); font-size:15px; }
+
+  .meta-row{ display:flex; flex-wrap:wrap; gap:28px; margin-top:22px; padding-top:18px; border-top:1px dashed var(--hairline); }
+  .meta-row div .k{ font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--stone); margin-bottom:4px; }
+  .meta-row div .v{ font-size:15px; font-weight:600; }
+
+  footer{ text-align:center; padding:30px 0; color:var(--stone); font-size:13px; background:var(--ink); }
+  footer span{ color:var(--paper); }
+
+  @media (max-width:640px){
+    .hero{ padding:60px 0 50px; } .hero h1{ font-size:28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="Novapex mark">
+      <path d="M100,25 L175,175 L25,175 Z M154.6,170.5 L78.6,57.5 L65.4,66.5 L141.4,179.5 Z" fill-rule="evenodd" fill="#A2201C"/>
+    </svg>
+    <div class="eyebrow">Novapex &middot; Internal</div>
+    <h1>10 Target Client Profiles</h1>
+    <p class="sub">Ten niches, not ten people. Each profile is a composite of the real client Novapex is built for in that category.</p>
+  </div>
+</div>
+
+<div class="rule-box">
+  <div class="wrap">
+    <b>The qualification rule:</b> a lead qualifies if they match 50% or more of the checklist for any one profile. More checks doesn't just mean "more qualified," it means closer to the exact person this was built for.
+  </div>
+</div>
+
+<div class="profile">
+  <div class="wrap">
+    <div class="profile-num">PROFILE 01</div>
+    <h2>Meet Thabo, 44</h2>
+    <div class="role">Regional manager at a mid-size financial services firm (banking or investment, not insurance)</div>
+    <p class="narrative">Thabo runs a team of 15+ across a couple of branches. Leadership keeps telling him to "build a personal brand," but nobody's told him what that actually means in practice, so his LinkedIn sits untouched for weeks at a time.</p>
+    <div class="check-title">Qualifying Checklist</div>
+    <ul class="checklist">
+      <li>Manages a team of 15+ at a bank, investment house, or similar financial firm</li>
+      <li>Company operates in 2+ towns or districts</li>
+      <li>Has been asked to build a personal brand but doesn't know where to start</li>
+      <li>Updates LinkedIn less than once a month</li>
+      <li>Company socials are run by a junior staffer with no real strategy</li>
+      <li>Speaks at industry panels or events with no content plan around them</li>
+      <li>Has been personally asked "are you on LinkedIn?" recently</li>
+      <li>Not a direct competitor to existing Novapex clients</li>
+    </ul>
+    <div class="meta-row">
+      <div><div class="k">Best Fit</div><div class="v">Executive & Personal Brand Systems</div></div>
+      <div><div class="k">Budget Range</div><div class="v">M15,000&ndash;M50,000/mo</div></div>
+      <div><div class="k">The Trigger</div><div class="v">A peer or client asks about his online presence directly</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="profile">
+  <div class="wrap">
+    <div class="profile-num">PROFILE 02</div>
+    <h2>Meet Katleho, 35</h2>
+    <div class="role">Manages 3&ndash;5 artists under a small independent label</div>
+    <p class="narrative">Katleho's landed real sponsorship conversations before, but every time a brand asks "what's your reach, really?" he's improvising an answer instead of showing a real number.</p>
+    <div class="check-title">Qualifying Checklist</div>
+    <ul class="checklist">
+      <li>Manages or represents 2+ working musicians or performers</li>
+      <li>Has landed at least one brand sponsorship or partnership already</li>
+      <li>Posts are reactive (show dates, announcements), not planned campaigns</li>
+      <li>Has no professional one-pager or dashboard to pitch sponsors with</li>
+      <li>Active on Facebook and Instagram, little to no LinkedIn presence</li>
+      <li>Revenue mixes shows, streaming, and brand deals</li>
+      <li>Has said out loud "I don't actually know what's working"</li>
+      <li>Open to commission or hybrid payment, not just a flat retainer</li>
+    </ul>
+    <div class="meta-row">
+      <div><div class="k">Best Fit</div><div class="v">Brand Intelligence Dashboards + Campaign Mechanic Design</div></div>
+      <div><div class="k">Budget Range</div><div class="v">M5,000&ndash;M20,000/mo or commission</div></div>
+      <div><div class="k">The Trigger</div><div class="v">A sponsor asks for numbers he can't produce</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="profile">
+  <div class="wrap">
+    <div class="profile-num">PROFILE 03</div>
+    <h2>Meet Palesa, 32</h2>
+    <div class="role">Owns a growing clothing boutique with 1&ndash;2 physical locations</div>
+    <p class="narrative">Palesa's orders come in through a flood of WhatsApp messages she answers one by one, at all hours. She knows she's leaving sales on the table, she just doesn't have a system to fix it.</p>
+    <div class="check-title">Qualifying Checklist</div>
+    <ul class="checklist">
+      <li>Runs 1&ndash;2 physical retail locations plus a Facebook/Instagram shop</li>
+      <li>Takes orders manually through WhatsApp DMs</li>
+      <li>Has no organized product catalogue online</li>
+      <li>Posts product photos with no real content calendar</li>
+      <li>Has seasonal sales spikes she scrambles to plan for every time</li>
+      <li>Avoids looking at her own page's analytics</li>
+      <li>Has hired and fired at least one social media person before</li>
+    </ul>
+    <div class="meta-row">
+      <div><div class="k">Best Fit</div><div class="v">WhatsApp Commerce Systems + Content Systems</div></div>
+      <div><div class="k">Budget Range</div><div class="v">M3,000&ndash;M10,000/mo</div></div>
+      <div><div class="k">The Trigger</div><div class="v">A missed order during a busy season, traced back to a lost WhatsApp message</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="profile">
+  <div class="wrap">
+    <div class="profile-num">PROFILE 04</div>
+    <h2>Meet Rets'elisitsoe, 48</h2>
+    <div class="role">Owns a mountain lodge or guesthouse</div>
+    <p class="narrative">Rets'elisitsoe's lodge is genuinely beautiful, but the website looks like it hasn't been touched since it launched, and almost every booking still comes from word-of-mouth, not from anything he's actually built.</p>
+    <div class="check-title">Qualifying Checklist</div>
+    <ul class="checklist">
+      <li>Operates a lodge, guesthouse, or tour business with international guest appeal</li>
+      <li>Relies heavily on word-of-mouth and repeat bookings</li>
+      <li>Website hasn't been meaningfully updated in over a year</li>
+      <li>Wants more international bookings, not just local weekend traffic</li>
+      <li>Struggles to photograph or present the property attractively online</li>
+      <li>Has tour operator or travel partnerships with no coordinated content</li>
+      <li>Cash flow swings hard between dead months and fully booked months</li>
+    </ul>
+    <div class="meta-row">
+      <div><div class="k">Best Fit</div><div class="v">Content Systems + Executive Brand (as the face of the lodge)</div></div>
+      <div><div class="k">Budget Range</div><div class="v">M8,000&ndash;M25,000/mo, seasonal</div></div>
+      <div><div class="k">The Trigger</div><div class="v">A slow season that makes the word-of-mouth model feel too fragile</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="profile">
+  <div class="wrap">
+    <div class="profile-num">PROFILE 05</div>
+    <h2>Meet Advocate Mahlomola, 46</h2>
+    <div class="role">Partner at a law firm or accounting practice</div>
+    <p class="narrative">Mahlomola built his practice on referrals and reputation, and he's proud of that. But his younger staff keep pushing for "a real online presence," and every time a journalist calls for comment, he turns it down because there's no messaging ready.</p>
+    <div class="check-title">Qualifying Checklist</div>
+    <ul class="checklist">
+      <li>Partner or senior leader at a law firm, audit firm, or consultancy</li>
+      <li>Younger staff have raised the need for better online presence</li>
+      <li>Firm's website looks unchanged for 5+ years</li>
+      <li>New clients still come almost entirely from existing relationships</li>
+      <li>Personally uncomfortable with the idea of self-promotion</li>
+      <li>Has turned down a media or interview opportunity due to lack of prep</li>
+      <li>Firm has 10+ staff and a real institutional budget</li>
+      <li>Values discretion and formality over anything that feels flashy</li>
+    </ul>
+    <div class="meta-row">
+      <div><div class="k">Best Fit</div><div class="v">Executive & Personal Brand Systems</div></div>
+      <div><div class="k">Budget Range</div><div class="v">M15,000&ndash;M40,000/mo</div></div>
+      <div><div class="k">The Trigger</div><div class="v">A missed media opportunity that a competitor firm capitalized on instead</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="profile">
+  <div class="wrap">
+    <div class="profile-num">PROFILE 06</div>
+    <h2>Meet Lerato, 29</h2>
+    <div class="role">Owns a gym or wellness studio</div>
+    <p class="narrative">Lerato's comfortable on camera and has real energy, but her content has no consistent voice, and her last "refer a friend" promo ran with no way to actually track who it brought in.</p>
+    <div class="check-title">Qualifying Checklist</div>
+    <ul class="checklist">
+      <li>Runs a gym, fitness studio, or wellness/spa business</li>
+      <li>Revenue depends on monthly membership retention, not one-time sales</li>
+      <li>Posts workout or wellness content with no consistent brand voice</li>
+      <li>Has run a referral promo with no real way to track it</li>
+      <li>Audience skews younger (18&ndash;35) and mobile-first</li>
+      <li>Personally comfortable being the face of the brand on camera</li>
+    </ul>
+    <div class="meta-row">
+      <div><div class="k">Best Fit</div><div class="v">Content Systems + Campaign Mechanic Design</div></div>
+      <div><div class="k">Budget Range</div><div class="v">M2,500&ndash;M8,000/mo</div></div>
+      <div><div class="k">The Trigger</div><div class="v">A membership dip she can't explain or reverse on her own</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="profile">
+  <div class="wrap">
+    <div class="profile-num">PROFILE 07</div>
+    <h2>Meet Ntate Mokoena, 52</h2>
+    <div class="role">Founder of a local food or beverage brand</div>
+    <p class="narrative">Ntate Mokoena's product is already on real shelves, and his story of building it is genuinely compelling, but nobody's ever told it properly, and every new retail partner still comes from a handshake, not a pitch.</p>
+    <div class="check-title">Qualifying Checklist</div>
+    <ul class="checklist">
+      <li>Produces a packaged food, drink, or agro-processed product</li>
+      <li>Sells through 3+ retail partners plus direct sales</li>
+      <li>Wants to expand into new retail partners or export markets</li>
+      <li>Packaging or branding hasn't been refreshed in years</li>
+      <li>Relies on trade shows and relationships, not digital marketing, for new business</li>
+      <li>Has a real founder story that's never been told publicly</li>
+    </ul>
+    <div class="meta-row">
+      <div><div class="k">Best Fit</div><div class="v">Content Systems + Executive Brand (founder story)</div></div>
+      <div><div class="k">Budget Range</div><div class="v">M5,000&ndash;M15,000/mo</div></div>
+      <div><div class="k">The Trigger</div><div class="v">A new retail partner asks for a brand story or press kit he doesn't have</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="profile">
+  <div class="wrap">
+    <div class="profile-num">PROFILE 08</div>
+    <h2>Meet Mamello, 41</h2>
+    <div class="role">Director of a private college or training institute</div>
+    <p class="narrative">Mamello's institute has real graduate success stories, but marketing still means printed flyers and a Facebook page that goes quiet outside of enrollment season, while she personally answers the same parent questions over and over.</p>
+    <div class="check-title">Qualifying Checklist</div>
+    <ul class="checklist">
+      <li>Runs a private college, skills academy, or training institute</li>
+      <li>Enrollment is seasonal, with 2&ndash;3 critical windows a year</li>
+      <li>Competes directly with 2+ similar institutions for the same students</li>
+      <li>Marketing currently means flyers plus an inconsistent Facebook page</li>
+      <li>Answers the same prospective-student questions manually, repeatedly</li>
+      <li>Has real graduate success stories that go untold</li>
+    </ul>
+    <div class="meta-row">
+      <div><div class="k">Best Fit</div><div class="v">Content Systems + WhatsApp Commerce Systems (inquiries)</div></div>
+      <div><div class="k">Budget Range</div><div class="v">M6,000&ndash;M20,000/mo, seasonal spikes</div></div>
+      <div><div class="k">The Trigger</div><div class="v">A weak enrollment season compared to a competing institute</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="profile">
+  <div class="wrap">
+    <div class="profile-num">PROFILE 09</div>
+    <h2>Meet Tumelo, 50</h2>
+    <div class="role">Principal at a real estate development or agency firm</div>
+    <p class="narrative">Tumelo's reputation carries real weight locally, but it lives entirely offline. His deals are big and rare enough that he genuinely needs to know which leads are serious, and right now that's tracked in a notebook, if at all.</p>
+    <div class="check-title">Qualifying Checklist</div>
+    <ul class="checklist">
+      <li>Develops or sells residential or commercial property</li>
+      <li>Deals are high-value and low-frequency, not high-volume</li>
+      <li>Tracks leads in a notebook, spreadsheet, or not at all</li>
+      <li>Relies on signage and word-of-mouth more than digital marketing</li>
+      <li>Has a strong personal reputation locally with no digital footprint to match</li>
+      <li>Needs to build real trust before a single high-stakes conversation</li>
+    </ul>
+    <div class="meta-row">
+      <div><div class="k">Best Fit</div><div class="v">Brand Intelligence Dashboards + Executive Brand</div></div>
+      <div><div class="k">Budget Range</div><div class="v">M10,000&ndash;M35,000/mo</div></div>
+      <div><div class="k">The Trigger</div><div class="v">A serious lead nearly slipped through because it wasn't tracked properly</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="profile">
+  <div class="wrap">
+    <div class="profile-num">PROFILE 10</div>
+    <h2>Meet Mme Limpho, 45</h2>
+    <div class="role">Director of a youth development or health-access NGO</div>
+    <p class="narrative">Mme Limpho's organization changes real lives, and she knows the stories exist to prove it, but between programs, reporting, and everything else, nobody's ever properly captured them, and donors mostly hear about the impact once a year in a report.</p>
+    <div class="check-title">Qualifying Checklist</div>
+    <ul class="checklist">
+      <li>Leads an NGO, foundation, or civic organization with a public mission</li>
+      <li>Funding depends partly on donor visibility and proof of impact</li>
+      <li>Has real beneficiary stories that are rarely captured or shared well</li>
+      <li>Posts are irregular, mostly reactive to events</li>
+      <li>Reports impact to donors annually, not visibly throughout the year</li>
+      <li>Values authenticity and mission-alignment over polish</li>
+    </ul>
+    <div class="meta-row">
+      <div><div class="k">Best Fit</div><div class="v">Content Systems (mission storytelling)</div></div>
+      <div><div class="k">Budget Range</div><div class="v">M3,000&ndash;M12,000/mo, often project-based</div></div>
+      <div><div class="k">The Trigger</div><div class="v">A funding cycle or donor report deadline approaching with nothing ready to show</div></div>
+    </div>
+  </div>
+</div>
+
+<footer>Novapex &middot; Internal &middot; <span>10 Target Profiles</span> &middot; 2026</footer>
+
+</body>
+</html>
