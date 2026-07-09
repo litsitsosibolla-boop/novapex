@@ -18,66 +18,83 @@ a{ color:inherit; text-decoration:none; }
 .narrow{ max-width:760px; }
 
 /* NAV */
-.navbar{ position:sticky; top:0; z-index:50; background:rgba(247,245,241,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--hairline); }
-.nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:16px 32px; max-width:1080px; margin:0 auto; }
+.navbar{ position:sticky; top:0; z-index:100; background:rgba(247,245,241,0.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--hairline); }
+.nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:18px 32px; max-width:1080px; margin:0 auto; position:relative; }
 .nav-logo{ display:flex; align-items:center; gap:10px; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px; }
-.nav-logo svg{ width:26px; height:26px; }
-.nav-links{ display:flex; gap:30px; font-size:15px; font-weight:500; }
+.nav-logo svg{ width:24px; height:24px; }
+.nav-links{ display:flex; gap:32px; font-size:15px; font-weight:500; }
 .nav-links a:hover{ color:var(--crimson); }
-.nav-cta{ background:var(--ink); color:var(--paper); padding:10px 20px; border-radius:4px; font-size:14px; font-weight:600; }
-.nav-toggle{ display:none; }
-@media (max-width:760px){
+.nav-right{ display:flex; align-items:center; gap:14px; }
+.nav-cta{ background:var(--ink); color:var(--paper); padding:11px 20px; border-radius:4px; font-size:14px; font-weight:600; white-space:nowrap; }
+.nav-burger{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; z-index:110; }
+.nav-burger span{ width:24px; height:2px; background:var(--ink); display:block; }
+.mobile-menu{ display:none; }
+
+@media (max-width:820px){
   .nav-links{ display:none; }
-  .nav-cta{ padding:8px 14px; font-size:13px; }
+  .nav-burger{ display:flex; }
+  .nav-cta{ display:none; }
+  .mobile-menu{
+    display:none; position:fixed; top:0; right:0; height:100vh; width:78%; max-width:320px;
+    background:var(--ink); z-index:105; padding:90px 32px 40px; flex-direction:column; gap:26px;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ color:var(--paper); font-size:19px; font-family:'Space Grotesk',sans-serif; font-weight:600; }
+  .mobile-menu .nav-cta{ display:inline-block; background:var(--crimson); color:var(--paper); margin-top:10px; }
+  .mobile-social{ display:flex; gap:16px; margin-top:auto; }
+  .mobile-social a{ width:38px; height:38px; }
 }
 
 /* HERO */
-.hero{ background:var(--ink); color:var(--paper); padding:100px 0 90px; position:relative; overflow:hidden;
+.hero{ background:var(--ink); color:var(--paper); padding:110px 0 100px; position:relative; overflow:hidden;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 44px), 0 100%); }
 .hero::after{ content:""; position:absolute; top:0; right:0; width:0; height:0;
   border-style:solid; border-width:0 120px 120px 0; border-color: transparent var(--crimson) transparent transparent; }
-.mark{ width:56px; height:56px; display:block; margin-bottom:24px; }
-.eyebrow{ font-size:13px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#B0ACA4; margin-bottom:18px; }
-.hero h1{ font-size:48px; line-height:1.12; max-width:680px; }
-.hero .sub{ margin-top:22px; max-width:560px; font-size:18px; color:#CFCBC3; }
-.hero-cta-row{ display:flex; gap:16px; margin-top:34px; flex-wrap:wrap; }
+.mark{ width:56px; height:56px; display:block; margin-bottom:28px; }
+.eyebrow{ font-size:13px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B0ACA4; margin-bottom:20px; }
+.hero h1{ font-size:50px; line-height:1.1; max-width:700px; letter-spacing:-0.01em; }
+.hero .sub{ margin-top:24px; max-width:560px; font-size:18px; color:#CFCBC3; }
+.hero-cta-row{ display:flex; gap:16px; margin-top:36px; flex-wrap:wrap; }
 
-.btn{ display:inline-block; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15.5px; padding:15px 28px; border-radius:4px; cursor:pointer; border:none; }
+.btn{ display:inline-block; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15.5px; padding:16px 30px; border-radius:4px; cursor:pointer; border:none; }
 .btn-primary{ background:var(--crimson); color:var(--paper); }
 .btn-secondary{ background:transparent; color:var(--paper); border:1.5px solid #4a473f; }
 .btn-dark{ background:var(--ink); color:var(--paper); }
+.btn-whatsapp{ background:#25D366; color:#0b3d1f; display:inline-flex; align-items:center; gap:10px; }
+.btn-whatsapp svg{ width:18px; height:18px; }
 
-section{ padding:72px 0; }
+section{ padding:88px 0; }
 section + section{ border-top:1px solid var(--hairline); }
-.label{ font-size:13px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--crimson); margin-bottom:16px; }
-.section-title{ font-size:30px; max-width:640px; margin-bottom:18px; }
+.label{ font-size:13px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--crimson); margin-bottom:18px; }
+.section-title{ font-size:32px; max-width:660px; margin-bottom:20px; }
 .lede{ font-size:17.5px; max-width:680px; color:var(--ink); }
 .lede.muted{ color:var(--stone); }
 
-/* CARD GRID (services teaser / why) */
-.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:32px 44px; margin-top:36px; }
-.grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:36px; }
-.card{ background:var(--card); border:1px solid var(--hairline); border-radius:8px; padding:26px; }
+.grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:40px; }
+.card{ background:var(--card); border:1px solid var(--hairline); border-radius:8px; padding:28px; }
 .card h3{ font-size:19px; margin-bottom:10px; }
 .card p{ color:var(--stone); font-size:15px; }
 .card a.more{ display:inline-block; margin-top:14px; font-size:14px; font-weight:600; color:var(--crimson); }
 
-/* STATS */
-.stats-box{ background:var(--ink); color:var(--paper); clip-path: polygon(0 30px, 100% 0, 100% 100%, 0 100%); }
-.stats-box .wrap{ padding-top:30px; }
-.stat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:32px; margin-top:32px; }
+.stats-box{ background:var(--ink); color:var(--paper); clip-path: polygon(0 32px, 100% 0, 100% 100%, 0 100%); }
+.stats-box .wrap{ padding-top:32px; }
+.stat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:32px; margin-top:34px; }
 .stat-num{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:38px; color:var(--crimson); line-height:1; }
 .stat-label{ margin-top:10px; font-size:14px; color:#CFCBC3; }
 
-/* WHY */
-.why-grid{ display:grid; grid-template-columns:1fr 1fr; gap:30px 44px; margin-top:36px; }
-.why-item{ border-left:3px solid var(--crimson); padding-left:20px; }
+.why-grid{ display:grid; grid-template-columns:1fr 1fr; gap:32px 44px; margin-top:40px; }
+.why-item{ border-left:3px solid var(--crimson); padding-left:22px; }
 .why-item h3{ font-size:18px; margin-bottom:8px; }
 .why-item p{ color:var(--stone); font-size:15px; }
 
+/* CURRENCY SELECTOR */
+.currency-bar{ display:flex; justify-content:flex-end; align-items:center; gap:10px; margin-bottom:8px; }
+.currency-bar label{ font-size:13px; color:var(--stone); }
+.currency-bar select{ font-family:'Inter',sans-serif; font-size:14px; font-weight:600; padding:8px 12px; border-radius:4px; border:1px solid var(--hairline); background:var(--card); color:var(--ink); }
+
 /* PRICING */
-.price-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:40px; }
-.price-card{ background:var(--card); border:1px solid var(--hairline); border-radius:10px; padding:30px 26px; display:flex; flex-direction:column; }
+.price-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:20px; }
+.price-card{ background:var(--card); border:1px solid var(--hairline); border-radius:10px; padding:32px 26px; display:flex; flex-direction:column; }
 .price-card.featured{ border:2px solid var(--crimson); position:relative; }
 .price-card.featured::before{ content:"MOST POPULAR"; position:absolute; top:-13px; left:26px; background:var(--crimson); color:var(--paper);
   font-size:11px; font-weight:700; letter-spacing:0.08em; padding:4px 10px; border-radius:3px; }
@@ -91,75 +108,99 @@ section + section{ border-top:1px solid var(--hairline); }
 .price-card .btn{ margin-top:20px; text-align:center; }
 
 /* CALCULATOR */
-.calc-box{ background:var(--card); border:1px solid var(--hairline); border-radius:8px; padding:32px; margin-top:50px; }
-.calc-box h3{ font-size:20px; margin-bottom:6px; }
-.calc-sub{ font-size:14.5px; color:var(--stone); margin-bottom:20px; }
-.calc-row{ display:flex; align-items:center; justify-content:space-between; padding:11px 0; border-bottom:1px solid var(--hairline); font-size:15.5px; }
+.calc-box{ background:var(--card); border:1px solid var(--hairline); border-radius:8px; padding:34px; margin-top:56px; }
+.calc-box h3{ font-size:21px; margin-bottom:6px; }
+.calc-sub{ font-size:14.5px; color:var(--stone); margin-bottom:22px; }
+.calc-group-title{ font-size:12.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--crimson); margin:22px 0 6px; }
+.calc-row{ display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--hairline); font-size:15px; }
 .calc-row label{ display:flex; align-items:center; gap:12px; cursor:pointer; }
-.calc-row input[type=checkbox]{ width:18px; height:18px; accent-color:var(--crimson); }
-.calc-price{ color:var(--stone); font-size:14px; }
-.calc-total{ margin-top:22px; padding-top:18px; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:baseline; }
+.calc-row input[type=checkbox]{ width:17px; height:17px; accent-color:var(--crimson); flex-shrink:0; }
+.calc-price{ color:var(--stone); font-size:13.5px; white-space:nowrap; }
+.calc-total{ margin-top:24px; padding-top:20px; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; }
 .calc-total .t-label{ font-size:15.5px; font-weight:600; }
-.calc-total .t-value{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:32px; color:var(--crimson); }
+.calc-total .t-value{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:34px; color:var(--crimson); }
+.calc-note{ font-size:13px; color:var(--stone); margin-top:14px; }
+
+.closing{ background:var(--ink); color:var(--paper); padding:88px 0 70px; clip-path: polygon(0 0, 100% 36px, 100% 100%, 0 100%); text-align:center; }
+.closing .wrap{ padding-top:16px; }
+.closing h2{ font-size:32px; max-width:600px; margin:0 auto 18px; }
+.closing p{ font-size:16.5px; color:#CFCBC3; max-width:560px; margin:0 auto; }
+.closing-cta-row{ display:flex; gap:16px; justify-content:center; margin-top:30px; flex-wrap:wrap; }
+
+/* FOOTER */
+.site-footer{ padding:40px 0 28px; text-align:center; }
+.footer-social{ display:flex; justify-content:center; gap:18px; margin-bottom:18px; }
+.footer-social a{ width:36px; height:36px; border-radius:50%; background:var(--ink); display:flex; align-items:center; justify-content:center; }
+.footer-social svg{ width:17px; height:17px; fill:var(--paper); }
+.site-footer .copy{ color:var(--stone); font-size:13px; }
 
 /* BLOG */
-.blog-list{ margin-top:36px; }
-.blog-item{ padding:26px 0; border-bottom:1px solid var(--hairline); }
+.blog-list{ margin-top:40px; }
+.blog-item{ padding:28px 0; border-bottom:1px solid var(--hairline); }
 .blog-item .tag{ font-size:12.5px; color:var(--crimson); font-weight:600; letter-spacing:0.06em; text-transform:uppercase; }
-.blog-item h3{ font-size:22px; margin:8px 0 8px; }
+.blog-item h3{ font-size:23px; margin:8px 0 8px; }
 .blog-item p{ color:var(--stone); font-size:15.5px; }
 .blog-item a.read{ display:inline-block; margin-top:10px; font-weight:600; font-size:14.5px; color:var(--ink); }
 article.post p{ font-size:17px; margin-bottom:18px; max-width:720px; }
 article.post h2{ font-size:24px; margin:34px 0 14px; max-width:720px; }
 
-/* CLOSING */
-.closing{ background:var(--ink); color:var(--paper); padding:80px 0 64px; clip-path: polygon(0 0, 100% 36px, 100% 100%, 0 100%); text-align:center; }
-.closing .wrap{ padding-top:16px; }
-.closing h2{ font-size:30px; max-width:600px; margin:0 auto 16px; }
-.closing p{ font-size:16.5px; color:#CFCBC3; max-width:560px; margin:0 auto; }
-.closing .btn{ margin-top:28px; }
-footer{ text-align:center; padding:26px 0; color:var(--stone); font-size:13px; }
-
 @media (max-width:900px){
   .grid-4{ grid-template-columns:1fr 1fr; }
   .stat-grid{ grid-template-columns:1fr 1fr; }
   .price-grid{ grid-template-columns:1fr; }
+  .why-grid{ grid-template-columns:1fr; }
 }
 @media (max-width:640px){
-  .hero{ padding:70px 0 60px; } .hero h1{ font-size:30px; }
-  .grid-2, .grid-4, .why-grid{ grid-template-columns:1fr; }
+  .hero{ padding:80px 0 64px; } .hero h1{ font-size:32px; }
+  .grid-4{ grid-template-columns:1fr; }
   .stat-grid{ grid-template-columns:1fr 1fr; }
-  section{ padding:52px 0; }
+  section{ padding:60px 0; }
+  .calc-row{ align-items:flex-start; gap:4px; }
+  .calc-row label{ font-size:14px; }
 }
 </style>
-
 </head>
 <body>
 
 <nav class="navbar">
   <div class="nav-inner">
-    <a href="/" class="nav-logo"><span style="width:22px;height:22px;display:inline-block;color:#A2201C"><svg viewBox="0 0 200 200" fill-rule="evenodd"><path d="M100,25 L175,175 L25,175 Z M154.6,170.5 L78.6,57.5 L65.4,66.5 L141.4,179.5 Z"/></svg></span>novapex</a>
+    <a href="/" class="nav-logo"><span style="width:20px;height:20px;display:inline-block;color:#A2201C"><svg viewBox="0 0 200 200" fill-rule="evenodd"><path d="M100,25 L175,175 L25,175 Z M154.6,170.5 L78.6,57.5 L65.4,66.5 L141.4,179.5 Z"/></svg></span>novapex</a>
     <div class="nav-links">
       <a href="/services">Services</a>
       <a href="/pricing">Pricing</a>
       <a href="/about">About</a>
       <a href="/blog">Blog</a>
     </div>
-    <a href="/#contact" class="nav-cta">Get In Touch</a>
+    <div class="nav-right">
+      <a href="mailto:marketing@novapex.co.ls?subject=Let's%20talk" class="nav-cta">Get In Touch</a>
+      <button class="nav-burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/services">Services</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/about">About</a>
+    <a href="/blog">Blog</a>
+    <a href="mailto:marketing@novapex.co.ls?subject=Let's%20talk" class="nav-cta">Get In Touch</a>
+    <div class="mobile-social">
+      <a href="https://linkedin.com/company/NovapexLS" style="color:#F7F5F1" aria-label="LinkedIn"><svg fill="currentColor" width="22" height="22" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+      <a href="https://facebook.com/NovapexLS" style="color:#F7F5F1" aria-label="Facebook"><svg fill="currentColor" width="22" height="22" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+      <a href="https://youtube.com/@NovapexLS" style="color:#F7F5F1" aria-label="YouTube"><svg fill="currentColor" width="22" height="22" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.4 3.5 12 3.5 12 3.5s-7.4 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c2 .6 9.4.6 9.4.6s7.4 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
+    </div>
   </div>
 </nav>
 
 
-<div class="hero" style="padding:70px 0 50px;">
+<div class="hero" style="padding:80px 0 56px;">
   <div class="wrap narrow">
     <div class="eyebrow">Strategy</div>
-    <h1 style="font-size:34px;">The Post-and-Pray Problem</h1>
+    <h1 style="font-size:36px;">The Post-and-Pray Problem</h1>
   </div>
 </div>
-<section>
-  <div class="wrap narrow">
-    <article class="post">
-      
+<section><div class="wrap narrow">
+  <article class="post">
 <p>Walk into almost any small or mid-size business and ask to see the marketing plan. What you'll usually find isn't a plan at all. It's a person, often the owner themselves, posting whenever they remember to, hoping something lands, and calling it strategy because there's nothing else to call it.</p>
 <p>This is post-and-pray, and it's the default state of marketing for most businesses in this region right now. Not because the people running these businesses aren't smart. Because nobody ever showed them what the alternative actually looks like.</p>
 <h2>Why it feels like it's working, even when it isn't</h2>
@@ -168,12 +209,50 @@ footer{ text-align:center; padding:26px 0; color:var(--stone); font-size:13px; }
 <h2>What a system actually replaces it with</h2>
 <p>A real content system means knowing what's going out next week before this week is even over. It means a saved reply for the question you answer every single day. It means a simple way to know which post actually led to a sale, not just which one got the most likes.</p>
 <p>None of this requires new technology or a bigger budget. It requires someone to sit down and actually build the system once, instead of posting into the void one more time.</p>
+</article>
+  <a href="/blog" class="btn btn-dark" style="margin-top:20px;display:inline-block;">&larr; Back to Blog</a>
+</div></section>
 
-    </article>
-    <a href="/blog" class="btn btn-dark" style="margin-top:20px;display:inline-block;">&larr; Back to Blog</a>
+
+<div class="site-footer">
+  <div class="footer-social">
+    <a href="https://linkedin.com/company/NovapexLS" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+    <a href="https://facebook.com/NovapexLS" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+    <a href="https://youtube.com/@NovapexLS" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.4 3.5 12 3.5 12 3.5s-7.4 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c2 .6 9.4.6 9.4.6s7.4 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
   </div>
-</section>
+  <div class="copy">Novapex &middot; Maseru, Lesotho &middot; 2026</div>
+</div>
 
-<footer>Novapex &middot; Maseru, Lesotho &middot; 2026</footer>
+
+<script>
+  const NOVAPEX_RATES = { M: 1, ZAR: 1, USD: 0.061, EUR: 0.0534, GBP: 0.0457 };
+  const NOVAPEX_SYMBOLS = { M: 'M', ZAR: 'R', USD: '$', EUR: '€', GBP: '£' };
+  let novapexCurrency = 'M';
+
+  function novapexFormat(maloti){
+    const rate = NOVAPEX_RATES[novapexCurrency];
+    const symbol = NOVAPEX_SYMBOLS[novapexCurrency];
+    const value = Math.round(maloti * rate);
+    return symbol + value.toLocaleString();
+  }
+
+  function novapexRefreshAll(){
+    document.querySelectorAll('[data-m]').forEach(el => {
+      const m = parseFloat(el.getAttribute('data-m'));
+      el.textContent = novapexFormat(m);
+    });
+    if(typeof updateQuote === 'function') updateQuote();
+    if(typeof updateAgencyQuote === 'function') updateAgencyQuote();
+  }
+
+  function novapexChangeCurrency(val){
+    novapexCurrency = val;
+    novapexRefreshAll();
+  }
+
+  document.addEventListener('DOMContentLoaded', novapexRefreshAll);
+</script>
+
+
 </body>
 </html>
