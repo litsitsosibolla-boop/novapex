@@ -61,8 +61,18 @@ nav{position:sticky;top:0;z-index:100;background:rgba(20,18,15,.92);backdrop-fil
 .navlinks a:hover,.navlinks a.act{color:var(--paper)}
 .navlinks a.act::after{width:100%}
 .navright{display:flex;align-items:center;gap:14px;flex:none}
-#langSel{background:transparent;color:var(--mut-ink);border:1px solid var(--line-i);
-  font-family:'Inter';font-size:12.5px;padding:7px 10px;cursor:pointer}
+.curwrap{position:relative}
+#curBtn{display:flex;align-items:center;gap:8px;background:transparent;color:var(--paper);
+  border:1px solid var(--line-i);font-family:'Space Grotesk';font-weight:600;font-size:13px;
+  padding:8px 12px;cursor:pointer}
+#curBtn svg{width:20px;height:14px}
+#curMenu{position:absolute;right:0;top:calc(100% + 6px);background:var(--ink2);
+  border:1px solid var(--line-i);min-width:180px;display:none;z-index:150}
+#curMenu.open{display:block}
+#curMenu button{display:flex;align-items:center;gap:10px;width:100%;background:none;border:none;
+  color:var(--paper);font-family:'Inter';font-size:14px;padding:11px 14px;cursor:pointer;text-align:left}
+#curMenu button:hover{background:var(--ink)}
+#curMenu svg{width:20px;height:14px;flex:none}
 .navcta{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13.5px;
   padding:10px 20px;background:var(--lime);color:var(--ink);
   clip-path:polygon(0 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%)}
@@ -153,7 +163,7 @@ h2{font-size:clamp(30px,4vw,48px);font-weight:700;max-width:22ch;margin-bottom:1
 
 /* BLOG + NEWSLETTER */
 .blogcards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
-.bcard{background:#fff;border:1px solid var(--line-p);display:flex;flex-direction:column;
+.bcard{background:#fff;color:var(--ink);border:1px solid var(--line-p);display:flex;flex-direction:column;
   transition:transform .2s ease}
 .bcard:hover{transform:translateY(-3px)}
 .bthumb{height:140px}
@@ -211,7 +221,7 @@ footer{padding:0}
   font-size:20px;padding:6px 12px;cursor:pointer}
 
 @media(max-width:900px){
-  .navlinks,#langSel{display:none}
+  .navlinks{display:none}
   .grid3,.ladder,.steps,.grid4,.pricecards,.blogcards,.figrow{grid-template-columns:1fr}
   .grid2{grid-template-columns:1fr;gap:36px}
   .qb-grid{grid-template-columns:1fr}
@@ -232,12 +242,15 @@ footer{padding:0}
 <div class="navlinks"><a href="/#services">Services</a><a href="/#pricing">Pricing</a><a href="/#about">About</a><a href="/#blog">Blog</a></div>
 <span class="crumb"><a href="/">Novapex</a> &nbsp;/&nbsp; Real estate</span>
 <div class="navright">
-<select id="langSel" aria-label="Language"><option value="en">EN</option></select>
-<a class="navcta" href="#start">Book a free call</a>
-<button id="burger" class="burger" aria-label="Menu" aria-expanded="false">☰</button>
+<div class="curwrap">
+<button id="curBtn" aria-haspopup="listbox" aria-expanded="false"><svg viewBox="0 0 20 14"><rect width="20" height="7" fill="#DE3831"/><rect y="7" width="20" height="7" fill="#002395"/><path d="M0 0 L9 7 L0 14 Z" fill="#007A4D"/><path d="M0 0 L9 7 L0 14" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M0 2.5 L6 7 L0 11.5 Z" fill="#14120F"/></svg><span id="curCode">ZAR</span> &#9662;</button>
+<div id="curMenu" role="listbox"><button data-cur="ZAR" role="option"><svg viewBox="0 0 20 14"><rect width="20" height="7" fill="#DE3831"/><rect y="7" width="20" height="7" fill="#002395"/><path d="M0 0 L9 7 L0 14 Z" fill="#007A4D"/><path d="M0 0 L9 7 L0 14" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M0 2.5 L6 7 L0 11.5 Z" fill="#14120F"/></svg><span>ZAR &middot; Rand</span></button><button data-cur="LSL" role="option"><svg viewBox="0 0 20 14"><rect width="20" height="14" fill="#fff"/><rect width="20" height="4.2" fill="#00209F"/><rect y="9.8" width="20" height="4.2" fill="#009543"/><path d="M10 5 L11.6 8.6 L8.4 8.6 Z" fill="#14120F"/></svg><span>LSL &middot; Loti</span></button><button data-cur="USD" role="option"><svg viewBox="0 0 20 14"><rect width="20" height="14" fill="#fff"/><g fill="#B22234"><rect width="20" height="2"/><rect y="4" width="20" height="2"/><rect y="8" width="20" height="2"/><rect y="12" width="20" height="2"/></g><rect width="9" height="7" fill="#3C3B6E"/></svg><span>USD &middot; Dollar</span></button><button data-cur="GBP" role="option"><svg viewBox="0 0 20 14"><rect width="20" height="14" fill="#012169"/><path d="M0 0 L20 14 M20 0 L0 14" stroke="#fff" stroke-width="2.6"/><path d="M0 0 L20 14 M20 0 L0 14" stroke="#C8102E" stroke-width="1.1"/><path d="M10 0 V14 M0 7 H20" stroke="#fff" stroke-width="4.4"/><path d="M10 0 V14 M0 7 H20" stroke="#C8102E" stroke-width="2.4"/></svg><span>GBP &middot; Pound</span></button></div>
+</div>
+<a class="navcta" href="https://calendly.com/novapex/free-call" target="_blank" rel="noopener">Book a free call</a>
+<button id="burger" class="burger" aria-label="Menu" aria-expanded="false">&#9776;</button>
 </div>
 </div>
-<div id="mpanel"><a href="/#services">Services</a><a href="/#pricing">Pricing</a><a href="/#about">About</a><a href="/#blog">Blog</a><a href='#start'>Book a free call</a></div></nav>
+<div id="mpanel"><a href="/#services">Services</a><a href="/#pricing">Pricing</a><a href="/#about">About</a><a href="/#blog">Blog</a><a href="https://calendly.com/novapex/free-call" target="_blank" rel="noopener">Book a free call</a></div></nav>
 <main id="main">
 <div class="hero"><svg class="corner" viewBox="0 0 110 110" aria-hidden="true"><path d="M110 0 V90 L20 0 Z" fill="#E8432F"/></svg><svg class="peaks" viewBox="0 0 760 520" fill="none" aria-hidden="true" style="opacity:0.85">
 <path d="M300 140 L470 520 L110 520 Z" fill="#1E1B16"/>
@@ -317,7 +330,7 @@ footer{padding:0}
 <h2 class="rv">Be the agent they were already following.</h2>
 <p class="sub mut rv">One call. We'll map your buyer's months-long journey and put you in every week of it.</p>
 <div class="ctarow rv" style="margin-top:34px">
-<a class="btn" href="mailto:hello@novapex.co?subject=Free%20call%20request%20-%20Novapex">Book a free call</a>
+<a class="btn" href="https://calendly.com/novapex/free-call" target="_blank" rel="noopener">Book a free call</a>
 <a class="btn ghost" href="https://wa.me/26656702102">WhatsApp us</a>
 </div>
 <p class="contact">Call or WhatsApp <a href="tel:+26656702102">+266 5670 2102</a>
@@ -360,14 +373,52 @@ if(secs.length&&nls.length){
   secs.forEach(s=>so.observe(s));
 }
 
-/* language auto-detect (English copy only for now) */
+/* currency: ZAR is the base. LSL is pegged 1:1 to ZAR.
+   Live USD/GBP rates load from the previous business day's market close (ECB reference).
+   If that fetch fails, the manual FALLBACK rates below are used. UPDATE FALLBACKS OCCASIONALLY. */
+const FX={ZAR:1, LSL:1, USD:1/18.1, GBP:1/23.0};
+const SYM={ZAR:'R', LSL:'M', USD:'$', GBP:'£'};
+const STEP={ZAR:500, LSL:500, USD:50, GBP:50};
+function fmt(zar,cur){
+  const v=Math.round(zar*FX[cur]/STEP[cur])*STEP[cur];
+  return SYM[cur]+v.toLocaleString('en');
+}
+function applyCur(cur){
+  document.querySelectorAll('[data-zar]').forEach(el=>{
+    el.textContent=(el.dataset.pre||'')+fmt(+el.dataset.zar,cur);
+  });
+  document.querySelectorAll('.curnote').forEach(el=>el.textContent=cur);
+  const cc=document.getElementById('curCode'); if(cc) cc.textContent=cur;
+  const btn=document.getElementById('curBtn');
+  const opt=document.querySelector('#curMenu button[data-cur="'+cur+'"]');
+  if(btn&&opt) btn.querySelector('svg').outerHTML=opt.querySelector('svg').outerHTML;
+  window.__cur=cur;
+  if(typeof window.__qbCalc==='function') window.__qbCalc();
+}
 (function(){
-  const sel=document.getElementById('langSel');
-  if(!sel) return;
-  const supported=['en'];
-  const d=(navigator.language||'en').slice(0,2).toLowerCase();
-  sel.value=supported.includes(d)?d:'en';
-  sel.addEventListener('change',()=>{document.documentElement.lang=sel.value});
+  const btn=document.getElementById('curBtn'), menu=document.getElementById('curMenu');
+  let saved=null; try{saved=localStorage.getItem('npx-cur');}catch(e){}
+  const region=((navigator.language||'').split('-')[1]||'').toUpperCase();
+  const map={LS:'LSL', ZA:'ZAR', GB:'GBP', US:'USD'};
+  applyCur(saved||map[region]||'USD');
+  fetch('https://api.frankfurter.app/latest?base=ZAR&symbols=USD,GBP')
+    .then(r=>r.json())
+    .then(d=>{ if(d&&d.rates){ FX.USD=d.rates.USD; FX.GBP=d.rates.GBP; applyCur(window.__cur); } })
+    .catch(()=>{});
+  if(btn&&menu){
+    btn.addEventListener('click',()=>{
+      const open=menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open);
+    });
+    menu.querySelectorAll('button').forEach(o=>o.addEventListener('click',()=>{
+      try{localStorage.setItem('npx-cur',o.dataset.cur);}catch(e){}
+      applyCur(o.dataset.cur);
+      menu.classList.remove('open'); btn.setAttribute('aria-expanded',false);
+    }));
+    document.addEventListener('click',e=>{
+      if(!btn.contains(e.target)&&!menu.contains(e.target)) menu.classList.remove('open');
+    });
+  }
 })();
 
 
@@ -396,15 +447,15 @@ document.querySelectorAll('.tpill').forEach(p=>p.addEventListener('click',()=>p.
 (function(){
   const box=document.getElementById('quoteBuilder');
   if(!box) return;
-  const base={ignite:1200, architect:2800, command:5500};
+  const base={ignite:21000, architect:50000, command:99000}; /* ZAR */
   let tier='ignite';
   const addons={
-    video:['Video and reels production',450],
-    seo:['SEO article program',350],
-    email:['Email and newsletter system',300],
-    ads:['Paid ads management',600],
-    brand:['Brand refresh and guidelines',700],
-    photo:['Product or on-site photography',400],
+    video:['Video and reels production',8000],
+    seo:['SEO article program',6500],
+    email:['Email and newsletter system',5500],
+    ads:['Paid ads management',11000],
+    brand:['Brand refresh and guidelines',12500],
+    photo:['Product or on-site photography',7500],
   };
   const tb=box.querySelectorAll('.tierbtn');
   tb.forEach(b=>b.addEventListener('click',()=>{
@@ -415,11 +466,12 @@ document.querySelectorAll('.tpill').forEach(p=>p.addEventListener('click',()=>p.
   function calc(){
     let t=base[tier];
     box.querySelectorAll('.opt input:checked').forEach(c=>{t+=addons[c.value][1]});
-    const lo=Math.round(t*0.95/25)*25, hi=Math.round(t*1.15/25)*25;
-    document.getElementById('qbLo').textContent='$'+lo.toLocaleString();
-    document.getElementById('qbHi').textContent='$'+hi.toLocaleString();
+    const cur=window.__cur||'USD';
+    document.getElementById('qbLo').textContent=fmt(t*0.95,cur);
+    document.getElementById('qbHi').textContent=fmt(t*1.15,cur);
     document.getElementById('qbTier').textContent=tier.toUpperCase();
   }
+  window.__qbCalc=calc;
   calc();
   const mail=document.getElementById('qbEmail');
   if(mail) mail.addEventListener('click',()=>{
