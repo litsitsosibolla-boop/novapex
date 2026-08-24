@@ -20,7 +20,8 @@
   --mut-ink:#A7A39B; --mut-paper:#6B6860;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{overflow-x:hidden}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--ink);color:var(--paper);
@@ -139,7 +140,8 @@ h2{font-size:clamp(30px,4vw,48px);font-weight:700;max-width:22ch;margin-bottom:1
 .pprice span{font-size:13.5px;font-weight:500;color:var(--mut-ink)}
 
 .pfeat{list-style:none;font-size:14px;flex:1}
-.pfeat li{padding:7px 0;display:flex;gap:8px}
+.pfeat li{padding:7px 0;display:flex;gap:8px;align-items:flex-start}
+.pfeat li svg{flex:none;width:16px;height:16px;margin-top:3px}
 .pnote{font-size:13px;color:var(--mut-ink);margin-top:18px}
 
 /* QUOTE BUILDER */
@@ -222,6 +224,9 @@ footer{padding:0}
 
 @media(max-width:900px){
   .navlinks{display:none}
+  .navcta{display:none}
+  .burger{display:flex;align-items:center;justify-content:center}
+  .navin{gap:12px}
   .grid3,.ladder,.steps,.grid4,.pricecards,.blogcards,.figrow{grid-template-columns:1fr}
   .grid2{grid-template-columns:1fr;gap:36px}
   .qb-grid{grid-template-columns:1fr}
@@ -230,6 +235,24 @@ footer{padding:0}
   section{padding:72px 0}
   .hero{padding:80px 0 104px}
   .cut-b{clip-path:polygon(0 0,100% 0,100% calc(100% - 30px),58% 100%,52% calc(100% - 30px),0 calc(100% - 30px));padding-bottom:114px}
+}
+@media(max-width:480px){
+  .wrap{padding:0 18px}
+  .navin{padding:14px 18px}
+  .mark{gap:8px;font-size:16px}
+  .mark svg{width:26px;height:26px}
+  #curBtn{padding:8px 9px}
+  #curBtn span{display:none}
+  .hero{padding:60px 0 80px}
+  .hero .peaks{width:min(70vw,300px);opacity:.55}
+  .cta .peaks{width:min(60vw,300px)}
+  section{padding:56px 0}
+  h2{font-size:clamp(26px,7vw,34px)}
+  .card,.step,.pcard,.rung{padding:24px 20px}
+  .qb{padding:24px 18px}
+  .news{padding:26px 20px}
+  .foot-main{padding:44px 18px 24px}
+  .foot-bot{padding:20px 56px 20px 20px}
 }
 </style>
 </head>
