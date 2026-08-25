@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pricing — Novapex</title>
-<meta name="description" content="Three clear monthly tiers from M6,500, plus a build-your-own calculator covering every Novapex service. Month to month after the first sprint.">
+<title>Pricing | Novapex</title>
+<meta name="description" content="Three clear monthly tiers from R6,500, plus a build-your-own calculator covering every Novapex service. Month to month after the first sprint.">
 <meta name="theme-color" content="#FAFAF8">
-<meta property="og:title" content="Pricing — Novapex">
-<meta property="og:description" content="Three clear monthly tiers from M6,500, plus a build-your-own calculator covering every Novapex service. Month to month after the first sprint.">
-<meta property="og:type" content="website">
+<meta property="og:title" content="Pricing | Novapex">
+<meta property="og:description" content="Three clear monthly tiers from R6,500, plus a build-your-own calculator covering every Novapex service. Month to month after the first sprint.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='58 58 164 168'%3E%3Crect x='58' y='58' width='164' height='168' rx='16' fill='%2317181B'/%3E%3Cpath d='M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z' fill-rule='evenodd' fill='%23C2DE55'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
+<meta property="og:type" content="website">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -52,29 +52,36 @@
     <p class="eyebrow rv">Pricing</p>
     <h1 class="rv">One clear price. No confusion about what you get.</h1>
     <p class="lead rv">Three ready-made tiers, or build exactly what you need below.
-      Month to month after the first sprint — no long lock-in to begin.</p>
-    <div class="cta-row rv" style="margin-top:30px">
-      <label for="currency" style="font-size:14px;color:var(--muted)">Show prices in</label>
-      <select id="currency" class="field" style="padding:10px 14px">
-        <option value="M">Maloti (M)</option>
-        <option value="ZAR">Rand (R)</option>
-        <option value="USD">US Dollar ($)</option>
-        <option value="EUR">Euro (&euro;)</option>
-        <option value="GBP">Pound (&pound;)</option>
-      </select>
-    </div>
+      Month to month after the first sprint, no long lock-in to begin.</p>
   </div>
 </section>
 
 <section class="sec-sm">
   <div class="wrap">
-    <div class="grid g-3" style="margin-top:0">
+    
+<div class="convert rv">
+  <button class="convert-btn" id="curBtn" aria-haspopup="listbox" aria-expanded="false">
+    <span class="convert-lead">Convert</span>
+    <span class="convert-cur" id="curLabel">USD</span>
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="convert-menu" id="curMenu" role="listbox" aria-label="Choose a currency">
+    <button data-cur="USD" role="option" aria-selected="false"><strong>USD</strong><span>US Dollar</span></button>
+    <button data-cur="ZAR" role="option" aria-selected="false"><strong>ZAR</strong><span>SA Rand</span></button>
+    <button data-cur="GBP" role="option" aria-selected="false"><strong>GBP</strong><span>Pound Sterling</span></button>
+    <button data-cur="EUR" role="option" aria-selected="false"><strong>EUR</strong><span>Euro</span></button>
+    <button data-cur="AUD" role="option" aria-selected="false"><strong>AUD</strong><span>Australian Dollar</span></button>
+    <button data-cur="CAD" role="option" aria-selected="false"><strong>CAD</strong><span>Canadian Dollar</span></button>
+    <button data-cur="CHF" role="option" aria-selected="false"><strong>CHF</strong><span>Swiss Franc</span></button>
+  </div>
+</div>
+    <div class="grid g-3" style="margin-top:26px">
 
       <div class="card price-card rv">
         
         <span class="price-name">Starter</span>
         <p class="price-line">For businesses ready to stop posting and start planning.</p>
-        <div class="price-fig" data-m="6500">M6,500</div>
+        <div class="price-fig" data-zar="6500">R6,500</div>
         <p class="price-per">per month</p>
         <ul class="ticks">
   <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Full Content System build</span></li>
@@ -89,7 +96,7 @@
         <span class="tag-pop">Most chosen</span>
         <span class="price-name">Growth</span>
         <p class="price-line">For businesses ready to know what's actually working.</p>
-        <div class="price-fig" data-m="15000">M15,000</div>
+        <div class="price-fig" data-zar="15000">R15,000</div>
         <p class="price-per">per month</p>
         <ul class="ticks">
   <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Everything in Starter</span></li>
@@ -104,7 +111,7 @@
         
         <span class="price-name">Flagship</span>
         <p class="price-line">The full system. Every service, working together.</p>
-        <div class="price-fig" data-m="28000">M28,000</div>
+        <div class="price-fig" data-zar="28000">R28,000</div>
         <p class="price-per">per month</p>
         <ul class="ticks">
   <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Every core service, fully built</span></li>
@@ -115,9 +122,8 @@
         <a class="btn ghost" href="mailto:hello@novapex.co?subject=Flagship%20package">Start with Flagship</a>
       </div>
     </div>
-    <p class="sub rv" style="margin-top:28px;font-size:14px">Prices are set in Maloti.
-      Other currencies convert at the previous business day's close and are rounded —
-      your formal quote confirms the exact figure.</p>
+    <p class="sub rv" style="margin-top:28px;font-size:14px">Prices are set in Rand.
+      Other currencies convert at the previous business day's close and are rounded. Your formal quote confirms the exact figure.</p>
   </div>
 </section>
 
@@ -137,39 +143,39 @@
       <div>
         <h5 style="font-family:'Space Grotesk',sans-serif;font-size:11.5px;font-weight:600;
           letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);margin:26px 0 4px">Core systems</h5>
-        <label class="opt"><input type="checkbox" class="addon" data-m="6500" data-label="Content System (base)"><span>Content System (base)</span><span class="p" data-m="6500">M6,500</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="9000" data-label="Brand Intelligence Dashboard"><span>Brand Intelligence Dashboard</span><span class="p" data-m="9000">M9,000</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="7000" data-label="Campaign Mechanic Design"><span>Campaign Mechanic Design</span><span class="p" data-m="7000">M7,000</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="6000" data-label="Executive &amp; Personal Brand layer"><span>Executive &amp; Personal Brand layer</span><span class="p" data-m="6000">M6,000</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="4500" data-label="WhatsApp Commerce System"><span>WhatsApp Commerce System</span><span class="p" data-m="4500">M4,500</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="6500" data-label="Content System (base)"><span>Content System (base)</span><span class="p" data-zar="6500">R6,500</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="9000" data-label="Brand Intelligence Dashboard"><span>Brand Intelligence Dashboard</span><span class="p" data-zar="9000">R9,000</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="7000" data-label="Campaign Mechanic Design"><span>Campaign Mechanic Design</span><span class="p" data-zar="7000">R7,000</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="6000" data-label="Executive &amp; Personal Brand layer"><span>Executive &amp; Personal Brand layer</span><span class="p" data-zar="6000">R6,000</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="4500" data-label="WhatsApp Commerce System"><span>WhatsApp Commerce System</span><span class="p" data-zar="4500">R4,500</span></label>
       </div>
       <div>
         <h5 style="font-family:'Space Grotesk',sans-serif;font-size:11.5px;font-weight:600;
           letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);margin:26px 0 4px">Creative production</h5>
-        <label class="opt"><input type="checkbox" class="addon" data-m="3500" data-label="Product &amp; brand photography"><span>Product &amp; brand photography</span><span class="p" data-m="3500">M3,500</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="8000" data-label="Videography &amp; video production"><span>Videography &amp; video production</span><span class="p" data-m="8000">M8,000</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="4000" data-label="Graphic design &amp; print collateral"><span>Graphic design &amp; print collateral</span><span class="p" data-m="4000">M4,000</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="7000" data-label="Brand identity &amp; logo design"><span>Brand identity &amp; logo design</span><span class="p" data-m="7000">M7,000</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="3500" data-label="Product &amp; brand photography"><span>Product &amp; brand photography</span><span class="p" data-zar="3500">R3,500</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="8000" data-label="Videography &amp; video production"><span>Videography &amp; video production</span><span class="p" data-zar="8000">R8,000</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="4000" data-label="Graphic design &amp; print collateral"><span>Graphic design &amp; print collateral</span><span class="p" data-zar="4000">R4,000</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="7000" data-label="Brand identity &amp; logo design"><span>Brand identity &amp; logo design</span><span class="p" data-zar="7000">R7,000</span></label>
       </div></div>
       <div>
       <div>
         <h5 style="font-family:'Space Grotesk',sans-serif;font-size:11.5px;font-weight:600;
           letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);margin:26px 0 4px">Growth &amp; visibility</h5>
-        <label class="opt"><input type="checkbox" class="addon" data-m="3000" data-label="Copywriting &amp; blog content"><span>Copywriting &amp; blog content</span><span class="p" data-m="3000">M3,000</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="6500" data-label="SEO &amp; website optimisation"><span>SEO &amp; website optimisation</span><span class="p" data-m="6500">M6,500</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="7500" data-label="Paid media management"><span>Paid media management</span><span class="p" data-m="7500">M7,500</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="6500" data-label="Influencer &amp; creator partnerships"><span>Influencer &amp; creator partnerships</span><span class="p" data-m="6500">M6,500</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="4000" data-label="Email marketing systems"><span>Email marketing systems</span><span class="p" data-m="4000">M4,000</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="3000" data-label="Copywriting &amp; blog content"><span>Copywriting &amp; blog content</span><span class="p" data-zar="3000">R3,000</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="6500" data-label="SEO &amp; website optimisation"><span>SEO &amp; website optimisation</span><span class="p" data-zar="6500">R6,500</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="7500" data-label="Paid media management"><span>Paid media management</span><span class="p" data-zar="7500">R7,500</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="6500" data-label="Influencer &amp; creator partnerships"><span>Influencer &amp; creator partnerships</span><span class="p" data-zar="6500">R6,500</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="4000" data-label="Email marketing systems"><span>Email marketing systems</span><span class="p" data-zar="4000">R4,000</span></label>
       </div>
       <div>
         <h5 style="font-family:'Space Grotesk',sans-serif;font-size:11.5px;font-weight:600;
           letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);margin:26px 0 4px">Enterprise &amp; reputation</h5>
-        <label class="opt"><input type="checkbox" class="addon" data-m="8500" data-label="Event marketing &amp; activation"><span>Event marketing &amp; activation</span><span class="p" data-m="8500">M8,500</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="5500" data-label="Crisis &amp; reputation management"><span>Crisis &amp; reputation management</span><span class="p" data-m="5500">M5,500</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="5000" data-label="Market research &amp; surveys"><span>Market research &amp; surveys</span><span class="p" data-m="5000">M5,000</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="3500" data-label="Translation &amp; localisation"><span>Translation &amp; localisation</span><span class="p" data-m="3500">M3,500</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="6000" data-label="Media training &amp; PR"><span>Media training &amp; PR</span><span class="p" data-m="6000">M6,000</span></label>
-        <label class="opt"><input type="checkbox" class="addon" data-m="15000" data-label="Dedicated full-time account lead"><span>Dedicated full-time account lead</span><span class="p" data-m="15000">M15,000</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="8500" data-label="Event marketing &amp; activation"><span>Event marketing &amp; activation</span><span class="p" data-zar="8500">R8,500</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="5500" data-label="Crisis &amp; reputation management"><span>Crisis &amp; reputation management</span><span class="p" data-zar="5500">R5,500</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="5000" data-label="Market research &amp; surveys"><span>Market research &amp; surveys</span><span class="p" data-zar="5000">R5,000</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="3500" data-label="Translation &amp; localisation"><span>Translation &amp; localisation</span><span class="p" data-zar="3500">R3,500</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="6000" data-label="Media training &amp; PR"><span>Media training &amp; PR</span><span class="p" data-zar="6000">R6,000</span></label>
+        <label class="opt"><input type="checkbox" class="addon" data-zar="15000" data-label="Dedicated full-time account lead"><span>Dedicated full-time account lead</span><span class="p" data-zar="15000">R15,000</span></label>
       </div></div>
     </div>
 
@@ -184,7 +190,7 @@
       <button class="btn" id="calc-send">Send me a formal quote<span class="arrow" aria-hidden="true">&rarr;</span></button>
     </div>
     <p class="sub rv" style="margin-top:20px;font-size:13.5px">Selecting everything describes a
-      full-agency engagement — built for large organisations, funded NGOs, development partners
+      full-agency engagement, built for large organisations, funded NGOs, development partners
       and government bodies. It isn't a starting point for a small business, and we'll say so
       on the call.</p>
   </div>
@@ -196,14 +202,14 @@
       <p class="eyebrow">One conversation</p>
       <h2>Not sure which tier fits?</h2>
     </div>
-    <p class="lead rv" style="margin-top:20px">Tell us what's actually happening in the business and we'll tell you straight which one makes sense — including if the honest answer is the cheapest one.</p>
+    <p class="lead rv" style="margin-top:20px">Tell us what's actually happening in the business and we'll tell you straight which one makes sense, including if the honest answer is the cheapest one.</p>
     <div class="cta-row rv">
       <a class="btn" href="mailto:hello@novapex.co?subject=Booking%20a%20call">Book a free call<span class="arrow" aria-hidden="true">&rarr;</span></a>
-      <a class="btn ghost" href="https://wa.me/26656576553"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:17px;height:17px"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4zM12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2z"/></svg>WhatsApp us</a>
+      <a class="btn ghost" href="https://wa.me/26656702102"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:17px;height:17px"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4zM12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2z"/></svg>WhatsApp us</a>
     </div>
-      <p class="sub" style="margin-top:28px;font-size:14.5px">
-        Prefer to talk first? WhatsApp <a class="link" href="https://wa.me/26656576553">+266 5657 6553</a>
-        or call <a class="link" href="tel:+26656702102">+266 5670 2102</a>.
+      <p class="sub rv" style="margin-top:28px;font-size:14.5px">
+        Prefer to talk first? WhatsApp or call
+        <a class="link" href="https://wa.me/26656702102">+266 5670 2102</a>.
       </p>
   </div>
 </section>
@@ -220,36 +226,24 @@
       <div>
         <a class="brand" href="/"><svg viewBox="58 58 164 168" aria-hidden="true" fill="currentColor"><path d="M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z" fill-rule="evenodd"/></svg><span>NOVAPEX</span></a>
         <p class="blurb">A content and growth studio for businesses that already have
-          attention and need it to turn into revenue. Maseru, Lesotho — working with
+          attention and need it to turn into revenue. Maseru, Lesotho, working with
           clients across the region and beyond.</p>
       </div>
       <div class="foot-col">
         <h5>Site</h5>
         <a href="/services">Services</a>
-      <a href="/case-study">Work</a>
-      <a href="/pricing">Pricing</a>
-      <a href="/about">About</a>
-      <a href="/blog">Blog</a>
-      </div>
-      <div class="foot-col">
-        <h5>Industries</h5>
-        <a href="/01-finance-exec">Financial services</a>
-      <a href="/02-artist-manager">Artists & management</a>
-      <a href="/03-boutique-retail">Boutique retail</a>
-      <a href="/04-lodge-tourism">Lodges & tourism</a>
-      <a href="/05-law-firm">Law & professional</a>
-      <a href="/06-fitness-studio">Fitness & wellness</a>
-        <a href="/services#industries">All industries &rarr;</a>
+        <a href="/case-study">Work</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
       </div>
       <div class="foot-col">
         <h5>Contact</h5>
         <p class="role">Start a project</p>
         <a href="mailto:hello@novapex.co">hello@novapex.co</a>
-        <p class="role">General &amp; press</p>
+        <p class="role">General and press</p>
         <a href="mailto:marketing@novapex.co.ls">marketing@novapex.co.ls</a>
-        <p class="role">WhatsApp</p>
-        <a href="https://wa.me/26656576553">+266 5657 6553</a>
-        <p class="role">Call</p>
+        <p class="role">Call or WhatsApp</p>
         <a href="tel:+26656702102">+266 5670 2102</a>
       </div>
     </div>
