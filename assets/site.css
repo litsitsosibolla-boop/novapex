@@ -535,12 +535,13 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
 .offer-price .per{ font-size:14px; color:var(--muted-dark); }
 .offer .convert{ margin-top:22px; }
 
-/* Three states: the discount is offered, the clock is running, the window has
-   passed. The countdown is deliberately hidden until the visitor claims. */
-.offer .when-ready, .offer .when-live, .offer .when-expired{ display:none; }
-.offer[data-state="ready"]   .when-ready  { display:block; }
-.offer[data-state="live"]    .when-live   { display:block; }
-.offer[data-state="expired"] .when-expired{ display:block; }
+/* Three states, held on <body> so every claim point on the page reacts at once.
+   Before the visitor claims they see only the standard price: the discounted
+   figure and the countdown appear together, the moment they press. */
+.landing .when-ready, .landing .when-live, .landing .when-expired{ display:none; }
+.landing[data-state="ready"]   .when-ready  { display:block; }
+.landing[data-state="live"]    .when-live   { display:block; }
+.landing[data-state="expired"] .when-expired{ display:block; }
 .offer .cta-row{ justify-content:center; }
 
 /* The offer block is dark, but its convert pill stays light so it reads as an
@@ -562,3 +563,51 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
   color:var(--accent-ink); letter-spacing:-.01em;
 }
 .offer-flag .dotm{ width:6px; height:6px; border-radius:50%; background:var(--accent-mid); flex:none; }
+
+/* Claim points ------------------------------------------------------------
+   Repeated down the page so a reader who warms up halfway through has the
+   offer in front of them without scrolling back. Before the claim each shows
+   the standard price; after it, the held rate and the running clock. */
+.claim-strip{
+  margin-top:clamp(40px,5vw,64px);
+  padding:clamp(20px,2.6vw,28px) clamp(20px,2.6vw,30px);
+  border-radius:var(--r);
+  background:rgba(194,222,85,.10);
+  border:1px solid rgba(194,222,85,.38);
+}
+.claim-row{
+  display:flex; flex-wrap:wrap; gap:18px;
+  align-items:center; justify-content:space-between;
+}
+.claim-copy strong{
+  display:block; font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(17px,2vw,21px); font-weight:600; letter-spacing:-.02em;
+}
+/* Direct child only: the price spans nested inside <strong> must stay inline. */
+.claim-copy > span{ display:block; font-size:14.5px; color:var(--muted); margin-top:3px; }
+.claim-copy .was{
+  color:var(--muted); text-decoration:line-through;
+  text-decoration-thickness:1.5px; font-weight:500;
+}
+.clock-t{
+  font-family:'Space Grotesk',sans-serif; font-weight:600;
+  color:var(--accent-ink); font-variant-numeric:tabular-nums;
+}
+.on-dark .clock-t, .offer .clock-t{ color:var(--accent); }
+.claim-strip .btn{ flex:none; }
+
+/* The hero flag carries the same three states in miniature. */
+.offer-flag.live{ background:rgba(194,222,85,.2); border-color:rgba(194,222,85,.6); }
+
+@media (max-width:620px){
+  .claim-row{ flex-direction:column; align-items:stretch; }
+  .claim-strip .btn{ width:100%; }
+}
+
+/* Landing pages keep a quiet way back to the public site. */
+.nav-home{
+  font-size:14px; color:var(--muted);
+  transition:color var(--mid) var(--ease);
+}
+.nav-home:hover{ color:var(--on-paper); }
+@media (max-width:620px){ .nav-home{ display:none; } }

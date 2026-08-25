@@ -75,11 +75,9 @@
   var SYM = { ZAR: 'R', USD: '$', GBP: '£', EUR: '€',
               AUD: 'A$', CAD: 'C$', CHF: 'CHF ' };
   var STEP = { ZAR: 100, USD: 10, GBP: 10, EUR: 10, AUD: 10, CAD: 10, CHF: 10 };
+  // USD is always what loads. Switching is a deliberate act by the visitor and
+  // deliberately does not persist across page loads.
   var cur = 'USD';
-  try {
-    var saved = localStorage.getItem('npx-cur');
-    if (saved && FX[saved]) cur = saved;
-  } catch (e) {}
 
   function money(zar, c) {
     c = c || cur;
@@ -117,7 +115,6 @@
     $$('button', curMenu).forEach(function (b) {
       b.addEventListener('click', function () {
         cur = b.getAttribute('data-cur');
-        try { localStorage.setItem('npx-cur', cur); } catch (e) {}
         paint();
         closeMenu();
       });
@@ -212,9 +209,8 @@
     var WINDOW = 3 * 60 * 60 * 1000;
     var KEY    = 'npx-offer-' + slug;
 
-    var offerEl = $('#offer');
-    var clock   = $('#offer-clock');
-    var timer   = null;
+    var clocks = $$('.clock-t');
+    var timer  = null;
 
     function readStart() {
       try {
@@ -223,24 +219,23 @@
       } catch (e) { return null; }
     }
 
-    function setState(s) { if (offerEl) offerEl.setAttribute('data-state', s); }
+    function setState(s) { body.setAttribute('data-state', s); }
 
     function tick(start) {
       var left = start + WINDOW - Date.now();
       if (left <= 0) {
-        if (clock) clock.textContent = '00:00:00';
+        clocks.forEach(function (c) { c.textContent = '00:00:00'; });
         setState('expired');
         if (timer) clearInterval(timer);
         return;
       }
-      if (clock) {
-        var h = Math.floor(left / 3600000);
-        var m = Math.floor(left % 3600000 / 60000);
-        var sec = Math.floor(left % 60000 / 1000);
-        clock.textContent = [h, m, sec].map(function (n) {
-          return String(n).padStart(2, '0');
-        }).join(':');
-      }
+      var h = Math.floor(left / 3600000);
+      var m = Math.floor(left % 3600000 / 60000);
+      var sec = Math.floor(left % 60000 / 1000);
+      var text = [h, m, sec].map(function (n) {
+        return String(n).padStart(2, '0');
+      }).join(':');
+      clocks.forEach(function (c) { c.textContent = text; });
     }
 
     function run(start) {
@@ -259,9 +254,10 @@
       setState('expired');
     }
 
+    // Any claim button on the page starts the one shared window.
     $$('[data-claim]').forEach(function (el) {
       el.addEventListener('click', function () {
-        if (readStart() !== null) return;      // already claimed, let the link scroll
+        if (readStart() !== null) return;      // already running, let the link scroll
         var start = Date.now();
         try { localStorage.setItem(KEY, String(start)); } catch (e) {}
         run(start);
