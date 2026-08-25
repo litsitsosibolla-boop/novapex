@@ -33,9 +33,11 @@
     <p class="eyebrow rv">Novapex for private education</p>
     <h1 class="rv">Enrolment season is three windows a year.<br><em>Your marketing wakes up for two.</em></h1>
     <p class="lead rv">You compete with institutions offering roughly what you offer. The difference is rarely quality. It's which name a parent already recognises when the deadline arrives.</p>
+    <p class="offer-flag rv"><span class="dotm"></span>
+      <span><b>15% off your first three months</b>, on this page only.</span></p>
     <div class="cta-row rv">
-      <a class="btn" href="mailto:hello@novapex.co?subject=Private%20education%20enquiry">Book a free call<span class="arrow" aria-hidden="true">&rarr;</span></a>
-      <a class="btn ghost" href="#offer">See your rate</a>
+      <a class="btn" href="#offer" data-claim>Get my discount<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a class="btn ghost" href="mailto:hello@novapex.co?subject=Private%20education%20offer">Book a free call</a>
     </div>
   </div>
 </section>
@@ -151,21 +153,57 @@
   </div>
 </section>
 
-<section class="offer on-dark" id="offer" data-state="gated">
+<section class="offer on-dark" id="offer" data-state="ready">
   <div class="wrap">
+    <div class="when-ready">
+      <p class="eyebrow rv" style="justify-content:center">Your rate</p>
+      <h2 class="rv">Take 15% off your first three months.</h2>
+      <div class="offer-price rv">
+        <span class="was" data-zar="15000">R15,000</span>
+        <span class="now" data-zar="12750">R12,750</span>
+        <span class="per">per month, Growth tier</span>
+      </div>
+      <div class="cta-row rv">
+        <a class="btn" href="#offer" data-claim>Get my discount now<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      </div>
+      <p class="sub rv" style="margin:24px auto 0;font-size:14px;text-align:center">
+        Press it and we hold this rate for three hours while you decide. No
+        details needed to start the clock.</p>
+    </div>
+
     <div class="when-live">
-      <p class="eyebrow rv" style="justify-content:center">Your rate, held for 3 hours</p>
-      <h2 class="rv">Confirm inside the window and we hold 15% off your first three months.</h2>
+      <p class="eyebrow rv" style="justify-content:center">Held for you</p>
+      <h2 class="rv">This rate is yours for the next three hours.</h2>
       <div class="clock rv">
         <span class="t" id="offer-clock">03:00:00</span>
         <span class="lbl">remaining</span>
       </div>
       <div class="offer-price rv">
-        <span class="was" id="offer-full">R15,000</span>
-        <span class="now" id="offer-now">R12,750</span>
+        <span class="was" data-zar="15000">R15,000</span>
+        <span class="now" data-zar="12750">R12,750</span>
         <span class="per">per month, Growth tier</span>
       </div>
-      
+      <div class="cta-row rv">
+        <a class="btn" href="mailto:hello@novapex.co?subject=Private%20education%20offer">Confirm this rate<span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="btn ghost" href="https://wa.me/26656702102">Confirm on WhatsApp</a>
+      </div>
+      <p class="sub rv" style="margin:24px auto 0;font-size:14px;text-align:center">
+        Message or email us inside the window and the discounted Growth
+        rate is locked for your first three months.</p>
+    </div>
+
+    <div class="when-expired">
+      <p class="eyebrow rv" style="justify-content:center">The window has closed</p>
+      <h2 class="rv">Three hours are up, but the conversation isn't.</h2>
+      <p class="lead rv" style="margin:18px auto 0;text-align:center">The standard
+        Growth rate still stands and the call is still free. If the timing was
+        simply wrong, say so on the call and we'll talk about it properly.</p>
+      <div class="cta-row rv">
+        <a class="btn" href="mailto:hello@novapex.co?subject=Private%20education%20offer">Book a free call<span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="btn ghost" href="https://wa.me/26656702102">WhatsApp us</a>
+      </div>
+    </div>
+    <div class="offer-convert">
 <div class="convert rv">
   <button class="convert-btn" id="curBtn" aria-haspopup="listbox" aria-expanded="false">
     <span class="convert-lead">Convert</span>
@@ -181,37 +219,7 @@
     <button data-cur="CAD" role="option" aria-selected="false"><strong>CAD</strong><span>Canadian Dollar</span></button>
     <button data-cur="CHF" role="option" aria-selected="false"><strong>CHF</strong><span>Swiss Franc</span></button>
   </div>
-</div>
-      <div class="cta-row rv">
-        <a class="btn" href="mailto:hello@novapex.co?subject=Private%20education%20offer">Claim this rate<span class="arrow" aria-hidden="true">&rarr;</span></a>
-        <a class="btn ghost" href="https://wa.me/26656702102">WhatsApp to confirm</a>
-      </div>
-      <p class="sub rv" style="margin:24px auto 0;font-size:14px;text-align:center">
-        The clock started when you opened this page. After that the standard
-        Growth rate applies, and this page closes.</p>
-    </div>
-
-    <div class="when-closed">
-      <p class="eyebrow rv" style="justify-content:center">This window has closed</p>
-      <h2 class="rv">The three hours are up, but the conversation isn't.</h2>
-      <p class="lead rv" style="margin:18px auto 0;text-align:center">The standard
-        Growth rate still stands, and the call is still free. Reopen your original
-        link if you want the discounted rate back.</p>
-      <div class="cta-row rv">
-        <a class="btn" href="mailto:hello@novapex.co?subject=Private%20education%20offer">Book a free call<span class="arrow" aria-hidden="true">&rarr;</span></a>
-      </div>
-    </div>
-
-    <div class="when-gated">
-      <p class="eyebrow rv" style="justify-content:center">Invitation only</p>
-      <h2 class="rv">This rate is only available through your original link.</h2>
-      <p class="lead rv" style="margin:18px auto 0;text-align:center">Head back to the ad,
-        message or email that brought you here and open it again. If you've lost it, message
-        us and we'll send it across.</p>
-      <div class="cta-row rv">
-        <a class="btn" href="https://wa.me/26656702102">WhatsApp us for the link<span class="arrow" aria-hidden="true">&rarr;</span></a>
-      </div>
-    </div>
+</div></div>
   </div>
 </section>
 
