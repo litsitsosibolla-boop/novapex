@@ -3,311 +3,399 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Novapex — 10 Target Client Profiles (Internal)</title>
+<title>Ten target client profiles — Novapex (internal)</title>
+<meta name="description" content="Internal sales reference: ten composite client profiles with qualifying checklists, budget ranges and buying triggers.">
+<meta name="theme-color" content="#FAFAF8">
+<meta property="og:title" content="Ten target client profiles — Novapex (internal)">
+<meta property="og:description" content="Internal sales reference: ten composite client profiles with qualifying checklists, budget ranges and buying triggers.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='58 58 164 168'%3E%3Crect x='58' y='58' width='164' height='168' rx='16' fill='%2317181B'/%3E%3Cpath d='M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z' fill-rule='evenodd' fill='%23C2DE55'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{ --ink:#14120F; --paper:#F7F5F1; --crimson:#A2201C; --stone:#8C8880; --hairline:#DAD5C9; }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  body{ background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
-  h1,h2,h3{ font-family:'Space Grotesk',sans-serif; font-weight:700; }
-  .wrap{ max-width:860px; margin:0 auto; padding:0 32px; }
-
-  .hero{ background:var(--ink); color:var(--paper); padding:90px 0 70px; position:relative; overflow:hidden;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 36px), 0 100%); }
-  .hero::after{ content:""; position:absolute; top:0; right:0; width:0; height:0;
-    border-style:solid; border-width:0 100px 100px 0; border-color: transparent var(--crimson) transparent transparent; }
-  .mark{ width:48px; height:48px; display:block; margin-bottom:22px; }
-  .eyebrow{ font-size:13px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B0ACA4; margin-bottom:16px; }
-  .hero h1{ font-size:38px; line-height:1.15; max-width:600px; }
-  .hero .sub{ margin-top:18px; max-width:560px; font-size:16px; color:#CFCBC3; }
-
-  .rule-box{ background:var(--ink); color:var(--paper); padding:32px 0; }
-  .rule-box .wrap{ font-size:16px; color:#CFCBC3; }
-  .rule-box b{ color:var(--paper); }
-
-  .profile{ padding:48px 0; border-top:1px solid var(--hairline); }
-  .profile-num{ font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600; color:var(--crimson); letter-spacing:0.15em; margin-bottom:10px; }
-  .profile h2{ font-size:24px; margin-bottom:6px; }
-  .profile .role{ font-size:15px; color:var(--stone); margin-bottom:16px; }
-  .profile .narrative{ font-size:16px; margin-bottom:20px; max-width:680px; }
-
-  .check-title{ font-size:13px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--crimson); margin-bottom:10px; margin-top:20px; }
-  .checklist{ list-style:none; }
-  .checklist li{ font-size:15px; padding:6px 0 6px 26px; position:relative; color:var(--ink); max-width:680px; }
-  .checklist li::before{ content:"\2610"; position:absolute; left:0; color:var(--crimson); font-size:15px; }
-
-  .meta-row{ display:flex; flex-wrap:wrap; gap:28px; margin-top:22px; padding-top:18px; border-top:1px dashed var(--hairline); }
-  .meta-row div .k{ font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--stone); margin-bottom:4px; }
-  .meta-row div .v{ font-size:15px; font-weight:600; }
-
-  footer{ text-align:center; padding:30px 0; color:var(--stone); font-size:13px; background:var(--ink); }
-  footer span{ color:var(--paper); }
-
-  @media (max-width:640px){
-    .hero{ padding:60px 0 50px; } .hero h1{ font-size:28px; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<div class="hero">
-  <div class="wrap">
-    <a href="/" aria-label="Novapex home"><svg class="mark" viewBox="0 0 200 200" role="img" aria-label="Novapex mark">
-      <path d="M100,25 L175,175 L25,175 Z M154.6,170.5 L78.6,57.5 L65.4,66.5 L141.4,179.5 Z" fill-rule="evenodd" fill="#A2201C"/>
-    </svg></a>
-    <div class="eyebrow">Novapex &middot; Internal</div>
-    <h1>10 Target Client Profiles</h1>
-    <p class="sub">Ten niches, not ten people. Each profile is a composite of the real client Novapex is built for in that category.</p>
-  </div>
-</div>
-
-<div class="rule-box">
-  <div class="wrap">
-    <b>The qualification rule:</b> a lead qualifies if they match 50% or more of the checklist for any one profile. More checks doesn't just mean "more qualified," it means closer to the exact person this was built for.
-  </div>
-</div>
-
-<div class="profile">
-  <div class="wrap">
-    <div class="profile-num">PROFILE 01</div>
-    <h2>Meet Thabo, 44</h2>
-    <div class="role">Regional manager at a mid-size financial services firm (banking or investment, not insurance)</div>
-    <p class="narrative">Thabo runs a team of 15+ across a couple of branches. Leadership keeps telling him to "build a personal brand," but nobody's told him what that actually means in practice, so his LinkedIn sits untouched for weeks at a time.</p>
-    <div class="check-title">Qualifying Checklist</div>
-    <ul class="checklist">
-      <li>Manages a team of 15+ at a bank, investment house, or similar financial firm</li>
-      <li>Company operates in 2+ towns or districts</li>
-      <li>Has been asked to build a personal brand but doesn't know where to start</li>
-      <li>Updates LinkedIn less than once a month</li>
-      <li>Company socials are run by a junior staffer with no real strategy</li>
-      <li>Speaks at industry panels or events with no content plan around them</li>
-      <li>Has been personally asked "are you on LinkedIn?" recently</li>
-      <li>Not a direct competitor to existing Novapex clients</li>
-    </ul>
-    <div class="meta-row">
-      <div><div class="k">Best Fit</div><div class="v">Executive & Personal Brand Systems</div></div>
-      <div><div class="k">Budget Range</div><div class="v">M15,000&ndash;M50,000/mo</div></div>
-      <div><div class="k">The Trigger</div><div class="v">A peer or client asks about his online presence directly</div></div>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/" aria-label="Novapex home"><svg viewBox="58 58 164 168" aria-hidden="true" fill="currentColor"><path d="M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z" fill-rule="evenodd"/></svg><span>NOVAPEX</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/services">Services</a>
+      <a href="/case-study">Work</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-sm" href="mailto:hello@novapex.co?subject=Starting%20a%20project">Start a project</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><span></span></button>
     </div>
   </div>
-</div>
-
-<div class="profile">
-  <div class="wrap">
-    <div class="profile-num">PROFILE 02</div>
-    <h2>Meet Katleho, 35</h2>
-    <div class="role">Manages 3&ndash;5 artists under a small independent label</div>
-    <p class="narrative">Katleho's landed real sponsorship conversations before, but every time a brand asks "what's your reach, really?" he's improvising an answer instead of showing a real number.</p>
-    <div class="check-title">Qualifying Checklist</div>
-    <ul class="checklist">
-      <li>Manages or represents 2+ working musicians or performers</li>
-      <li>Has landed at least one brand sponsorship or partnership already</li>
-      <li>Posts are reactive (show dates, announcements), not planned campaigns</li>
-      <li>Has no professional one-pager or dashboard to pitch sponsors with</li>
-      <li>Active on Facebook and Instagram, little to no LinkedIn presence</li>
-      <li>Revenue mixes shows, streaming, and brand deals</li>
-      <li>Has said out loud "I don't actually know what's working"</li>
-      <li>Open to commission or hybrid payment, not just a flat retainer</li>
-    </ul>
-    <div class="meta-row">
-      <div><div class="k">Best Fit</div><div class="v">Brand Intelligence Dashboards + Campaign Mechanic Design</div></div>
-      <div><div class="k">Budget Range</div><div class="v">M5,000&ndash;M20,000/mo or commission</div></div>
-      <div><div class="k">The Trigger</div><div class="v">A sponsor asks for numbers he can't produce</div></div>
+  <div class="mnav" id="mnav">
+    <div class="mnav-in">
+      <a href="/services">Services<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/case-study">Work<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/pricing">Pricing<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/about">About<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/blog">Blog<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="mailto:hello@novapex.co?subject=Starting%20a%20project">Start a project<span class="arrow" aria-hidden="true">&rarr;</span></a>
     </div>
   </div>
-</div>
+</header>
 
-<div class="profile">
+<main id="main">
+
+<section class="hero">
   <div class="wrap">
-    <div class="profile-num">PROFILE 03</div>
-    <h2>Meet Palesa, 32</h2>
-    <div class="role">Owns a growing clothing boutique with 1&ndash;2 physical locations</div>
-    <p class="narrative">Palesa's orders come in through a flood of WhatsApp messages she answers one by one, at all hours. She knows she's leaving sales on the table, she just doesn't have a system to fix it.</p>
-    <div class="check-title">Qualifying Checklist</div>
-    <ul class="checklist">
-      <li>Runs 1&ndash;2 physical retail locations plus a Facebook/Instagram shop</li>
-      <li>Takes orders manually through WhatsApp DMs</li>
-      <li>Has no organized product catalogue online</li>
-      <li>Posts product photos with no real content calendar</li>
-      <li>Has seasonal sales spikes she scrambles to plan for every time</li>
-      <li>Avoids looking at her own page's analytics</li>
-      <li>Has hired and fired at least one social media person before</li>
-    </ul>
-    <div class="meta-row">
-      <div><div class="k">Best Fit</div><div class="v">WhatsApp Commerce Systems + Content Systems</div></div>
-      <div><div class="k">Budget Range</div><div class="v">M3,000&ndash;M10,000/mo</div></div>
-      <div><div class="k">The Trigger</div><div class="v">A missed order during a busy season, traced back to a lost WhatsApp message</div></div>
+    <p class="eyebrow rv">Internal &middot; Sales</p>
+    <h1 class="rv">Ten target client profiles.</h1>
+    <p class="lead rv">Ten niches, not ten people. Each profile is a composite of the real
+      client Novapex is built for in that category.</p>
+  </div>
+</section>
+
+<section class="on-dark sec-sm">
+  <div class="wrap narrow">
+    <p class="lead rv" style="max-width:none"><strong style="color:var(--on-dark);font-weight:500">The
+      qualification rule:</strong> a lead qualifies if they match 50% or more of the checklist
+      for any one profile. More checks doesn't only mean &ldquo;more qualified&rdquo; — it means
+      closer to the exact person this was built for.</p>
+  </div>
+</section>
+<hr class="fade-rule">
+
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <div class="split rv" style="align-items:start">
+      <div>
+        <p class="eyebrow">PROFILE 01</p>
+        <h2 style="font-size:clamp(22px,2.6vw,30px)">Meet Thabo, 44</h2>
+        <p class="sub" style="margin-top:10px;font-size:15px">Regional manager at a mid-size financial services firm (banking or investment, not insurance)</p>
+      </div>
+      <div>
+        <p class="lead" style="color:var(--on-paper);max-width:none">Thabo runs a team of 15+ across a couple of branches. Leadership keeps telling him to "build a personal brand," but nobody's told him what that actually means in practice, so his LinkedIn sits untouched for weeks at a time.</p>
+        <p class="eyebrow" style="margin:28px 0 10px">Qualifying checklist</p>
+        <ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Manages a team of 15+ at a bank, investment house, or similar financial firm</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Company operates in 2+ towns or districts</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Has been asked to build a personal brand but doesn't know where to start</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Updates LinkedIn less than once a month</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Company socials are run by a junior staffer with no real strategy</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Speaks at industry panels or events with no content plan around them</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Has been personally asked "are you on LinkedIn?" recently</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Not a direct competitor to existing Novapex clients</span></li>
+</ul>
+        <div class="figs" style="margin-top:30px;gap:24px 40px">
+
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
+<hr class="fade-rule">
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <div class="split rv" style="align-items:start">
+      <div>
+        <p class="eyebrow">PROFILE 02</p>
+        <h2 style="font-size:clamp(22px,2.6vw,30px)">Meet Katleho, 35</h2>
+        <p class="sub" style="margin-top:10px;font-size:15px">Manages 3&ndash;5 artists under a small independent label</p>
+      </div>
+      <div>
+        <p class="lead" style="color:var(--on-paper);max-width:none">Katleho's landed real sponsorship conversations before, but every time a brand asks "what's your reach, really?" he's improvising an answer instead of showing a real number.</p>
+        <p class="eyebrow" style="margin:28px 0 10px">Qualifying checklist</p>
+        <ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Manages or represents 2+ working musicians or performers</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Has landed at least one brand sponsorship or partnership already</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Posts are reactive (show dates, announcements), not planned campaigns</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Has no professional one-pager or dashboard to pitch sponsors with</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Active on Facebook and Instagram, little to no LinkedIn presence</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Revenue mixes shows, streaming, and brand deals</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Has said out loud "I don't actually know what's working"</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Open to commission or hybrid payment, not just a flat retainer</span></li>
+</ul>
+        <div class="figs" style="margin-top:30px;gap:24px 40px">
 
-<div class="profile">
-  <div class="wrap">
-    <div class="profile-num">PROFILE 04</div>
-    <h2>Meet Rets'elisitsoe, 48</h2>
-    <div class="role">Owns a mountain lodge or guesthouse</div>
-    <p class="narrative">Rets'elisitsoe's lodge is genuinely beautiful, but the website looks like it hasn't been touched since it launched, and almost every booking still comes from word-of-mouth, not from anything he's actually built.</p>
-    <div class="check-title">Qualifying Checklist</div>
-    <ul class="checklist">
-      <li>Operates a lodge, guesthouse, or tour business with international guest appeal</li>
-      <li>Relies heavily on word-of-mouth and repeat bookings</li>
-      <li>Website hasn't been meaningfully updated in over a year</li>
-      <li>Wants more international bookings, not just local weekend traffic</li>
-      <li>Struggles to photograph or present the property attractively online</li>
-      <li>Has tour operator or travel partnerships with no coordinated content</li>
-      <li>Cash flow swings hard between dead months and fully booked months</li>
-    </ul>
-    <div class="meta-row">
-      <div><div class="k">Best Fit</div><div class="v">Content Systems + Executive Brand (as the face of the lodge)</div></div>
-      <div><div class="k">Budget Range</div><div class="v">M8,000&ndash;M25,000/mo, seasonal</div></div>
-      <div><div class="k">The Trigger</div><div class="v">A slow season that makes the word-of-mouth model feel too fragile</div></div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
+<hr class="fade-rule">
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <div class="split rv" style="align-items:start">
+      <div>
+        <p class="eyebrow">PROFILE 03</p>
+        <h2 style="font-size:clamp(22px,2.6vw,30px)">Meet Palesa, 32</h2>
+        <p class="sub" style="margin-top:10px;font-size:15px">Owns a growing clothing boutique with 1&ndash;2 physical locations</p>
+      </div>
+      <div>
+        <p class="lead" style="color:var(--on-paper);max-width:none">Palesa's orders come in through a flood of WhatsApp messages she answers one by one, at all hours. She knows she's leaving sales on the table, she just doesn't have a system to fix it.</p>
+        <p class="eyebrow" style="margin:28px 0 10px">Qualifying checklist</p>
+        <ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Runs 1&ndash;2 physical retail locations plus a Facebook/Instagram shop</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Takes orders manually through WhatsApp DMs</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Has no organized product catalogue online</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Posts product photos with no real content calendar</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Has seasonal sales spikes she scrambles to plan for every time</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Avoids looking at her own page's analytics</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Has hired and fired at least one social media person before</span></li>
+</ul>
+        <div class="figs" style="margin-top:30px;gap:24px 40px">
 
-<div class="profile">
-  <div class="wrap">
-    <div class="profile-num">PROFILE 05</div>
-    <h2>Meet Advocate Mahlomola, 46</h2>
-    <div class="role">Partner at a law firm or accounting practice</div>
-    <p class="narrative">Mahlomola built his practice on referrals and reputation, and he's proud of that. But his younger staff keep pushing for "a real online presence," and every time a journalist calls for comment, he turns it down because there's no messaging ready.</p>
-    <div class="check-title">Qualifying Checklist</div>
-    <ul class="checklist">
-      <li>Partner or senior leader at a law firm, audit firm, or consultancy</li>
-      <li>Younger staff have raised the need for better online presence</li>
-      <li>Firm's website looks unchanged for 5+ years</li>
-      <li>New clients still come almost entirely from existing relationships</li>
-      <li>Personally uncomfortable with the idea of self-promotion</li>
-      <li>Has turned down a media or interview opportunity due to lack of prep</li>
-      <li>Firm has 10+ staff and a real institutional budget</li>
-      <li>Values discretion and formality over anything that feels flashy</li>
-    </ul>
-    <div class="meta-row">
-      <div><div class="k">Best Fit</div><div class="v">Executive & Personal Brand Systems</div></div>
-      <div><div class="k">Budget Range</div><div class="v">M15,000&ndash;M40,000/mo</div></div>
-      <div><div class="k">The Trigger</div><div class="v">A missed media opportunity that a competitor firm capitalized on instead</div></div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
+<hr class="fade-rule">
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <div class="split rv" style="align-items:start">
+      <div>
+        <p class="eyebrow">PROFILE 04</p>
+        <h2 style="font-size:clamp(22px,2.6vw,30px)">Meet Rets'elisitsoe, 48</h2>
+        <p class="sub" style="margin-top:10px;font-size:15px">Owns a mountain lodge or guesthouse</p>
+      </div>
+      <div>
+        <p class="lead" style="color:var(--on-paper);max-width:none">Rets'elisitsoe's lodge is genuinely beautiful, but the website looks like it hasn't been touched since it launched, and almost every booking still comes from word-of-mouth, not from anything he's actually built.</p>
+        <p class="eyebrow" style="margin:28px 0 10px">Qualifying checklist</p>
+        <ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Operates a lodge, guesthouse, or tour business with international guest appeal</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Relies heavily on word-of-mouth and repeat bookings</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Website hasn't been meaningfully updated in over a year</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Wants more international bookings, not just local weekend traffic</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Struggles to photograph or present the property attractively online</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Has tour operator or travel partnerships with no coordinated content</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Cash flow swings hard between dead months and fully booked months</span></li>
+</ul>
+        <div class="figs" style="margin-top:30px;gap:24px 40px">
 
-<div class="profile">
-  <div class="wrap">
-    <div class="profile-num">PROFILE 06</div>
-    <h2>Meet Lerato, 29</h2>
-    <div class="role">Owns a gym or wellness studio</div>
-    <p class="narrative">Lerato's comfortable on camera and has real energy, but her content has no consistent voice, and her last "refer a friend" promo ran with no way to actually track who it brought in.</p>
-    <div class="check-title">Qualifying Checklist</div>
-    <ul class="checklist">
-      <li>Runs a gym, fitness studio, or wellness/spa business</li>
-      <li>Revenue depends on monthly membership retention, not one-time sales</li>
-      <li>Posts workout or wellness content with no consistent brand voice</li>
-      <li>Has run a referral promo with no real way to track it</li>
-      <li>Audience skews younger (18&ndash;35) and mobile-first</li>
-      <li>Personally comfortable being the face of the brand on camera</li>
-    </ul>
-    <div class="meta-row">
-      <div><div class="k">Best Fit</div><div class="v">Content Systems + Campaign Mechanic Design</div></div>
-      <div><div class="k">Budget Range</div><div class="v">M2,500&ndash;M8,000/mo</div></div>
-      <div><div class="k">The Trigger</div><div class="v">A membership dip she can't explain or reverse on her own</div></div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
+<hr class="fade-rule">
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <div class="split rv" style="align-items:start">
+      <div>
+        <p class="eyebrow">PROFILE 05</p>
+        <h2 style="font-size:clamp(22px,2.6vw,30px)">Meet Advocate Mahlomola, 46</h2>
+        <p class="sub" style="margin-top:10px;font-size:15px">Partner at a law firm or accounting practice</p>
+      </div>
+      <div>
+        <p class="lead" style="color:var(--on-paper);max-width:none">Mahlomola built his practice on referrals and reputation, and he's proud of that. But his younger staff keep pushing for "a real online presence," and every time a journalist calls for comment, he turns it down because there's no messaging ready.</p>
+        <p class="eyebrow" style="margin:28px 0 10px">Qualifying checklist</p>
+        <ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Partner or senior leader at a law firm, audit firm, or consultancy</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Younger staff have raised the need for better online presence</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Firm's website looks unchanged for 5+ years</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>New clients still come almost entirely from existing relationships</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Personally uncomfortable with the idea of self-promotion</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Has turned down a media or interview opportunity due to lack of prep</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Firm has 10+ staff and a real institutional budget</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Values discretion and formality over anything that feels flashy</span></li>
+</ul>
+        <div class="figs" style="margin-top:30px;gap:24px 40px">
 
-<div class="profile">
-  <div class="wrap">
-    <div class="profile-num">PROFILE 07</div>
-    <h2>Meet Ntate Mokoena, 52</h2>
-    <div class="role">Founder of a local food or beverage brand</div>
-    <p class="narrative">Ntate Mokoena's product is already on real shelves, and his story of building it is genuinely compelling, but nobody's ever told it properly, and every new retail partner still comes from a handshake, not a pitch.</p>
-    <div class="check-title">Qualifying Checklist</div>
-    <ul class="checklist">
-      <li>Produces a packaged food, drink, or agro-processed product</li>
-      <li>Sells through 3+ retail partners plus direct sales</li>
-      <li>Wants to expand into new retail partners or export markets</li>
-      <li>Packaging or branding hasn't been refreshed in years</li>
-      <li>Relies on trade shows and relationships, not digital marketing, for new business</li>
-      <li>Has a real founder story that's never been told publicly</li>
-    </ul>
-    <div class="meta-row">
-      <div><div class="k">Best Fit</div><div class="v">Content Systems + Executive Brand (founder story)</div></div>
-      <div><div class="k">Budget Range</div><div class="v">M5,000&ndash;M15,000/mo</div></div>
-      <div><div class="k">The Trigger</div><div class="v">A new retail partner asks for a brand story or press kit he doesn't have</div></div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
+<hr class="fade-rule">
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <div class="split rv" style="align-items:start">
+      <div>
+        <p class="eyebrow">PROFILE 06</p>
+        <h2 style="font-size:clamp(22px,2.6vw,30px)">Meet Lerato, 29</h2>
+        <p class="sub" style="margin-top:10px;font-size:15px">Owns a gym or wellness studio</p>
+      </div>
+      <div>
+        <p class="lead" style="color:var(--on-paper);max-width:none">Lerato's comfortable on camera and has real energy, but her content has no consistent voice, and her last "refer a friend" promo ran with no way to actually track who it brought in.</p>
+        <p class="eyebrow" style="margin:28px 0 10px">Qualifying checklist</p>
+        <ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Runs a gym, fitness studio, or wellness/spa business</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Revenue depends on monthly membership retention, not one-time sales</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Posts workout or wellness content with no consistent brand voice</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Has run a referral promo with no real way to track it</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Audience skews younger (18&ndash;35) and mobile-first</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Personally comfortable being the face of the brand on camera</span></li>
+</ul>
+        <div class="figs" style="margin-top:30px;gap:24px 40px">
 
-<div class="profile">
-  <div class="wrap">
-    <div class="profile-num">PROFILE 08</div>
-    <h2>Meet Mamello, 41</h2>
-    <div class="role">Director of a private college or training institute</div>
-    <p class="narrative">Mamello's institute has real graduate success stories, but marketing still means printed flyers and a Facebook page that goes quiet outside of enrollment season, while she personally answers the same parent questions over and over.</p>
-    <div class="check-title">Qualifying Checklist</div>
-    <ul class="checklist">
-      <li>Runs a private college, skills academy, or training institute</li>
-      <li>Enrollment is seasonal, with 2&ndash;3 critical windows a year</li>
-      <li>Competes directly with 2+ similar institutions for the same students</li>
-      <li>Marketing currently means flyers plus an inconsistent Facebook page</li>
-      <li>Answers the same prospective-student questions manually, repeatedly</li>
-      <li>Has real graduate success stories that go untold</li>
-    </ul>
-    <div class="meta-row">
-      <div><div class="k">Best Fit</div><div class="v">Content Systems + WhatsApp Commerce Systems (inquiries)</div></div>
-      <div><div class="k">Budget Range</div><div class="v">M6,000&ndash;M20,000/mo, seasonal spikes</div></div>
-      <div><div class="k">The Trigger</div><div class="v">A weak enrollment season compared to a competing institute</div></div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
+<hr class="fade-rule">
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <div class="split rv" style="align-items:start">
+      <div>
+        <p class="eyebrow">PROFILE 07</p>
+        <h2 style="font-size:clamp(22px,2.6vw,30px)">Meet Ntate Mokoena, 52</h2>
+        <p class="sub" style="margin-top:10px;font-size:15px">Founder of a local food or beverage brand</p>
+      </div>
+      <div>
+        <p class="lead" style="color:var(--on-paper);max-width:none">Ntate Mokoena's product is already on real shelves, and his story of building it is genuinely compelling, but nobody's ever told it properly, and every new retail partner still comes from a handshake, not a pitch.</p>
+        <p class="eyebrow" style="margin:28px 0 10px">Qualifying checklist</p>
+        <ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Produces a packaged food, drink, or agro-processed product</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Sells through 3+ retail partners plus direct sales</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Wants to expand into new retail partners or export markets</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Packaging or branding hasn't been refreshed in years</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Relies on trade shows and relationships, not digital marketing, for new business</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Has a real founder story that's never been told publicly</span></li>
+</ul>
+        <div class="figs" style="margin-top:30px;gap:24px 40px">
 
-<div class="profile">
-  <div class="wrap">
-    <div class="profile-num">PROFILE 09</div>
-    <h2>Meet Tumelo, 50</h2>
-    <div class="role">Principal at a real estate development or agency firm</div>
-    <p class="narrative">Tumelo's reputation carries real weight locally, but it lives entirely offline. His deals are big and rare enough that he genuinely needs to know which leads are serious, and right now that's tracked in a notebook, if at all.</p>
-    <div class="check-title">Qualifying Checklist</div>
-    <ul class="checklist">
-      <li>Develops or sells residential or commercial property</li>
-      <li>Deals are high-value and low-frequency, not high-volume</li>
-      <li>Tracks leads in a notebook, spreadsheet, or not at all</li>
-      <li>Relies on signage and word-of-mouth more than digital marketing</li>
-      <li>Has a strong personal reputation locally with no digital footprint to match</li>
-      <li>Needs to build real trust before a single high-stakes conversation</li>
-    </ul>
-    <div class="meta-row">
-      <div><div class="k">Best Fit</div><div class="v">Brand Intelligence Dashboards + Executive Brand</div></div>
-      <div><div class="k">Budget Range</div><div class="v">M10,000&ndash;M35,000/mo</div></div>
-      <div><div class="k">The Trigger</div><div class="v">A serious lead nearly slipped through because it wasn't tracked properly</div></div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
+<hr class="fade-rule">
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <div class="split rv" style="align-items:start">
+      <div>
+        <p class="eyebrow">PROFILE 08</p>
+        <h2 style="font-size:clamp(22px,2.6vw,30px)">Meet Mamello, 41</h2>
+        <p class="sub" style="margin-top:10px;font-size:15px">Director of a private college or training institute</p>
+      </div>
+      <div>
+        <p class="lead" style="color:var(--on-paper);max-width:none">Mamello's institute has real graduate success stories, but marketing still means printed flyers and a Facebook page that goes quiet outside of enrollment season, while she personally answers the same parent questions over and over.</p>
+        <p class="eyebrow" style="margin:28px 0 10px">Qualifying checklist</p>
+        <ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Runs a private college, skills academy, or training institute</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Enrollment is seasonal, with 2&ndash;3 critical windows a year</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Competes directly with 2+ similar institutions for the same students</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Marketing currently means flyers plus an inconsistent Facebook page</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Answers the same prospective-student questions manually, repeatedly</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Has real graduate success stories that go untold</span></li>
+</ul>
+        <div class="figs" style="margin-top:30px;gap:24px 40px">
 
-<div class="profile">
-  <div class="wrap">
-    <div class="profile-num">PROFILE 10</div>
-    <h2>Meet Mme Limpho, 45</h2>
-    <div class="role">Director of a youth development or health-access NGO</div>
-    <p class="narrative">Mme Limpho's organization changes real lives, and she knows the stories exist to prove it, but between programs, reporting, and everything else, nobody's ever properly captured them, and donors mostly hear about the impact once a year in a report.</p>
-    <div class="check-title">Qualifying Checklist</div>
-    <ul class="checklist">
-      <li>Leads an NGO, foundation, or civic organization with a public mission</li>
-      <li>Funding depends partly on donor visibility and proof of impact</li>
-      <li>Has real beneficiary stories that are rarely captured or shared well</li>
-      <li>Posts are irregular, mostly reactive to events</li>
-      <li>Reports impact to donors annually, not visibly throughout the year</li>
-      <li>Values authenticity and mission-alignment over polish</li>
-    </ul>
-    <div class="meta-row">
-      <div><div class="k">Best Fit</div><div class="v">Content Systems (mission storytelling)</div></div>
-      <div><div class="k">Budget Range</div><div class="v">M3,000&ndash;M12,000/mo, often project-based</div></div>
-      <div><div class="k">The Trigger</div><div class="v">A funding cycle or donor report deadline approaching with nothing ready to show</div></div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
+<hr class="fade-rule">
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <div class="split rv" style="align-items:start">
+      <div>
+        <p class="eyebrow">PROFILE 09</p>
+        <h2 style="font-size:clamp(22px,2.6vw,30px)">Meet Tumelo, 50</h2>
+        <p class="sub" style="margin-top:10px;font-size:15px">Principal at a real estate development or agency firm</p>
+      </div>
+      <div>
+        <p class="lead" style="color:var(--on-paper);max-width:none">Tumelo's reputation carries real weight locally, but it lives entirely offline. His deals are big and rare enough that he genuinely needs to know which leads are serious, and right now that's tracked in a notebook, if at all.</p>
+        <p class="eyebrow" style="margin:28px 0 10px">Qualifying checklist</p>
+        <ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Develops or sells residential or commercial property</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Deals are high-value and low-frequency, not high-volume</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tracks leads in a notebook, spreadsheet, or not at all</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Relies on signage and word-of-mouth more than digital marketing</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Has a strong personal reputation locally with no digital footprint to match</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Needs to build real trust before a single high-stakes conversation</span></li>
+</ul>
+        <div class="figs" style="margin-top:30px;gap:24px 40px">
 
-<footer>Novapex &middot; Internal &middot; <span>10 Target Profiles</span> &middot; 2026</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="fade-rule">
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <div class="split rv" style="align-items:start">
+      <div>
+        <p class="eyebrow">PROFILE 10</p>
+        <h2 style="font-size:clamp(22px,2.6vw,30px)">Meet Mme Limpho, 45</h2>
+        <p class="sub" style="margin-top:10px;font-size:15px">Director of a youth development or health-access NGO</p>
+      </div>
+      <div>
+        <p class="lead" style="color:var(--on-paper);max-width:none">Mme Limpho's organization changes real lives, and she knows the stories exist to prove it, but between programs, reporting, and everything else, nobody's ever properly captured them, and donors mostly hear about the impact once a year in a report.</p>
+        <p class="eyebrow" style="margin:28px 0 10px">Qualifying checklist</p>
+        <ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Leads an NGO, foundation, or civic organization with a public mission</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Funding depends partly on donor visibility and proof of impact</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Has real beneficiary stories that are rarely captured or shared well</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Posts are irregular, mostly reactive to events</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Reports impact to donors annually, not visibly throughout the year</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Values authenticity and mission-alignment over polish</span></li>
+</ul>
+        <div class="figs" style="margin-top:30px;gap:24px 40px">
 
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="fade-rule">
+
+</main>
+
+<button id="top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" style="width:16px;height:16px"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/"><svg viewBox="58 58 164 168" aria-hidden="true" fill="currentColor"><path d="M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z" fill-rule="evenodd"/></svg><span>NOVAPEX</span></a>
+        <p class="blurb">A content and growth studio for businesses that already have
+          attention and need it to turn into revenue. Maseru, Lesotho — working with
+          clients across the region and beyond.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Site</h5>
+        <a href="/services">Services</a>
+      <a href="/case-study">Work</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      </div>
+      <div class="foot-col">
+        <h5>Industries</h5>
+        <a href="/01-finance-exec">Financial services</a>
+      <a href="/02-artist-manager">Artists & management</a>
+      <a href="/03-boutique-retail">Boutique retail</a>
+      <a href="/04-lodge-tourism">Lodges & tourism</a>
+      <a href="/05-law-firm">Law & professional</a>
+      <a href="/06-fitness-studio">Fitness & wellness</a>
+        <a href="/services#industries">All industries &rarr;</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <p class="role">Start a project</p>
+        <a href="mailto:hello@novapex.co">hello@novapex.co</a>
+        <p class="role">General &amp; press</p>
+        <a href="mailto:marketing@novapex.co.ls">marketing@novapex.co.ls</a>
+        <p class="role">WhatsApp</p>
+        <a href="https://wa.me/26656576553">+266 5657 6553</a>
+        <p class="role">Call</p>
+        <a href="tel:+26656702102">+266 5670 2102</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>&copy; 2026 Novapex. All rights reserved.</span>
+    <span>Maseru, Lesotho</span>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
 </body>
 </html>

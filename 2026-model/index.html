@@ -3,224 +3,191 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Novapex — The 2026 Business Model</title>
+<title>The 2026 business model — Novapex (internal)</title>
+<meta name="description" content="Internal strategy note: what Novapex imports from global marketing practice, what it deliberately holds back, and why.">
+<meta name="theme-color" content="#FAFAF8">
+<meta property="og:title" content="The 2026 business model — Novapex (internal)">
+<meta property="og:description" content="Internal strategy note: what Novapex imports from global marketing practice, what it deliberately holds back, and why.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='58 58 164 168'%3E%3Crect x='58' y='58' width='164' height='168' rx='16' fill='%2317181B'/%3E%3Cpath d='M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z' fill-rule='evenodd' fill='%23C2DE55'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#14120F;
-    --paper:#F7F5F1;
-    --crimson:#A2201C;
-    --stone:#8C8880;
-    --hairline:#DAD5C9;
-  }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Inter',sans-serif;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,.display{ font-family:'Space Grotesk',sans-serif; font-weight:700; }
-  .wrap{ max-width:820px; margin:0 auto; padding:0 32px; }
-
-  .hero{
-    background:var(--ink); color:var(--paper);
-    padding:100px 0 80px;
-    position:relative; overflow:hidden;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
-  }
-  .hero::after{
-    content:""; position:absolute; top:0; right:0;
-    width:0; height:0;
-    border-style:solid; border-width:0 110px 110px 0;
-    border-color: transparent var(--crimson) transparent transparent;
-  }
-  .mark{ width:52px; height:52px; display:block; margin-bottom:24px; }
-  .eyebrow{ font-size:13px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B0ACA4; margin-bottom:18px; }
-  .hero h1{ font-size:42px; line-height:1.15; max-width:600px; }
-  .hero .sub{ margin-top:20px; max-width:520px; font-size:17px; color:#CFCBC3; font-style:italic; }
-
-  section{ padding:56px 0; }
-  section + section{ border-top:1px solid var(--hairline); }
-  .label{ font-size:13px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--crimson); margin-bottom:16px; }
-  .section-title{ font-size:26px; max-width:600px; margin-bottom:18px; }
-  .lede{ font-size:17px; max-width:680px; color:var(--ink); margin-bottom:14px; }
-
-  .item{ margin-top:26px; padding-left:22px; border-left:3px solid var(--crimson); }
-  .item h3{ font-size:18px; margin-bottom:6px; }
-  .item p{ font-size:15.5px; color:var(--stone); max-width:640px; }
-
-  .gap-item{ margin-top:18px; }
-  .gap-item .k{ font-weight:600; font-size:16px; color:var(--ink); }
-  .gap-item p{ font-size:15.5px; color:var(--stone); max-width:660px; margin-top:4px; }
-
-  .no-box{
-    background:var(--ink); color:var(--paper);
-    clip-path: polygon(0 24px, 100% 0, 100% 100%, 0 100%);
-  }
-  .no-box .wrap{ padding-top:24px; }
-  .no-box .label{ color:#CFCBC3; }
-  .no-box .item{ border-left:3px solid var(--crimson); }
-  .no-box .item h3{ color:var(--paper); }
-  .no-box .item p{ color:#CFCBC3; }
-  .no-box .closer{ margin-top:30px; font-size:16px; color:var(--paper); max-width:640px; font-style:italic; }
-
-  .map-item{ margin-top:16px; font-size:16px; }
-  .map-item b{ color:var(--crimson); }
-  .map-item span{ color:var(--stone); }
-
-  .closing{
-    background:var(--ink); color:var(--paper);
-    padding:70px 0 60px;
-    clip-path: polygon(0 0, 100% 32px, 100% 100%, 0 100%);
-  }
-  .closing .wrap{ padding-top:16px; }
-  .closing h2{ font-size:26px; max-width:560px; margin-bottom:16px; }
-  .closing p{ font-size:16px; color:#CFCBC3; max-width:600px; }
-  footer{ text-align:center; padding:24px 0; color:var(--stone); font-size:13px; }
-
-  @media (max-width:640px){
-    .hero{ padding:70px 0 60px; }
-    .hero h1{ font-size:30px; }
-    .section-title{ font-size:22px; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<div class="hero">
-  <div class="wrap">
-    <a href="/" aria-label="Novapex home"><svg class="mark" viewBox="0 0 200 200" role="img" aria-label="Novapex mark">
-      <path d="M100,25 L175,175 L25,175 Z M154.6,170.5 L78.6,57.5 L65.4,66.5 L141.4,179.5 Z" fill-rule="evenodd" fill="#A2201C"/>
-    </svg></a>
-    <div class="eyebrow">Novapex &middot; Internal</div>
-    <h1>The 2026 Business Model</h1>
-    <p class="sub">Global standard. Local edge. Nothing too futuristic to actually sell.</p>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/" aria-label="Novapex home"><svg viewBox="58 58 164 168" aria-hidden="true" fill="currentColor"><path d="M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z" fill-rule="evenodd"/></svg><span>NOVAPEX</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/services">Services</a>
+      <a href="/case-study">Work</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-sm" href="mailto:hello@novapex.co?subject=Starting%20a%20project">Start a project</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><span></span></button>
+    </div>
   </div>
-</div>
+  <div class="mnav" id="mnav">
+    <div class="mnav-in">
+      <a href="/services">Services<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/case-study">Work<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/pricing">Pricing<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/about">About<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/blog">Blog<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="mailto:hello@novapex.co?subject=Starting%20a%20project">Start a project<span class="arrow" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</header>
 
-<section>
+<main id="main">
+
+<section class="hero">
   <div class="wrap">
-    <div class="label">The Core Bet</div>
-    <p class="lede">Most local businesses are stuck between two bad options. Option one: post and pray, no strategy, no system, just content going out and hoping something sticks. Option two: hire someone who read a global trends report and now wants to sell a Fortune 500 tech stack to a shop that doesn't have the infrastructure to use it.</p>
-    <p class="lede">Novapex is the third option: take what's already proven to work in bigger markets, and bring only the parts that are actually usable here, right now. Skip the hype. Import the results.</p>
+    <p class="eyebrow rv">Internal &middot; Strategy</p>
+    <h1 class="rv">The 2026 business model.</h1>
+    <p class="lead rv">Global standard, local edge, and nothing so futuristic it can't
+      actually be sold here yet.</p>
+  </div>
+</section>
+
+<hr class="fade-rule">
+
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <p class="eyebrow rv">The core bet</p>
+    <div class="prose-body rv">
+      <p>Most local businesses are stuck between two bad options. The first is post-and-pray:
+        no strategy, no system, content going out and hoping something sticks. The second is
+        someone who read a global trends report and now wants to sell a Fortune 500 tech stack
+        to a business without the infrastructure to run it.</p>
+      <p>Novapex is the third option — take what is already proven in bigger markets, and
+        import only the parts genuinely usable here, right now. Skip the hype. Import the
+        results.</p>
+    </div>
+  </div>
+</section>
+
+<section class="on-dark">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">The gap</p><h2>What's still happening locally.</h2></div>
+    <div class="grid g-2">
+      <div class="card rv"><h3>Post-and-pray is still the default.</h3><p>Most businesses post with no plan behind it, no system for what goes out next, and no link between posting and sales.</p></div>
+      <div class="card rv"><h3>Vanity metrics still run the show.</h3><p>Likes and reach get reported. Leads, cost per lead and lifetime value almost never do.</p></div>
+      <div class="card rv"><h3>WhatsApp is huge, and almost nobody has systemised it.</h3><p>Real revenue runs through DMs and catalogue photos, with no saved replies, no structured catalogue and no plan for peak season.</p></div>
+      <div class="card rv"><h3>Agency retainers are vague on purpose.</h3><p>&ldquo;Social media management&rdquo; sold with no breakdown of deliverables. The vagueness is often the business model.</p></div>
+      <div class="card rv"><h3>Leadership buy-in is the biggest blocker.</h3><p>Good strategy dies when the person paying was never brought into the thinking, so budget gets pulled the moment results aren't instant.</p></div>
+    </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="label">What's Still Happening Locally</div>
-    <h2 class="section-title">The actual gap, not a guess.</h2>
-
-    <div class="gap-item">
-      <div class="k">Post and pray is still the default.</div>
-      <p>Most businesses post content with no plan behind it, no system for what goes out next, and no link between posting and actual sales.</p>
-    </div>
-    <div class="gap-item">
-      <div class="k">Vanity metrics still run the show.</div>
-      <p>Likes and reach get reported. Leads, cost per lead, and customer lifetime value almost never do.</p>
-    </div>
-    <div class="gap-item">
-      <div class="k">WhatsApp is huge, but almost nobody has systemized it.</div>
-      <p>Many businesses already sell through WhatsApp DMs and catalogue photos, but almost none have built saved replies, a real catalogue, or automated answers.</p>
-    </div>
-    <div class="gap-item">
-      <div class="k">Agency retainers are vague on purpose.</div>
-      <p>"Social media management" gets sold with no real breakdown of deliverables or ownership of results. The vagueness is often the business model.</p>
-    </div>
-    <div class="gap-item">
-      <div class="k">Leadership buy-in is the biggest blocker.</div>
-      <p>Good strategy dies when the person paying was never brought into the thinking, so the budget gets pulled the moment results aren't instant.</p>
+    <div class="rv">
+      <p class="eyebrow">Ready to import now</p>
+      <h2>Proven elsewhere. Buildable here today.</h2></div>
+    <div class="grid g-2">
+      <div class="card rv"><h3>Systems over tactics</h3><p>A content plan, a measurement plan and a feedback loop that talk to each other, instead of disconnected one-off posts.</p></div>
+      <div class="card rv"><h3>Fix what happens after someone shows up</h3><p>A clearer offer, a faster reply and an easier way to buy usually beats spending more to reach new people.</p></div>
+      <div class="card rv"><h3>Own the relationship, don't rent it</h3><p>A real list, a real catalogue, a real record of who's interested — instead of depending entirely on an algorithm.</p></div>
+      <div class="card rv"><h3>Small real communities beat big empty ones</h3><p>Closer-knit audiences who trust a brand outperform large disengaged follower counts, in both trust and sales.</p></div>
+      <div class="card rv"><h3>Content series over one-off posts</h3><p>A recognisable format people return for. Cheap to build, and almost nobody local is doing it deliberately.</p></div>
+      <div class="card rv"><h3>Smaller creators over expensive names</h3><p>Better results for a fraction of the cost, in a region full of trusted micro-creators nobody has approached properly.</p></div>
+      <div class="card rv"><h3>Human-led content beats generic AI</h3><p>Everyone has the tools now, so audiences have started distrusting obviously-synthetic content. A real voice is an advantage.</p></div>
     </div>
   </div>
 </section>
 
-<section>
+<section class="on-dark">
   <div class="wrap">
-    <div class="label">Ready To Import Now</div>
-    <h2 class="section-title">Proven elsewhere. Buildable here today.</h2>
+    <div class="rv">
+      <p class="eyebrow">Deliberately not selling yet</p>
+      <h2>Discipline is part of the pitch.</h2></div>
+    <div class="grid g-2">
+      <div class="card rv"><h3>Full AI-agent-run marketing</h3><p>Needs data systems and infrastructure most businesses here are years away from.</p></div>
+      <div class="card rv"><h3>Automated ad buying across streaming and retail networks</h3><p>Needs an ad-tech and e-commerce backbone that doesn't exist here yet.</p></div>
+      <div class="card rv"><h3>Heavy cross-channel measurement modelling</h3><p>Needs years of clean historical data almost nobody has collected.</p></div>
+      <div class="card rv"><h3>Full shoppable livestream commerce</h3><p>Needs payment rails and creator systems that aren't mature in this market.</p></div>
+    </div>
+    <p class="lead rv" style="margin-top:34px">We watch all of these. We don't sell them until
+      they're actually usable here. That's the difference between staying current and chasing
+      trends.</p>
+  </div>
+</section>
 
-    <div class="item">
-      <h3>1. Systems over tactics</h3>
-      <p>A content plan, a measurement plan, and a feedback loop that all talk to each other, instead of disconnected one-off posts. This is the whole idea Novapex is built on.</p>
-    </div>
-    <div class="item">
-      <h3>2. Fix what happens after someone shows up</h3>
-      <p>A clearer offer, a faster reply, an easier way to buy, often beats spending more money trying to reach new people. Locally, almost everyone is still focused only on reach.</p>
-    </div>
-    <div class="item">
-      <h3>3. Own the relationship instead of renting it</h3>
-      <p>A real list, a real catalogue, a real record of who's interested, instead of depending entirely on a platform's algorithm. The tools already exist here, they're just not being used this way.</p>
-    </div>
-    <div class="item">
-      <h3>4. Small, real communities beat big, empty audiences</h3>
-      <p>Smaller, closer-knit audiences who trust a brand outperform huge, disengaged follower counts, in both trust and sales.</p>
-    </div>
-    <div class="item">
-      <h3>5. Content series instead of one-off posts</h3>
-      <p>A recognizable format people come back for, not a random post every few days. Cheap to build, almost nobody local is doing it on purpose.</p>
-    </div>
-    <div class="item">
-      <h3>6. Smaller, real creators over big, expensive names</h3>
-      <p>Better results for a fraction of the cost. This region is full of small, trusted creators most businesses have never thought to work with properly.</p>
-    </div>
-    <div class="item">
-      <h3>7. Human-led content beats generic AI</h3>
-      <p>Everyone has AI tools now, so audiences have started distrusting fully-AI content. A real human voice out front is a direct advantage, not a disadvantage.</p>
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <p class="eyebrow rv">How it becomes the offer</p>
+    <h2 class="rv">Every service line already maps to this.</h2>
+    <div style="margin-top:30px">
+      <ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong style='font-weight:500'>Content Systems</strong> &rarr; content-series thinking, replacing post-and-pray with a plan</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong style='font-weight:500'>Brand Intelligence Dashboards</strong> &rarr; owning the relationship, measuring real outcomes</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong style='font-weight:500'>Campaign Mechanic Design</strong> &rarr; small real communities and signature formats</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong style='font-weight:500'>Executive Brand Systems</strong> &rarr; the human-led content advantage</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong style='font-weight:500'>WhatsApp Commerce</strong> &rarr; turning DM chaos into a structured system</span></li>
+</ul>
     </div>
   </div>
 </section>
 
-<div class="no-box">
+</main>
+
+<button id="top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" style="width:16px;height:16px"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<footer class="foot">
   <div class="wrap">
-    <div class="label">What We Deliberately Don't Sell Yet</div>
-    <h2 class="section-title" style="color:var(--paper)">Discipline is part of the pitch.</h2>
-
-    <div class="item">
-      <h3>Full AI-agent-run marketing</h3>
-      <p>Needs data systems and tech infrastructure most local businesses are years away from having.</p>
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/"><svg viewBox="58 58 164 168" aria-hidden="true" fill="currentColor"><path d="M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z" fill-rule="evenodd"/></svg><span>NOVAPEX</span></a>
+        <p class="blurb">A content and growth studio for businesses that already have
+          attention and need it to turn into revenue. Maseru, Lesotho — working with
+          clients across the region and beyond.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Site</h5>
+        <a href="/services">Services</a>
+      <a href="/case-study">Work</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      </div>
+      <div class="foot-col">
+        <h5>Industries</h5>
+        <a href="/01-finance-exec">Financial services</a>
+      <a href="/02-artist-manager">Artists & management</a>
+      <a href="/03-boutique-retail">Boutique retail</a>
+      <a href="/04-lodge-tourism">Lodges & tourism</a>
+      <a href="/05-law-firm">Law & professional</a>
+      <a href="/06-fitness-studio">Fitness & wellness</a>
+        <a href="/services#industries">All industries &rarr;</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <p class="role">Start a project</p>
+        <a href="mailto:hello@novapex.co">hello@novapex.co</a>
+        <p class="role">General &amp; press</p>
+        <a href="mailto:marketing@novapex.co.ls">marketing@novapex.co.ls</a>
+        <p class="role">WhatsApp</p>
+        <a href="https://wa.me/26656576553">+266 5657 6553</a>
+        <p class="role">Call</p>
+        <a href="tel:+26656702102">+266 5670 2102</a>
+      </div>
     </div>
-    <div class="item">
-      <h3>Automated ad-buying across streaming TV and retail networks</h3>
-      <p>Needs an ad-tech and e-commerce backbone that doesn't exist here yet.</p>
-    </div>
-    <div class="item">
-      <h3>Heavy cross-channel measurement modeling</h3>
-      <p>Needs years of historical data most local businesses haven't collected.</p>
-    </div>
-    <div class="item">
-      <h3>Full shoppable livestream commerce</h3>
-      <p>Needs payment infrastructure and creator systems that aren't mature here yet.</p>
-    </div>
-
-    <p class="closer">We watch all of these. We don't sell them until they're actually usable here. That's the difference between staying current and chasing trends.</p>
   </div>
-</div>
-
-<section>
-  <div class="wrap">
-    <div class="label">How This Becomes The Offer</div>
-    <h2 class="section-title">Every service line already maps to this.</h2>
-
-    <div class="map-item"><b>Content Systems</b> <span>&rarr; content-series thinking, replacing post-and-pray with an actual plan.</span></div>
-    <div class="map-item"><b>Brand Intelligence Dashboards</b> <span>&rarr; owning the relationship, measuring real outcomes instead of vanity metrics.</span></div>
-    <div class="map-item"><b>Campaign Mechanic Design</b> <span>&rarr; small, real communities and signature formats, not generic one-off campaigns.</span></div>
-    <div class="map-item"><b>Executive &amp; Personal Brand Systems</b> <span>&rarr; the human-led content advantage, real voice beats generic AI output.</span></div>
-    <div class="map-item"><b>WhatsApp Commerce Systems</b> <span>&rarr; a new, standalone opportunity: turning DM chaos into a real structured system.</span></div>
+  <div class="foot-bot">
+    <span>&copy; 2026 Novapex. All rights reserved.</span>
+    <span>Maseru, Lesotho</span>
   </div>
-</section>
-
-<div class="closing">
-  <div class="wrap">
-    <h2>Why this is the right bet for 2026</h2>
-    <p>Novapex isn't importing ideas that need five more years to matter here. Every item on the "ready to import" list is buildable today, with tools that already exist in this market. Internationally credible thinking, applied to what this market can actually use right now, not what looks good in a trends report nobody local can act on yet.</p>
-  </div>
-</div>
-
-<footer>Novapex &middot; Internal &middot; Maseru, Lesotho &middot; 2026</footer>
-
+</footer>
+<script src="/assets/site.js" defer></script>
 </body>
 </html>
