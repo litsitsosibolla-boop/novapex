@@ -616,3 +616,8 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
 }
 .rate-line .then{ font-size:15px; color:var(--muted-dark); }
 .rate-line .then b{ color:var(--on-dark); font-weight:500; }
+
+/* The diagnostic sits above the tiers as the entry offer, so it reads as the
+   front door rather than a fourth tier competing with them. */
+.diag{ border-color:var(--ink); box-shadow:var(--lift-1); }
+.diag .price-per{ margin-bottom:14px; }
