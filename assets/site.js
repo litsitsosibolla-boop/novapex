@@ -100,7 +100,6 @@
       b.setAttribute('aria-selected', String(b.getAttribute('data-cur') === cur));
     });
     if (typeof window.npxQuote === 'function') window.npxQuote();
-    if (typeof window.npxOffer === 'function') window.npxOffer();
   }
 
   /* Convert control: a button next to the prices that opens a currency list. */
@@ -198,96 +197,84 @@
     });
   }
 
-  /* --- Landing-page offer: 3-hour window, and the access gate ------------
-     These pages are only meant to be reached through a tracked ad or sales
-     link. Arriving with a tracking parameter opens (or resumes) a 3-hour
-     discounted window. Arriving without one, having previously held a window,
-     means the visitor came back by some other route, so the offer is closed.
+  /* --- Landing-page offer: claim, then a 3-hour window -------------------
+     These pages are unlisted, so simply being here means the visitor arrived
+     through an ad or a sales message. There is no gate. The discount is stated
+     in the copy from the moment they land; the countdown only starts when they
+     press "Get my discount", and from then it runs for three hours and
+     survives a reload. If a tracking parameter happens to be on the URL it is
+     carried into the enquiry so the channel stays attributable.
 
-     This is a client-side gate: it shapes the experience, it is not security.
-     Anyone who clears site data or re-uses the original link gets back in.
-     Enforcing it properly would need the offer issued and checked server-side. */
+     State lives in localStorage, so it is per-browser rather than enforced.  */
   var body = document.body;
   if (body && body.classList.contains('landing')) {
-    var slug     = body.getAttribute('data-offer');
-    var tier     = parseFloat(body.getAttribute('data-tier'));
-    var pct      = parseFloat(body.getAttribute('data-discount')) || 15;
-    var WINDOW   = 3 * 60 * 60 * 1000;
-    var KEY      = 'npx-offer-' + slug;
-    var TRACKERS = ['ref', 'src', 'utm_source', 'utm_campaign', 'fbclid', 'gclid'];
+    var slug   = body.getAttribute('data-offer');
+    var WINDOW = 3 * 60 * 60 * 1000;
+    var KEY    = 'npx-offer-' + slug;
 
-    var params  = new URLSearchParams(window.location.search);
-    var tracked = TRACKERS.some(function (k) { return params.has(k); });
-
-    function read() {
-      try { return JSON.parse(localStorage.getItem(KEY) || 'null'); }
-      catch (e) { return null; }
-    }
-    function write(v) {
-      try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {}
-    }
-
-    var state = read();
-    var now   = Date.now();
-
-    if (tracked) {
-      // Arrived through a real ad or sales link. Start or resume the window.
-      if (!state || state.closed || now - state.start > WINDOW) {
-        state = { start: now, closed: false,
-                  ref: params.get('ref') || params.get('src') ||
-                       params.get('utm_source') || 'direct' };
-        write(state);
-      }
-    } else if (state && !state.closed) {
-      // Came back without their link. Close the window for good.
-      state.closed = true;
-      write(state);
-    }
-
-    var live    = !!state && !state.closed && (now - state.start) < WINDOW;
     var offerEl = $('#offer');
+    var clock   = $('#offer-clock');
+    var timer   = null;
 
-    if (offerEl) {
-      offerEl.setAttribute('data-state', live ? 'live' : (state ? 'closed' : 'gated'));
+    function readStart() {
+      try {
+        var v = parseInt(localStorage.getItem(KEY), 10);
+        return isNaN(v) ? null : v;
+      } catch (e) { return null; }
     }
 
-    var clock = $('#offer-clock');
-    var full  = $('#offer-full');
-    var now_  = $('#offer-now');
+    function setState(s) { if (offerEl) offerEl.setAttribute('data-state', s); }
 
-    function renderPrices() {
-      var discounted = Math.round(tier * (100 - pct) / 100);
-      if (full) full.textContent = money(tier);
-      if (now_) now_.textContent = money(discounted);
-    }
-    window.npxOffer = renderPrices;
-    renderPrices();
-
-    if (live && clock) {
-      var tick = function () {
-        var left = state.start + WINDOW - Date.now();
-        if (left <= 0) {
-          clock.textContent = '00:00:00';
-          if (offerEl) offerEl.setAttribute('data-state', 'closed');
-          clearInterval(timer);
-          return;
-        }
+    function tick(start) {
+      var left = start + WINDOW - Date.now();
+      if (left <= 0) {
+        if (clock) clock.textContent = '00:00:00';
+        setState('expired');
+        if (timer) clearInterval(timer);
+        return;
+      }
+      if (clock) {
         var h = Math.floor(left / 3600000);
         var m = Math.floor(left % 3600000 / 60000);
-        var s = Math.floor(left % 60000 / 1000);
-        clock.textContent = [h, m, s].map(function (n) {
+        var sec = Math.floor(left % 60000 / 1000);
+        clock.textContent = [h, m, sec].map(function (n) {
           return String(n).padStart(2, '0');
         }).join(':');
-      };
-      tick();
-      var timer = setInterval(tick, 1000);
+      }
     }
 
-    // Carry the tracking source into the enquiry so the channel is attributable.
-    if (state && state.ref) {
+    function run(start) {
+      setState('live');
+      tick(start);
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { tick(start); }, 1000);
+    }
+
+    var started = readStart();
+    if (started === null) {
+      setState('ready');                       // discount offered, clock not running
+    } else if (Date.now() - started < WINDOW) {
+      run(started);                            // resume an in-flight window
+    } else {
+      setState('expired');
+    }
+
+    $$('[data-claim]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        if (readStart() !== null) return;      // already claimed, let the link scroll
+        var start = Date.now();
+        try { localStorage.setItem(KEY, String(start)); } catch (e) {}
+        run(start);
+      });
+    });
+
+    // Attribution: keep whatever the ad appended to the URL.
+    var params = new URLSearchParams(window.location.search);
+    var ref = params.get('ref') || params.get('src') || params.get('utm_source');
+    if (ref) {
       $$('a[href^="mailto:"]').forEach(function (a) {
         a.href += (a.href.indexOf('?') === -1 ? '?' : '&') +
-                  'body=' + encodeURIComponent('\n\n[ref: ' + state.ref + ']');
+                  'body=' + encodeURIComponent('\n\n[ref: ' + ref + ']');
       });
     }
   }

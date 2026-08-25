@@ -535,11 +535,12 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
 .offer-price .per{ font-size:14px; color:var(--muted-dark); }
 .offer .convert{ margin-top:22px; }
 
-/* The three states of the offer block. */
-.offer .when-live, .offer .when-closed, .offer .when-gated{ display:none; }
-.offer[data-state="live"]   .when-live  { display:block; }
-.offer[data-state="closed"] .when-closed{ display:block; }
-.offer[data-state="gated"]  .when-gated { display:block; }
+/* Three states: the discount is offered, the clock is running, the window has
+   passed. The countdown is deliberately hidden until the visitor claims. */
+.offer .when-ready, .offer .when-live, .offer .when-expired{ display:none; }
+.offer[data-state="ready"]   .when-ready  { display:block; }
+.offer[data-state="live"]    .when-live   { display:block; }
+.offer[data-state="expired"] .when-expired{ display:block; }
 .offer .cta-row{ justify-content:center; }
 
 /* The offer block is dark, but its convert pill stays light so it reads as an
@@ -547,3 +548,17 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
 .offer .convert-btn{ background:var(--surface); border-color:var(--line-2); color:var(--muted); }
 .offer .convert-btn:hover{ border-color:var(--paper); }
 .offer .convert-cur{ color:var(--on-paper); }
+
+/* The discount, stated in the hero the moment someone lands. */
+.offer-flag{
+  display:inline-flex; align-items:center; gap:10px;
+  margin-top:26px; padding:9px 18px 9px 14px;
+  border-radius:100px; background:rgba(194,222,85,.14);
+  border:1px solid rgba(194,222,85,.42);
+  font-size:14.5px; color:var(--on-paper);
+}
+.offer-flag b{
+  font-family:'Space Grotesk',sans-serif; font-weight:600;
+  color:var(--accent-ink); letter-spacing:-.01em;
+}
+.offer-flag .dotm{ width:6px; height:6px; border-radius:50%; background:var(--accent-mid); flex:none; }
