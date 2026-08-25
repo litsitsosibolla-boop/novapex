@@ -347,22 +347,24 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
 .chip:hover{ color:var(--on-paper); border-color:var(--ink); transform:translateY(-1px); }
 .chip[aria-pressed="true"], .chip.on{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
 
-/* Blog --------------------------------------------------------------------- */
-.posts{ display:grid; gap:0; margin-top:14px; }
-.post-row{
+/* Row lists ----------------------------------------------------------------
+   One pattern, two uses: blog post listings and compact service listings. */
+.posts, .list{ display:grid; gap:0; margin-top:14px; }
+.post-row, .list-row{
   display:grid; grid-template-columns:150px 1fr auto; gap:clamp(16px,3vw,40px);
   align-items:baseline;
   padding:clamp(24px,3vw,34px) 0;
   border-bottom:1px solid var(--line);
   transition:padding-left var(--mid) var(--ease);
 }
-.post-row:hover{ padding-left:8px; }
-.post-row .meta{ font-size:13px; color:var(--muted); letter-spacing:.02em; }
-.post-row h3{ transition:color var(--mid) var(--ease); }
-.post-row:hover h3{ color:var(--accent-ink); }
-.post-row p{ font-size:15px; color:var(--muted); margin-top:8px; max-width:62ch; }
-.post-row .go{ font-size:14px; color:var(--muted); white-space:nowrap; transition:color var(--mid) var(--ease); }
-.post-row:hover .go{ color:var(--on-paper); }
+.post-row:hover, .list-row:hover{ padding-left:8px; }
+.list-row{ grid-template-columns:56px 1fr auto; }
+.post-row .meta, .list-row .meta{ font-size:13px; color:var(--muted); letter-spacing:.02em; }
+.post-row h3, .list-row h3{ transition:color var(--mid) var(--ease); }
+.post-row:hover h3, .list-row:hover h3{ color:var(--accent-ink); }
+.post-row p, .list-row p{ font-size:15px; color:var(--muted); margin-top:8px; max-width:62ch; }
+.post-row .go, .list-row .go{ font-size:14px; color:var(--muted); white-space:nowrap; transition:color var(--mid) var(--ease); }
+.post-row:hover .go, .list-row:hover .go{ color:var(--on-paper); }
 .post-row.hide{ display:none; }
 
 .prose-body{ font-size:17.5px; line-height:1.78; }
@@ -423,8 +425,10 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
   .g-3,.g-4{ grid-template-columns:repeat(2,1fr); }
   .split{ grid-template-columns:1fr; }
   .foot-grid{ grid-template-columns:1fr 1fr; }
-  .post-row{ grid-template-columns:1fr; gap:6px; }
+  .post-row, .list-row{ grid-template-columns:1fr; gap:6px; }
   .post-row .go{ margin-top:10px; }
+  /* A lone arrow on its own line is dead weight — the whole row is the link. */
+  .list-row .go{ display:none; }
 }
 @media (max-width:620px){
   body{ font-size:16px; }
