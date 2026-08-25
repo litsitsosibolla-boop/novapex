@@ -6,6 +6,12 @@
   'use strict';
   document.documentElement.classList.add('js');
 
+  /* --- Capacity ----------------------------------------------------------
+     The one place seat availability is set. Edit `remaining` as seats fill and
+     every landing page follows: at 0 they all switch to the full state. */
+  var NOVAPEX_SEATS = { quarter: "Q4 2026", remaining: 1, total: 2,
+                        nextQuarter: "Q1 2027" };
+
   var $  = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
@@ -194,84 +200,31 @@
     });
   }
 
-  /* --- Landing-page offer: claim, then a 3-hour window -------------------
-     These pages are unlisted, so simply being here means the visitor arrived
-     through an ad or a sales message. There is no gate. The discount is stated
-     in the copy from the moment they land; the countdown only starts when they
-     press "Get my discount", and from then it runs for three hours and
-     survives a reload. If a tracking parameter happens to be on the URL it is
-     carried into the enquiry so the channel stays attributable.
-
-     State lives in localStorage, so it is per-browser rather than enforced.  */
+  /* --- Landing pages: seat availability ---------------------------------
+     No timers here. The scarcity is the seat count, which is a standing fact
+     rather than something that starts when a visitor arrives, so nothing to
+     reset on refresh. */
   var body = document.body;
   if (body && body.classList.contains('landing')) {
-    var slug   = body.getAttribute('data-offer');
-    var WINDOW = 3 * 60 * 60 * 1000;
-    var KEY    = 'npx-offer-' + slug;
+    var S = NOVAPEX_SEATS;
+    var WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five'];
+    var word = function (n) { return WORDS[n] || String(n); };
 
-    var clocks = $$('.clock-t');
-    var timer  = null;
+    body.setAttribute('data-seats', S.remaining > 0 ? 'open' : 'full');
 
-    function readStart() {
-      try {
-        var v = parseInt(localStorage.getItem(KEY), 10);
-        return isNaN(v) ? null : v;
-      } catch (e) { return null; }
-    }
-
-    function setState(s) { body.setAttribute('data-state', s); }
-
-    function tick(start) {
-      var left = start + WINDOW - Date.now();
-      if (left <= 0) {
-        clocks.forEach(function (c) { c.textContent = '00:00:00'; });
-        setState('expired');
-        if (timer) clearInterval(timer);
-        return;
-      }
-      var h = Math.floor(left / 3600000);
-      var m = Math.floor(left % 3600000 / 60000);
-      var sec = Math.floor(left % 60000 / 1000);
-      var text = [h, m, sec].map(function (n) {
-        return String(n).padStart(2, '0');
-      }).join(':');
-      clocks.forEach(function (c) { c.textContent = text; });
-    }
-
-    function run(start) {
-      setState('live');
-      tick(start);
-      if (timer) clearInterval(timer);
-      timer = setInterval(function () { tick(start); }, 1000);
-    }
-
-    var started = readStart();
-    if (started === null) {
-      setState('ready');                       // discount offered, clock not running
-    } else if (Date.now() - started < WINDOW) {
-      run(started);                            // resume an in-flight window
-    } else {
-      setState('expired');
-    }
-
-    // Any claim button on the page starts the one shared window.
-    $$('[data-claim]').forEach(function (el) {
-      el.addEventListener('click', function () {
-        if (readStart() !== null) return;      // already running, let the link scroll
-        var start = Date.now();
-        try { localStorage.setItem(KEY, String(start)); } catch (e) {}
-        run(start);
+    var fill = {
+      remaining: String(S.remaining),
+      quarter: S.quarter,
+      next: S.nextQuarter,
+      'total-word': word(S.total).toLowerCase(),
+      'remaining-phrase': S.remaining === 1
+        ? 'One seat remains'
+        : word(S.remaining) + ' seats remain'
+    };
+    Object.keys(fill).forEach(function (k) {
+      $$('[data-seat="' + k + '"]').forEach(function (el) {
+        el.textContent = fill[k];
       });
     });
-
-    // Attribution: keep whatever the ad appended to the URL.
-    var params = new URLSearchParams(window.location.search);
-    var ref = params.get('ref') || params.get('src') || params.get('utm_source');
-    if (ref) {
-      $$('a[href^="mailto:"]').forEach(function (a) {
-        a.href += (a.href.indexOf('?') === -1 ? '?' : '&') +
-                  'body=' + encodeURIComponent('\n\n[ref: ' + ref + ']');
-      });
-    }
   }
 })();
