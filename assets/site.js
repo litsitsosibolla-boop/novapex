@@ -151,9 +151,14 @@
   if (calc) {
     var out   = $('#calc-total', calc);
     var count = $('#calc-count', calc);
+    var partnerNote = $('#calc-partner');
     function quote() {
-      var picked = $$('.addon:checked', calc);
-      var total = picked.reduce(function (sum, cb) {
+      var picked  = $$('.addon:checked', calc);
+      // Partner-delivered items are scoped on the call, so they are counted in
+      // the selection but never priced into the running total.
+      var priced  = picked.filter(function (cb) { return !cb.classList.contains('partner'); });
+      var partner = picked.length - priced.length;
+      var total   = priced.reduce(function (sum, cb) {
         return sum + parseFloat(cb.getAttribute('data-zar'));
       }, 0);
       if (out) out.textContent = money(total);
@@ -161,6 +166,7 @@
         count.textContent = picked.length === 0 ? 'Nothing selected yet'
           : picked.length + (picked.length === 1 ? ' service selected' : ' services selected');
       }
+      if (partnerNote) partnerNote.hidden = partner === 0;
     }
     $$('.addon', calc).forEach(function (cb) { cb.addEventListener('change', quote); });
     window.npxQuote = quote;
@@ -168,12 +174,17 @@
 
     var send = $('#calc-send', calc);
     if (send) send.addEventListener('click', function () {
-      var picked = $$('.addon:checked', calc).map(function (cb) {
-        return '- ' + cb.getAttribute('data-label');
-      });
-      var body = 'Services I am interested in:\n' +
-        (picked.length ? picked.join('\n') : '(none selected yet)') +
+      var all     = $$('.addon:checked', calc);
+      var priced  = all.filter(function (cb) { return !cb.classList.contains('partner'); })
+                       .map(function (cb) { return '- ' + cb.getAttribute('data-label'); });
+      var partner = all.filter(function (cb) { return cb.classList.contains('partner'); })
+                       .map(function (cb) { return '- ' + cb.getAttribute('data-label'); });
+      var body = 'Core systems I am interested in:\n' +
+        (priced.length ? priced.join('\n') : '(none selected yet)') +
         '\n\nEstimated monthly investment: ' + (out ? out.textContent : '') +
+        (partner.length
+          ? '\n\nPartner-delivered, to be scoped and quoted separately:\n' + partner.join('\n')
+          : '') +
         '\n\nPlease send a formal quote.';
       window.location.href = 'mailto:hello@novapex.co?subject=' +
         encodeURIComponent('Custom quote request') + '&body=' + encodeURIComponent(body);

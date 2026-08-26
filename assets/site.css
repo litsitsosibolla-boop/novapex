@@ -621,3 +621,15 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
    front door rather than a fourth tier competing with them. */
 .diag{ border-color:var(--ink); box-shadow:var(--lift-1); }
 .diag .price-per{ margin-bottom:14px; }
+
+/* Partner-delivered lines carry no figure, so the distinction is visible in the
+   list itself rather than only in a footnote. */
+.group-note{
+  font-size:13px; color:var(--muted); font-style:italic;
+  margin:0 0 6px;
+}
+.partner-tag{
+  font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); font-weight:500;
+}
+.partner-note{ color:var(--muted); }
