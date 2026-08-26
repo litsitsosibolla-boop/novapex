@@ -633,3 +633,43 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
   color:var(--muted); font-weight:500;
 }
 .partner-note{ color:var(--muted); }
+
+/* Quote pages ------------------------------------------------------------- */
+.quote-meta{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:clamp(18px,2.4vw,30px); margin-top:clamp(30px,4vw,44px);
+}
+.quote-meta span{
+  display:block; font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:5px;
+}
+.quote-meta b{
+  font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:16.5px;
+  letter-spacing:-.01em;
+}
+.quote .brand{ font-size:17px; }
+/* The exclusions list uses the tick layout without the tick. */
+.ticks.plain li{ padding-left:0; }
+.ticks.plain li::before{
+  content:""; width:14px; height:1.5px; border-radius:2px;
+  background:var(--line-2); flex:none; margin-top:13px;
+}
+#quote-state .when-live, #quote-state .when-expired{ display:none; }
+#quote-state[data-state="live"] .when-live{ display:block; }
+#quote-state[data-state="expired"] .when-expired{ display:block; }
+
+/* The quote countdown. The only clock left on the site. */
+.clock{
+  display:inline-flex; align-items:baseline; gap:12px;
+  margin:26px 0 14px; padding:14px 26px;
+  border:1px solid var(--line-dark); border-radius:100px;
+  background:rgba(255,255,255,.03);
+}
+.clock .t{
+  font-family:'Space Grotesk',sans-serif; font-weight:600;
+  font-size:clamp(26px,4vw,40px); letter-spacing:.02em; color:var(--accent);
+  font-variant-numeric:tabular-nums;
+}
+.clock .lbl{ font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted-dark); }
+#quote-state .wrap{ text-align:center; }
+#quote-state h2{ max-width:24ch; margin:0 auto; }

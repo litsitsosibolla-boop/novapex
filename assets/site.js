@@ -211,6 +211,39 @@
     });
   }
 
+  /* --- Quote pages: the one legitimate countdown ------------------------
+     Counts down to QUOTE.expires, an absolute timestamp written into the page,
+     rather than to a window opened on arrival. A refresh therefore cannot buy
+     more time. The same deadline is printed as text beside the clock, so the
+     page still states it plainly if this never runs. */
+  var qState = document.getElementById('quote-state');
+  if (qState && typeof QUOTE !== 'undefined' && QUOTE.expires) {
+    var qClock = document.getElementById('quote-clock');
+    var expiry = new Date(QUOTE.expires).getTime();
+
+    var qTick = function () {
+      var left = expiry - Date.now();
+      if (isNaN(expiry)) { return; }
+      if (left <= 0) {
+        qState.setAttribute('data-state', 'expired');
+        if (qClock) qClock.textContent = '00:00:00';
+        clearInterval(qTimer);
+        return;
+      }
+      qState.setAttribute('data-state', 'live');
+      if (qClock) {
+        var d = Math.floor(left / 86400000);
+        var h = Math.floor(left % 86400000 / 3600000);
+        var m = Math.floor(left % 3600000 / 60000);
+        var s = Math.floor(left % 60000 / 1000);
+        var pad = function (n) { return String(n).padStart(2, '0'); };
+        qClock.textContent = (d > 0 ? d + 'd ' : '') + pad(h) + ':' + pad(m) + ':' + pad(s);
+      }
+    };
+    qTick();
+    var qTimer = setInterval(qTick, 1000);
+  }
+
   /* --- Landing pages: seat availability ---------------------------------
      No timers here. The scarcity is the seat count, which is a standing fact
      rather than something that starts when a visitor arrives, so nothing to
