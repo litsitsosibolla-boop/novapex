@@ -121,9 +121,6 @@ section{ padding:var(--sec-y) 0; }
 .on-dark h1,.on-dark h2,.on-dark h3{ color:var(--on-dark); }
 .hairline-top{ border-top:1px solid var(--line); }
 
-/* A soft, wide divider instead of a hard rule */
-.fade-rule{ height:1px; border:0; background:linear-gradient(90deg,transparent,var(--line-2) 18%,var(--line-2) 82%,transparent); }
-
 /* Buttons ------------------------------------------------------------------
    Two only: solid ink, and a quiet outline. Both lift softly. */
 .btn{
