@@ -72,10 +72,9 @@
   }
 
   /* --- Currency ----------------------------------------------------------
-     Prices are set in Rand. A first-time visitor sees USD; the choice is then
-     remembered. Live rates refresh from the previous business day's close,
-     with the fallbacks below used if that request fails. Every element with
-     [data-zar] is converted in place.                                       */
+     Prices are set in Rand. Every visitor starts on USD. Live rates refresh
+     from the previous business day's close, with the fallbacks below used if
+     that request fails. Every element with [data-zar] is converted in place. */
   var FX = { ZAR: 1, USD: 1/18.1, GBP: 1/23.0, EUR: 1/19.6,
              AUD: 1/11.9, CAD: 1/13.2, CHF: 1/20.4 };
   var SYM = { ZAR: 'R', USD: '$', GBP: '£', EUR: '€',
@@ -98,38 +97,50 @@
       el.textContent = (el.getAttribute('data-pre') || '') +
                        money(parseFloat(el.getAttribute('data-zar')));
     });
-    var label = $('#curLabel');
-    if (label) label.textContent = cur;
-    $$('#curMenu button').forEach(function (b) {
+    $$('.convert-cur').forEach(function (el) { el.textContent = cur; });
+    $$('.convert-menu button').forEach(function (b) {
       b.setAttribute('aria-selected', String(b.getAttribute('data-cur') === cur));
     });
     if (typeof window.npxQuote === 'function') window.npxQuote();
   }
 
-  /* Convert control: a button next to the prices that opens a currency list. */
-  var curBtn = $('#curBtn'), curMenu = $('#curMenu');
-  if (curBtn && curMenu) {
-    function closeMenu() {
-      curMenu.classList.remove('open');
-      curBtn.setAttribute('aria-expanded', 'false');
-    }
-    curBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var open = curMenu.classList.toggle('open');
-      curBtn.setAttribute('aria-expanded', String(open));
-    });
-    $$('button', curMenu).forEach(function (b) {
-      b.addEventListener('click', function () {
-        cur = b.getAttribute('data-cur');
-        paint();
-        closeMenu();
+  /* Convert controls: a button next to the prices that opens a currency list.
+     A page may carry more than one, because the price appears in more than one
+     place, so they are wired as a set rather than by id. Switching in any one
+     of them repaints every price and every other control on the page. */
+  var controls = $$('.convert');
+  if (controls.length) {
+    var closeMenus = function () {
+      controls.forEach(function (c) {
+        var m = $('.convert-menu', c), b = $('.convert-btn', c);
+        if (m) m.classList.remove('open');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+    };
+    controls.forEach(function (c) {
+      var btn = $('.convert-btn', c), menu = $('.convert-menu', c);
+      if (!btn || !menu) return;
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = !menu.classList.contains('open');
+        closeMenus();
+        menu.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', String(open));
+      });
+      $$('button', menu).forEach(function (b) {
+        b.addEventListener('click', function () {
+          cur = b.getAttribute('data-cur');
+          paint();
+          closeMenus();
+        });
       });
     });
     document.addEventListener('click', function (e) {
-      if (!curBtn.contains(e.target) && !curMenu.contains(e.target)) closeMenu();
+      var t = e.target;
+      if (!(t && t.closest && t.closest('.convert'))) closeMenus();
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeMenu();
+      if (e.key === 'Escape') closeMenus();
     });
   }
 
