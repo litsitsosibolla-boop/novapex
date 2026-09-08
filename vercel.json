@@ -1,0 +1,70 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/services",
+      "destination": "/method",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/leak-map",
+      "permanent": true
+    },
+    {
+      "source": "/case-study",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/case-study-1",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/case-study-2",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/company-profile",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/blog/post-and-pray-problem",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/proof-over-promises",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-we-dont-sell-everything",
+      "destination": "/blog",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(01-finance-exec|02-artist-manager|03-boutique-retail|04-lodge-tourism|05-law-firm|06-fitness-studio|07-food-agro|08-private-college|09-real-estate|10-ngo-civic|2026-model|targets|quote)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/(01-finance-exec|02-artist-manager|03-boutique-retail|04-lodge-tourism|05-law-firm|06-fitness-studio|07-food-agro|08-private-college|09-real-estate|10-ngo-civic|2026-model|targets|quote)/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ]
+}
