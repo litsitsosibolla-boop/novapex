@@ -7,11 +7,6 @@
       "permanent": true
     },
     {
-      "source": "/pricing",
-      "destination": "/leak-map",
-      "permanent": true
-    },
-    {
       "source": "/case-study",
       "destination": "/about",
       "permanent": true

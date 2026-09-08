@@ -854,3 +854,81 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
   background:var(--surface-2); border:1px dashed var(--line-2);
   font-size:14px; color:var(--muted); letter-spacing:.02em;
 }
+
+/* Price ---------------------------------------------------------------------
+   Prices used to render through `.fig`, which also carries "2 weeks" and
+   "3 hours". The number a buyer came for read as one fact among several. It now
+   has its own scale, an accent rule to catch the eye on the way down the page,
+   and a cadence line so the figure is never ambiguous about what it buys. */
+.price-tag{ position:relative; padding-top:20px; }
+.price-tag::before{
+  content:""; position:absolute; top:0; left:0;
+  width:34px; height:3px; border-radius:2px; background:var(--accent);
+}
+.price-label{
+  font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  font-weight:500; color:var(--muted); margin-bottom:10px;
+}
+.price-amt{
+  display:block;
+  font-family:'Space Grotesk', sans-serif; font-weight:500;
+  letter-spacing:-.045em; line-height:.92; color:var(--on-paper);
+  font-variant-numeric:lining-nums tabular-nums;
+}
+.price-cadence{ margin-top:12px; font-size:15px; color:var(--muted); }
+.price-note{ margin-top:10px; font-size:14px; color:var(--muted); max-width:34ch; }
+.price-free{ color:var(--accent-ink); }
+
+.price-lg  .price-amt{ font-size:clamp(42px, 6.4vw, 74px); }
+.price-row .price-amt{ font-size:clamp(30px, 3.6vw, 42px); }
+.price-row{ padding-top:16px; }
+.price-row::before{ width:26px; height:2px; }
+.price-row .price-cadence{ margin-top:8px; font-size:14px; }
+
+.on-dark .price-amt{ color:var(--on-dark); }
+.on-dark .price-free{ color:var(--accent); }
+.on-dark .price-label,.on-dark .price-cadence,.on-dark .price-note{ color:var(--muted-dark); }
+
+/* The pricing page: three rungs side by side, the middle one carrying the
+   weight because it is the one the argument points at. */
+.rungs{ display:grid; gap:clamp(16px,2vw,22px); grid-template-columns:repeat(3,1fr); margin-top:clamp(34px,4vw,48px); }
+.rung-card{
+  display:flex; flex-direction:column; gap:0;
+  padding:clamp(24px,2.8vw,34px); border-radius:var(--r-lg);
+  background:var(--surface); border:1px solid var(--line);
+  transition:border-color var(--mid) var(--ease), box-shadow var(--mid) var(--ease),
+             transform var(--mid) var(--ease);
+}
+.rung-card:hover{ border-color:var(--line-2); box-shadow:var(--lift-1); transform:translateY(-2px); }
+.rung-card.lead{ border-color:var(--ink); box-shadow:var(--lift-1); }
+.rung-card h3{ font-size:clamp(19px,2.1vw,23px); letter-spacing:-.02em; margin-top:22px; }
+.rung-card > p{ margin-top:10px; color:var(--muted); font-size:15.5px; }
+.rung-card .ticks{ margin-top:18px; }
+.rung-card .ticks li{ font-size:14.5px; padding:6px 0; }
+.rung-card .rung-go{ margin-top:auto; padding-top:24px; }
+@media (max-width:900px){ .rungs{ grid-template-columns:1fr; } }
+
+/* The three cards read as one row, so their headings have to start on the same
+   line whatever the note above them says. */
+.rung-card .price-note{ min-height:2.6em; }
+@media (max-width:900px){ .rung-card .price-note{ min-height:0; } }
+.price-row .price-amt{ font-size:clamp(34px, 4.2vw, 50px); }
+
+/* Aligning the cards by reserving space in each one never quite worked: a note
+   that wraps differently, or a heading that does, puts the next row out by a
+   line. Subgrid makes the three cards share the row track sizes outright, so
+   price, heading, body, list and link each sit on one line across the row.
+   The min-height above stays as the fallback where subgrid is missing. */
+@supports (grid-template-rows: subgrid) {
+  .rungs{ grid-template-rows:auto auto auto auto auto; }
+  .rung-card{ display:grid; grid-row:span 5; grid-template-rows:subgrid; gap:0; }
+  .rung-card .price-note{ min-height:0; }
+  .rung-card .rung-go{ align-self:end; }
+}
+
+/* Each rung is its own grid, so `auto` columns sized themselves per row and the
+   step labels, headings and prices all landed on different left edges. Fixed
+   side columns make the three rows read as one table. */
+@media (min-width:761px){
+  .rung{ grid-template-columns:104px 1fr 224px; }
+}
