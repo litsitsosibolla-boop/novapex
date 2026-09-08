@@ -376,7 +376,10 @@
           'means every stage needs the same work.</p></div>';
       }
 
-      $('#test-questions').hidden = true;
+      // Hide the whole section, not just the list inside it: an emptied section
+      // keeps its vertical padding and leaves a dead band above the result.
+      var qWrap = $('#test-questions');
+      if (qWrap) (qWrap.closest('section') || qWrap).hidden = true;
       var res = $('#test-result');
       res.hidden = false;
       res.scrollIntoView({ behavior: 'smooth', block: 'start' });
