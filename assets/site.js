@@ -255,6 +255,134 @@
     var qTimer = setInterval(qTick, 1000);
   }
 
+
+  /* --- Forms -------------------------------------------------------------
+     The site is static, so there is nowhere to POST. Each form is read on
+     submit, turned into a readable message and handed to the visitor's mail
+     client. Nothing is lost, and there is no third party in the path. To move
+     to a real endpoint later, post `pairs` instead of opening the mailto. */
+  var MAIL = 'hello@novapex.co';
+
+  $$('[data-form-subject]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      var lines = [];
+      $$('input, select, textarea', form).forEach(function (el) {
+        if (!el.name || !el.value) return;
+        var lab = $('label[for="' + el.id + '"]', form);
+        var name = lab ? lab.textContent.replace(/\s*(required|optional)\s*$/i, '').trim()
+                       : el.name;
+        lines.push(name + ':\n' + el.value);
+      });
+      window.location.href = 'mailto:' + MAIL +
+        '?subject=' + encodeURIComponent(form.getAttribute('data-form-subject')) +
+        '&body=' + encodeURIComponent(lines.join('\n\n'));
+    });
+  });
+
+  /* Newsletter. Same mechanism, one field, and the form is replaced by a line
+     of text so the visitor knows the click did something. */
+  $$('[data-signup]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      var email = $('input', form).value;
+      window.location.href = 'mailto:' + MAIL +
+        '?subject=' + encodeURIComponent('Subscribe: The Visibility Brief') +
+        '&body=' + encodeURIComponent('Please add this address to the Brief:\n' + email);
+      var done = document.createElement('p');
+      done.className = 'signup-said';
+      done.textContent = 'Your mail app is opening. Send it and you are on the list.';
+      form.replaceWith(done);
+    });
+  });
+
+  /* --- The Leak Test -----------------------------------------------------
+     Twelve questions, each scored 0 to 3, grouped into four stages of the
+     system. The total places the company in a band; the two lowest-scoring
+     stages are named back with what they typically cost. All of it runs here,
+     because a scored assessment that needs a server is a scored assessment
+     nobody finishes. */
+  var test = $('#leak-test');
+  if (test && typeof LEAK_TEST !== 'undefined') {
+    var answers = {};
+    var qs = $$('.qcard', test);
+
+    var progress = function () {
+      var n = Object.keys(answers).length;
+      var el = $('#test-progress');
+      if (el) el.textContent = n + ' of ' + qs.length + ' answered';
+      var btn = $('#test-submit');
+      if (btn) btn.disabled = n < qs.length;
+    };
+
+    $$('.qopt input', test).forEach(function (radio) {
+      radio.addEventListener('change', function () {
+        answers[radio.name] = parseInt(radio.value, 10);
+        $$('.qopt', radio.closest('.qopts')).forEach(function (o) {
+          o.classList.toggle('picked', $('input', o).checked);
+        });
+        progress();
+      });
+    });
+    progress();
+
+    var submit = $('#test-submit');
+    if (submit) submit.addEventListener('click', function () {
+      var total = 0, stage = {};
+      LEAK_TEST.questions.forEach(function (q) {
+        var v = answers[q.id] || 0;
+        total += v;
+        stage[q.stage] = (stage[q.stage] || 0) + v;
+      });
+      var max = LEAK_TEST.questions.length * 3;
+
+      var band = LEAK_TEST.bands.filter(function (b) { return total >= b.min; })[0];
+      var perStage = {};
+      LEAK_TEST.questions.forEach(function (q) {
+        perStage[q.stage] = (perStage[q.stage] || 0) + 3;
+      });
+      var ranked = Object.keys(stage).map(function (k) {
+        return { key: k, pct: stage[k] / perStage[k] };
+      }).sort(function (a, b) { return a.pct - b.pct; });
+      // A stage at full marks is not a weak stage, and four stages sitting at the
+      // same score have no weakest among them. Naming two anyway would be the
+      // kind of false precision this whole test exists to argue against.
+      var spread  = ranked[ranked.length - 1].pct - ranked[0].pct;
+      var weakest = spread === 0 ? [] : ranked.filter(function (w) { return w.pct < 1; })
+                                              .slice(0, 2);
+
+      $('#score-n').textContent = total;
+      $('#score-of').textContent = 'out of ' + max;
+      $('#score-band').textContent = band.label;
+      $('#score-read').textContent = band.read;
+      $('#score-fill').style.width = Math.round(total / max * 100) + '%';
+
+      var weakHead = $('#weak-head');
+      if (weakest.length) {
+        if (weakHead) weakHead.textContent = weakest.length === 1
+          ? 'Your weakest stage' : 'Your two weakest stages';
+        $('#weak-list').innerHTML = weakest.map(function (w) {
+          var s = LEAK_TEST.stages[w.key];
+          return '<div class="weak-item"><h4>' + s.name + '</h4><p>' + s.problem +
+                 '</p><p class="weak-cost">' + s.cost + '</p></div>';
+        }).join('');
+      } else {
+        if (weakHead) weakHead.textContent = 'No single weak stage';
+        $('#weak-list').innerHTML = '<div class="weak-item"><p>All four stages scored ' +
+          'the same, so there is no weakest one to name. Read that as a system that ' +
+          'is consistent rather than one that is fine: consistency at a low score ' +
+          'means every stage needs the same work.</p></div>';
+      }
+
+      $('#test-questions').hidden = true;
+      var res = $('#test-result');
+      res.hidden = false;
+      res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
   /* --- Landing pages: seat availability ---------------------------------
      No timers here. The scarcity is the seat count, which is a standing fact
      rather than something that starts when a visitor arrives, so nothing to

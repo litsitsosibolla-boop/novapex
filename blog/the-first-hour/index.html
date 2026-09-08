@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The First Hour Is the Whole Funnel | The Novapex Brief</title>
+<meta name="description" content="Why response time is the largest recoverable leak in most pipelines, what it costs at your volume, and a two-week fix that needs no new software.">
+<meta name="theme-color" content="#FAFAF8">
+<meta property="og:title" content="The First Hour Is the Whole Funnel | The Novapex Brief">
+<meta property="og:description" content="Why response time is the largest recoverable leak in most pipelines, what it costs at your volume, and a two-week fix that needs no new software.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='58 58 164 168'%3E%3Crect x='58' y='58' width='164' height='168' rx='16' fill='%2317181B'/%3E%3Cpath d='M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z' fill-rule='evenodd' fill='%23C2DE55'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<meta property="og:type" content="article">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/" aria-label="Novapex home"><svg viewBox="58 58 164 168" aria-hidden="true" fill="currentColor"><path d="M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z" fill-rule="evenodd"/></svg><span>NOVAPEX</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/method">Method</a>
+      <a href="/leak-map">Leak Map</a>
+      <a href="/conversion-system">Retainer</a>
+      <a href="/blog" aria-current="page">Blog</a>
+      <a href="/about">About</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-sm" href="/leak-test">Take the Leak Test</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><span></span></button>
+    </div>
+  </div>
+  <div class="mnav" id="mnav">
+    <div class="mnav-in">
+      <a href="/method">Method<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/leak-map">Leak Map<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/conversion-system">Retainer<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/blog" aria-current="page">Blog<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/about">About<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/leak-test">Take the Leak Test<span class="arrow" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div class="wrap prose">
+    <p class="eyebrow rv">Response</p>
+    <h1 class="rv" style="font-size:clamp(30px,4.2vw,48px)">The First Hour Is the Whole Funnel</h1>
+    <div class="byline rv">
+      <span>2 September 2026</span><span class="dot"></span><span>9 min read</span>
+      <span class="dot"></span><span>Litsitso Sibolla</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec-sm">
+  <div class="wrap prose">
+    <article class="prose-body rv">
+      <p>Ask a marketing lead how long it takes their company to reply to a new inquiry and
+you will get an estimate. Ask them to prove it and the conversation changes. Almost
+nobody measures this. It is the only number in the entire funnel that is both easy to
+move and nearly free to fix, and it is sitting unmeasured in most businesses.</p>
+
+<p>This is about that first hour. What it costs, why every company underestimates it,
+and how to close the gap inside two weeks without buying software.</p>
+
+<h2>The estimate is always wrong in the same direction</h2>
+
+<p>When people estimate their own response time, they think of a good day. They picture
+the inquiry that came in at ten on a Tuesday when someone was at their desk. That one
+was answered in nine minutes and it is the one that comes to mind.</p>
+
+<p>The average is not made of Tuesday mornings. It is made of Friday at five, Saturday,
+the week someone was on leave, the fortnight when the person who normally watches the
+inbox was covering something else. Those inquiries do not get answered in nine minutes.
+Some of them do not get answered at all, and because nobody counted them arriving, nobody
+notices them not being answered.</p>
+
+<p>Here is the test. Take your last forty inquiries. Not a sample you choose, the last
+forty in order. For each one write down the timestamp it arrived and the timestamp of
+the first human reply. Then sort by the gap.</p>
+
+<p>Two things will happen. The median will be worse than the estimate, usually by a
+multiple rather than a margin. And there will be a tail: a handful with no second
+timestamp at all. That tail is the part worth caring about, because those are not slow
+responses. They are inquiries that arrived, were paid for, and were never answered by
+anyone.</p>
+
+<h2>Why it decays so fast</h2>
+
+<p>A buyer who sends an inquiry has just done the hardest thing they will do in the
+whole process. They have admitted, to themselves and to a stranger, that they have a
+problem they cannot solve internally. That admission has a short shelf life.</p>
+
+<p>In the hours after they send it, one of three things happens. You reply and the
+conversation starts while the problem still feels urgent. Or you do not reply, the
+urgency fades, and they get on with their week, which is the most common outcome and the
+one that looks like nothing at all in your data. Or you do not reply and somebody else
+does, in which case you have paid to generate a lead for a competitor.</p>
+
+<p>The third case gets all the attention because it stings. The second one costs more,
+because it happens far more often and leaves no trace. There is no lost-to-competitor
+note in the CRM. There is just a thread that stops.</p>
+
+<h2>Putting a number on it</h2>
+
+<p>You do not need industry benchmarks for this. You need your own numbers, and you
+already have them.</p>
+
+<p>Take the forty inquiries from the test. Split them into two groups: those answered
+within an hour, and those that took longer. Now look at how many in each group reached a
+real conversation, meaning a call, a meeting, or a substantive back-and-forth.</p>
+
+<p>In most businesses that run this the gap is not subtle. If it is not, that is genuinely
+useful information: your buyers are not time-sensitive, response time is not your leak,
+and you should stop reading this and go look at qualification instead.</p>
+
+<p>If it is, the arithmetic is simple. Take the difference in conversion rate between the
+two groups. Apply it to the number of slow-answered inquiries you get in a year. Multiply
+by your average deal value. That is what the first hour is costing you annually, and it
+is almost always a larger number than whatever you were about to spend on more traffic.</p>
+
+<h2>The four reasons it is slow</h2>
+
+<p>Every slow response traces back to one of four causes, and they need different fixes.</p>
+
+<p><strong>Nobody owns it.</strong> The inquiry lands in a shared inbox that three people
+can see and none of them is responsible for. Shared responsibility is no responsibility.
+This is the most common cause and the easiest to fix.</p>
+
+<p><strong>It lands somewhere nobody watches.</strong> A form that emails an address
+created in 2019. A social channel someone set up and forgot. A phone number on a page
+nobody has opened in a year. These produce the tail of unanswered inquiries, and you find
+them by auditing routes rather than by watching the inbox.</p>
+
+<p><strong>The person who could answer is not the person who saw it.</strong> The
+inquiry arrives, someone reads it, decides they cannot answer properly, and waits for
+whoever can. The wait is the leak. The buyer does not know a good answer is coming, only
+that no answer has come.</p>
+
+<p><strong>Answering well takes too long.</strong> Every reply is written from scratch,
+so replying properly costs twenty minutes of focused work, so it waits for a gap that
+never arrives. This one masquerades as a quality problem and is actually a preparation
+problem.</p>
+
+<h2>The two-week fix</h2>
+
+<p>None of this needs new software. Most companies that fix response time do it with what
+they already have.</p>
+
+<p><strong>Days one and two: find every route in.</strong> List every way an inquiry can
+physically reach you. Website form, email addresses, each social channel, phone,
+WhatsApp, the contact detail on the invoice template, the address on a two-year-old
+brochure still circulating. Send a test inquiry down every single one. Some will not
+arrive. Those are your tail.</p>
+
+<p><strong>Day three: give each route one owner by name.</strong> Not a team. A person,
+with a named backup for when they are away. Write it down somewhere both of them can see
+it. If a route cannot be given an owner, close the route.</p>
+
+<p><strong>Days four and five: write the first reply once.</strong> Look at the last
+twenty inquiries and count how many distinct things people actually asked. It is rarely
+more than five. Write a good reply to each. Not a template that reads like a template: a
+real answer to the real question, ending with a specific next step and two times to take
+it. Now replying well takes ninety seconds instead of twenty minutes, and the quality
+problem disappears with the speed problem.</p>
+
+<p><strong>Week two: set the standard and measure against it.</strong> Pick a number. One
+hour during working hours is a reasonable place to start. Then measure it weekly, in
+public, as one line: inquiries received, median time to first reply, number that waited
+more than a day. Three numbers. If it takes more than five minutes a week to produce,
+simplify it until it does.</p>
+
+<h2>What to put in the reply</h2>
+
+<p>The preparation step is the one people skip, so it is worth being specific about what
+a good first reply contains. Three things, in this order.</p>
+
+<p><strong>The answer to what they actually asked.</strong> Not an acknowledgement that
+they asked. Buyers can tell the difference between a reply that engages with their
+question and one that confirms receipt of it, and the second reads as a delay wearing a
+politeness costume.</p>
+
+<p><strong>One question that moves it forward.</strong> Something that either qualifies
+or clarifies, and that they can answer in a sentence. Asking six questions in a first
+reply reads as a form. Asking none leaves them to work out the next move themselves,
+which they will not.</p>
+
+<p><strong>A specific next step with two times attached.</strong> Not "let me know if you
+would like to discuss further". Two concrete slots. The reply-to-scheduling gap is where
+a startling number of interested buyers quietly fall out.</p>
+
+<p>Write five of these. Keep them in a document everyone answering inquiries can reach.
+The point is not to automate the reply, it is to remove the twenty minutes of blank-page
+work that makes replying feel expensive.</p>
+
+<h2>Why it usually does not stick</h2>
+
+<p>Most companies have fixed this before. Response time improved for six weeks and then
+drifted back. That is worth understanding, because the drift is predictable.</p>
+
+<p>It happens when the fix lives in someone's intentions rather than in the system. If
+being fast depends on a person remembering to be fast, it survives exactly as long as
+that person's attention does, which is until the first genuinely busy week.</p>
+
+<p>Two things make it survive. The first is that the owner is named, in writing, with a
+named backup, so that being away is planned for rather than discovered. The second is
+that the number is reported weekly to someone other than the person responsible for it.
+Not as a performance measure and not to anyone's manager. Just visible, every week, in
+the same place.</p>
+
+<p>Anything measured weekly and seen by two people holds. Anything measured occasionally
+and seen by one person does not. That is most of what there is to know about making
+operational fixes permanent.</p>
+
+<h2>The cost of getting this wrong in the other direction</h2>
+
+<p>There is a failure mode worth naming. Some companies read this, set a one-hour
+standard, and start sending fast, empty replies to protect the number.</p>
+
+<p>That is worse than being slow. A quick reply that says nothing spends the buyer's
+attention without giving them anything, and the second reply now arrives to someone who
+has already been disappointed once. If you have to choose, a considered reply in four
+hours beats an empty one in four minutes.</p>
+
+<p>You should not have to choose. That is what the prepared replies are for.</p>
+
+<h2>How to know it worked</h2>
+
+<p>The median will move first, within a fortnight, because the owner change alone does
+most of that work. The tail takes longer, because it is a routing problem rather than a
+behaviour problem, and you only find those inquiries by testing the routes.</p>
+
+<p>The number that matters is neither of those. It is the share of inquiries that reach a
+real conversation. Watch it for a quarter. If response time was your leak, that number
+moves without anyone touching the ads, the website or the content calendar.</p>
+
+<p>If it does not move, you have learned something worth more than the fortnight it cost:
+your leak is somewhere else, and you now have clean data on the one place it definitely
+is not.</p>
+
+<h2>The part that is uncomfortable</h2>
+
+<p>Response time is unglamorous. There is no campaign in it, no launch, nothing to show a
+board that looks like marketing. It is an operations fix wearing a marketing budget, and
+it is boring in exactly the way that things which work are often boring.</p>
+
+<p>That is also why it is still available. Every competitor you have is looking at the
+same channels and the same tactics you are. Almost none of them know their median
+response time, and the ones that do have usually already taken the business you thought
+you lost on price.</p>
+    </article>
+
+    <div class="rv" style="margin-top:52px;padding:clamp(22px,3vw,30px);
+      border-radius:var(--r-md);background:var(--surface-2)">
+      <p class="eyebrow">If you want a second opinion on it</p>
+      <p style="margin-top:12px;color:var(--muted);max-width:58ch">Three of the twelve questions in the Leak Test are about response. It will tell you in four minutes whether this is your weakest stage or your third weakest.</p>
+      <p style="margin-top:16px"><a class="link" href="/leak-test">Take the Leak Test &rarr;</a></p>
+    </div>
+
+    <a class="post-row rv" href="/blog/warm-and-undated" style="border-bottom:0;padding-top:56px">
+      <div class="meta">Read next</div>
+      <div><h3>The Meeting Ended Warm and Undated</h3><p>A good conversation that ends without a date is not a good conversation. It is a loss with a longer settlement period.</p></div>
+      <div class="go">Read <span class="arrow" aria-hidden="true">&rarr;</span></div>
+    </a>
+    <p style="margin-top:26px"><a class="link" href="/blog">&larr; All articles</a></p>
+  </div>
+</section>
+
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <div class="signup-band rv">
+      <div>
+        <p class="eyebrow">The Visibility Brief</p>
+        <h3>One letter a month on where revenue leaks.</h3>
+        <p class="sub" style="margin-top:10px">Written for people who already run
+          marketing and want the part nobody publishes. No pitch, no roundup.</p>
+      </div>
+      <form class="signup" data-signup>
+        <label class="vh" for="nl-band">Your email</label>
+        <input id="nl-band" type="email" name="email" required placeholder="you@company.com" autocomplete="email">
+        <button class="btn" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<button id="top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" style="width:16px;height:16px"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/"><svg viewBox="58 58 164 168" aria-hidden="true" fill="currentColor"><path d="M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z" fill-rule="evenodd"/></svg><span>NOVAPEX</span></a>
+        <p class="blurb">Novapex is a marketing systems firm. We find where inquiries
+          die between attention and revenue, and we close the gap. Maseru, Lesotho,
+          working with companies across the region and beyond.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Site</h5>
+        <a href="/method">Method</a>
+        <a href="/leak-map">Leak Map</a>
+        <a href="/conversion-system">Retainer</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+      </div>
+      <div class="foot-col">
+        <h5>Start here</h5>
+        <a href="/leak-test">The Leak Test</a>
+        <a href="/one-move">The One-Move Strategy</a>
+        <a href="/leak-call">The 20-Minute Leak Call</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <p class="role">Email</p>
+        <a href="mailto:hello@novapex.co">hello@novapex.co</a>
+        <p class="role">Call or WhatsApp</p>
+        <a href="tel:+26656702102">+266 5670 2102</a>
+      </div>
+    </div>
+    
+    <div class="signup-foot">
+      <div>
+        <h5>The Visibility Brief</h5>
+        <p>One letter a month on where revenue leaks and how to close it. No pitch.</p>
+      </div>
+      <form class="signup" data-signup>
+        <label class="vh" for="nl-foot">Your email</label>
+        <input id="nl-foot" type="email" name="email" required placeholder="you@company.com" autocomplete="email">
+        <button class="btn btn-sm" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>&copy; 2026 Novapex. All rights reserved.</span>
+    <span>Maseru, Lesotho</span>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

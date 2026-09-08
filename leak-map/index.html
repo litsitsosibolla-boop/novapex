@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Revenue Leak Map | Novapex</title>
+<meta name="description" content="A two-week diagnostic that maps how inquiries move through your business, prices every leak and ranks the fixes. Refunded if it finds nothing.">
+<meta name="theme-color" content="#FAFAF8">
+<meta property="og:title" content="The Revenue Leak Map | Novapex">
+<meta property="og:description" content="A two-week diagnostic that maps how inquiries move through your business, prices every leak and ranks the fixes. Refunded if it finds nothing.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='58 58 164 168'%3E%3Crect x='58' y='58' width='164' height='168' rx='16' fill='%2317181B'/%3E%3Cpath d='M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z' fill-rule='evenodd' fill='%23C2DE55'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<meta property="og:type" content="website">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/" aria-label="Novapex home"><svg viewBox="58 58 164 168" aria-hidden="true" fill="currentColor"><path d="M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z" fill-rule="evenodd"/></svg><span>NOVAPEX</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/method">Method</a>
+      <a href="/leak-map" aria-current="page">Leak Map</a>
+      <a href="/conversion-system">Retainer</a>
+      <a href="/blog">Blog</a>
+      <a href="/about">About</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-sm" href="/leak-test">Take the Leak Test</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><span></span></button>
+    </div>
+  </div>
+  <div class="mnav" id="mnav">
+    <div class="mnav-in">
+      <a href="/method">Method<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/leak-map" aria-current="page">Leak Map<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/conversion-system">Retainer<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/blog">Blog<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/about">About<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/leak-test">Take the Leak Test<span class="arrow" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow rv">The paid diagnostic</p>
+    <h1 class="rv">The Revenue Leak Map</h1>
+    <p class="lead rv">Two weeks. We map how an inquiry moves through your business,
+      find where it dies, put a number on what each leak costs you, and rank the fixes
+      in the order that pays back fastest.</p>
+    <div class="figs rv">
+      <div class="fig"><div class="n" data-zar="2500">R2,500</div><div class="l">fixed fee, agreed before we start</div></div>
+      <div class="fig"><div class="n">2 weeks</div><div class="l">from kickoff to document</div></div>
+      <div class="fig"><div class="n">3 hours</div><div class="l">of your team's time, in total</div></div>
+    </div>
+    <div class="cta-row rv">
+      <a class="btn" href="mailto:hello@novapex.co?subject=Requesting%20a%20Revenue%20Leak%20Map">Request the Map<span class="arrow" aria-hidden="true">&rarr;</span></a>
+    </div>
+    <div style="margin-top:26px">
+<div class="convert rv">
+  <button class="convert-btn" aria-haspopup="listbox" aria-expanded="false">
+    <span class="convert-lead">Convert</span>
+    <span class="convert-cur">USD</span>
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="convert-menu" role="listbox" aria-label="Choose a currency">
+    <button data-cur="USD" role="option" aria-selected="false"><strong>USD</strong><span>US Dollar</span></button>
+    <button data-cur="ZAR" role="option" aria-selected="false"><strong>ZAR</strong><span>SA Rand</span></button>
+    <button data-cur="GBP" role="option" aria-selected="false"><strong>GBP</strong><span>Pound Sterling</span></button>
+    <button data-cur="EUR" role="option" aria-selected="false"><strong>EUR</strong><span>Euro</span></button>
+    <button data-cur="AUD" role="option" aria-selected="false"><strong>AUD</strong><span>Australian Dollar</span></button>
+    <button data-cur="CAD" role="option" aria-selected="false"><strong>CAD</strong><span>Canadian Dollar</span></button>
+    <button data-cur="CHF" role="option" aria-selected="false"><strong>CHF</strong><span>Swiss Franc</span></button>
+  </div>
+</div></div>
+  </div>
+</section>
+
+<section class="on-dark">
+  <div class="wrap">
+    <div class="rv"><p class="eyebrow">What you get</p>
+      <h2>A document you own, whether or not you ever hire us again.</h2></div>
+    <p class="lead rv" style="margin-top:20px;max-width:64ch">The Map is the product.
+      It is not a sales deck with a proposal stapled to the back. It is written so that
+      your own team, or any competent agency, could work from it without us.</p>
+    <div style="margin-top:30px"><ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A diagram of how an inquiry actually moves through your business, as it is rather than as the org chart says</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Every point where inquiries currently die, named and located</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A number against each leak: what it costs in lost close rate at your current volume</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The fixes, ranked by payback rather than by effort</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>What to do in the first two weeks, written so someone can start on Monday</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>What we would not bother fixing, and why</span></li>
+</ul></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="rv"><p class="eyebrow">What it examines</p>
+      <h2>Four stages. The same four, every time.</h2></div>
+    <p class="lead rv" style="margin-top:18px;max-width:62ch">Published in full, because
+      a method you will not describe is a method you do not have. This is the whole
+      structure.</p>
+    <div class="grid g-2" style="margin-top:34px">
+      <div class="card rv">
+        <span class="num">STAGE 1</span>
+        <h3>Capture</h3>
+        <p style="margin-top:8px;font-style:normal;color:var(--muted)">Does every inquiry get caught, and does anyone know how many arrived?</p>
+        <div style="margin-top:16px"><ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Every route an inquiry can take in, and the volume of each</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Where each route lands, and who owns it by name</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>What happens to an inquiry outside working hours</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Whether the monthly inquiry count can be produced on demand</span></li>
+</ul></div>
+      </div>
+      <div class="card rv">
+        <span class="num">STAGE 2</span>
+        <h3>Response</h3>
+        <p style="margin-top:8px;font-style:normal;color:var(--muted)">How fast is the first reply, and does it move anything forward?</p>
+        <div style="margin-top:16px"><ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Time from inquiry to first human reply, measured not estimated</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>What the first reply actually contains and what it asks for</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Whether follow-up runs by system or by memory</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>How many threads went quiet last quarter and were never reopened</span></li>
+</ul></div>
+      </div>
+      <div class="card rv">
+        <span class="num">STAGE 3</span>
+        <h3>Qualification</h3>
+        <p style="margin-top:8px;font-style:normal;color:var(--muted)">Do you know who you are talking to before you spend an hour on them?</p>
+        <div style="margin-top:16px"><ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>What is known about a buyer before the first real conversation</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The written criteria for who gets time, if any exist</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>How often the answer is no, and who is allowed to say it</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Whether loss reasons are recorded or only remembered</span></li>
+</ul></div>
+      </div>
+      <div class="card rv">
+        <span class="num">STAGE 4</span>
+        <h3>Close</h3>
+        <p style="margin-top:8px;font-style:normal;color:var(--muted)">Does a good conversation reliably become a decision?</p>
+        <div style="margin-top:16px"><ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>What happens in the hour after a good first conversation</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Time from agreement in principle to a document in their hands</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Whether close rate is known by source or only in aggregate</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The gap between your best closer and your median one</span></li>
+</ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <p class="eyebrow rv">How the two weeks run</p>
+    <h2 class="rv">Three hours of your time, spread across two weeks.</h2>
+    <div style="margin-top:30px"><ul class="ticks">
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong style='font-weight:500'>Week one, day one.</strong> A 60-minute session with whoever answers inquiries. Not the leadership team, the people doing it.</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong style='font-weight:500'>Week one.</strong> We follow real inquiries through your system, from arrival to outcome, using your own records.</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong style='font-weight:500'>Week two, day three.</strong> A 60-minute session to test what we found against what you expected. This is where most of the surprises land.</span></li>
+  <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong style='font-weight:500'>Week two, day ten.</strong> The Map is delivered in writing, followed by a 60-minute walkthrough.</span></li>
+</ul></div>
+  </div>
+</section>
+
+<section class="on-dark">
+  <div class="wrap narrow">
+    <div class="rv"><p class="eyebrow">The guarantee</p>
+      <h2>It pays for itself or it does not get paid for.</h2></div>
+    <p class="lead rv" style="margin-top:20px;max-width:60ch">If the Map does not find at least one quantified leak, the fee is refunded in full. If it does and you go ahead within 30 days, the fee comes off your first month.</p>
+    <p class="rv" style="margin-top:20px;color:var(--muted-dark);max-width:60ch">Those two
+      conditions cannot both fire. Either we found something worth acting on, in which
+      case the fee comes off the work, or we did not, in which case you keep your money
+      and we have told you something useful for free.</p>
+    <p class="offer-flag rv"><span class="dotm"></span><span>Novapex runs 3 engagements at a time. There is room for one engagement now. The next opening after that is November 2026.</span></p>
+  </div>
+</section>
+
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <p class="eyebrow rv">Start here instead</p>
+    <h2 class="rv">Not ready to pay for a diagnosis? Take the free one.</h2>
+    <p class="lead rv" style="margin-top:18px;color:var(--on-paper);max-width:62ch">The
+      Leak Test scores the same four stages in four minutes. It is less accurate than
+      the Map, because it measures what you believe about your system rather than what
+      your system does, but it is free and it is instant.</p>
+    <div class="cta-row rv">
+      <a class="btn ghost" href="/leak-test">Take the Leak Test<span class="arrow" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec-sm">
+  <div class="wrap narrow">
+    <div class="signup-band rv">
+      <div>
+        <p class="eyebrow">The Visibility Brief</p>
+        <h3>One letter a month on where revenue leaks.</h3>
+        <p class="sub" style="margin-top:10px">Written for people who already run
+          marketing and want the part nobody publishes. No pitch, no roundup.</p>
+      </div>
+      <form class="signup" data-signup>
+        <label class="vh" for="nl-band">Your email</label>
+        <input id="nl-band" type="email" name="email" required placeholder="you@company.com" autocomplete="email">
+        <button class="btn" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<button id="top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" style="width:16px;height:16px"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/"><svg viewBox="58 58 164 168" aria-hidden="true" fill="currentColor"><path d="M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z" fill-rule="evenodd"/></svg><span>NOVAPEX</span></a>
+        <p class="blurb">Novapex is a marketing systems firm. We find where inquiries
+          die between attention and revenue, and we close the gap. Maseru, Lesotho,
+          working with companies across the region and beyond.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Site</h5>
+        <a href="/method">Method</a>
+        <a href="/leak-map">Leak Map</a>
+        <a href="/conversion-system">Retainer</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+      </div>
+      <div class="foot-col">
+        <h5>Start here</h5>
+        <a href="/leak-test">The Leak Test</a>
+        <a href="/one-move">The One-Move Strategy</a>
+        <a href="/leak-call">The 20-Minute Leak Call</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <p class="role">Email</p>
+        <a href="mailto:hello@novapex.co">hello@novapex.co</a>
+        <p class="role">Call or WhatsApp</p>
+        <a href="tel:+26656702102">+266 5670 2102</a>
+      </div>
+    </div>
+    
+    <div class="signup-foot">
+      <div>
+        <h5>The Visibility Brief</h5>
+        <p>One letter a month on where revenue leaks and how to close it. No pitch.</p>
+      </div>
+      <form class="signup" data-signup>
+        <label class="vh" for="nl-foot">Your email</label>
+        <input id="nl-foot" type="email" name="email" required placeholder="you@company.com" autocomplete="email">
+        <button class="btn btn-sm" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>&copy; 2026 Novapex. All rights reserved.</span>
+    <span>Maseru, Lesotho</span>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
