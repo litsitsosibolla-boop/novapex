@@ -14,6 +14,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
 <meta property="og:type" content="website">
+<style>
+#np-gate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(23,24,27,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#np-gate .np-gate-card{background:#FAFAF8;color:#17181B;width:100%;max-width:440px;border-radius:18px;padding:32px 30px;box-shadow:0 30px 80px rgba(0,0,0,.35);font-family:'Inter',system-ui,sans-serif;max-height:92vh;overflow:auto}
+#np-gate .np-gate-eyebrow{text-transform:uppercase;letter-spacing:.08em;font-size:12px;font-weight:600;color:#6b6f76;margin:0 0 8px}
+#np-gate .np-gate-h{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:24px;line-height:1.15;margin:0 0 8px}
+#np-gate .np-gate-sub{font-size:14.5px;line-height:1.5;color:#40444b;margin:0 0 20px}
+#np-gate .np-gate-field{margin-bottom:14px}
+#np-gate .np-gate-field label{display:block;font-size:12.5px;font-weight:600;margin:0 0 5px;color:#40444b}
+#np-gate .np-gate-field input{width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid #d7d8d4;border-radius:10px;font-size:15px;font-family:'Inter',sans-serif;background:#fff;color:#17181B}
+#np-gate .np-gate-field input:focus{outline:none;border-color:#17181B}
+#np-gate .np-gate-err{color:#b3261e;font-size:13px;margin:0 0 12px}
+#np-gate #np-go{width:100%;justify-content:center;margin-top:4px}
+#np-gate .np-gate-fine{font-size:12px;color:#8a8e95;margin:14px 0 0;line-height:1.4}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -329,6 +343,96 @@ const LEAK_TEST = {
     }
   }
 };
+</script>
+
+<script>
+(function () {
+  var GATE_ENDPOINT = "https://script.google.com/macros/s/AKfycbzJwKlmaCiU7bUZyjZjjRHoRgpQcYJ6hRnQ6yytGp7jOv4CCCz0lOSsSy99lJoYQj8iXA/exec";
+  var result = document.getElementById('test-result');
+  if (!result) return;
+  var passed = false;
+
+  function esc(v){ return (v || '').toString().trim(); }
+  function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  function buildGate() {
+    if (passed || document.getElementById('np-gate')) return;
+
+    var scoreEl = document.getElementById('score-n');
+    var bandEl = document.getElementById('score-band');
+    var score = scoreEl ? esc(scoreEl.textContent) : '';
+    var band = bandEl ? esc(bandEl.textContent) : '';
+
+    var ov = document.createElement('div');
+    ov.id = 'np-gate';
+    ov.setAttribute('role', 'dialog');
+    ov.setAttribute('aria-modal', 'true');
+    ov.innerHTML =
+      '<div class="np-gate-card">' +
+        '<p class="np-gate-eyebrow">One step before your result</p>' +
+        '<h3 class="np-gate-h">Where should we send it?</h3>' +
+        '<p class="np-gate-sub">Your result is ready. Tell us who you are and it appears straight away.</p>' +
+        '<div class="np-gate-field"><label for="np-name">Name</label><input id="np-name" type="text" autocomplete="name" placeholder="Your name"></div>' +
+        '<div class="np-gate-field"><label for="np-company">Company</label><input id="np-company" type="text" autocomplete="organization" placeholder="Company name"></div>' +
+        '<div class="np-gate-field"><label for="np-email">Work email</label><input id="np-email" type="email" autocomplete="email" placeholder="you@company.com"></div>' +
+        '<p class="np-gate-err" id="np-err" hidden></p>' +
+        '<button class="btn" id="np-go" type="button">Show my result<span class="arrow" aria-hidden="true">&rarr;</span></button>' +
+        '<p class="np-gate-fine">We use this to send your result and follow up once. No list selling, no spam.</p>' +
+      '</div>';
+    document.body.appendChild(ov);
+    document.body.style.overflow = 'hidden';
+
+    var nameEl = document.getElementById('np-name');
+    var compEl = document.getElementById('np-company');
+    var mailEl = document.getElementById('np-email');
+    var errEl = document.getElementById('np-err');
+    var goEl = document.getElementById('np-go');
+    if (nameEl) nameEl.focus();
+
+    function release() {
+      passed = true;
+      document.body.style.overflow = '';
+      var g = document.getElementById('np-gate');
+      if (g && g.parentNode) g.parentNode.removeChild(g);
+    }
+
+    function submit() {
+      var name = esc(nameEl.value);
+      var company = esc(compEl.value);
+      var email = esc(mailEl.value);
+      if (!name) { errEl.textContent = 'Please add your name.'; errEl.hidden = false; nameEl.focus(); return; }
+      if (!company) { errEl.textContent = 'Please add your company.'; errEl.hidden = false; compEl.focus(); return; }
+      if (!validEmail(email)) { errEl.textContent = 'Please add a valid email.'; errEl.hidden = false; mailEl.focus(); return; }
+
+      errEl.hidden = true;
+      goEl.disabled = true;
+      goEl.textContent = 'Sending...';
+
+      var body = 'name=' + encodeURIComponent(name) +
+                 '&company=' + encodeURIComponent(company) +
+                 '&email=' + encodeURIComponent(email) +
+                 '&score=' + encodeURIComponent(score) +
+                 '&band=' + encodeURIComponent(band);
+
+      fetch(GATE_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        body: body
+      }).then(release).catch(release);
+    }
+
+    goEl.addEventListener('click', submit);
+    ov.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); submit(); }
+    });
+  }
+
+  var obs = new MutationObserver(function () {
+    if (!passed && result.offsetParent !== null) buildGate();
+  });
+  obs.observe(result, { attributes: true, attributeFilter: ['hidden', 'style', 'class'] });
+})();
 </script>
 
 </main>
