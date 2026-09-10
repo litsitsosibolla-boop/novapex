@@ -72,30 +72,36 @@
   }
 
   /* --- Currency ----------------------------------------------------------
-     Prices are set in Rand. Every visitor starts on USD. Live rates refresh
-     from the previous business day's close, with the fallbacks below used if
-     that request fails. Every element with [data-zar] is converted in place. */
-  var FX = { ZAR: 1, USD: 1/18.1, GBP: 1/23.0, EUR: 1/19.6,
-             AUD: 1/11.9, CAD: 1/13.2, CHF: 1/20.4 };
+     Prices are set in US dollars and every visitor starts on USD, so the
+     published price never moves. Other currencies are shown only when a
+     visitor asks, converted at the previous business day's close, with the
+     fallbacks below used if that request fails. [data-usd] is the source of
+     truth. [data-zar] remains only for old internal quote pages. */
+  var FX = { USD: 1, ZAR: 18.1, GBP: 0.787, EUR: 0.923,
+             AUD: 1.52, CAD: 1.37, CHF: 0.887 };
   var SYM = { ZAR: 'R', USD: '$', GBP: '£', EUR: '€',
               AUD: 'A$', CAD: 'C$', CHF: 'CHF ' };
-  var STEP = { ZAR: 100, USD: 10, GBP: 10, EUR: 10, AUD: 10, CAD: 10, CHF: 10 };
+  var STEP = { ZAR: 100, USD: 1, GBP: 10, EUR: 10, AUD: 10, CAD: 10, CHF: 10 };
   // USD is always what loads. Switching is a deliberate act by the visitor and
   // deliberately does not persist across page loads.
   var cur = 'USD';
 
-  function money(zar, c) {
+  function money(usd, c) {
     c = c || cur;
     var step = STEP[c] || 1;
-    var v = Math.round(zar * FX[c] / step) * step;
+    var v = Math.round(usd * FX[c] / step) * step;
     return SYM[c] + v.toLocaleString('en');
   }
   window.npxMoney = money;
 
   function paint() {
+    $$('[data-usd]').forEach(function (el) {
+      el.textContent = (el.getAttribute('data-pre') || '') +
+                       money(parseFloat(el.getAttribute('data-usd')));
+    });
     $$('[data-zar]').forEach(function (el) {
       el.textContent = (el.getAttribute('data-pre') || '') +
-                       money(parseFloat(el.getAttribute('data-zar')));
+                       money(parseFloat(el.getAttribute('data-zar')) / FX.ZAR);
     });
     $$('.convert-cur').forEach(function (el) { el.textContent = cur; });
     $$('.convert-menu button').forEach(function (b) {
@@ -144,9 +150,9 @@
     });
   }
 
-  if ($('[data-zar]')) {
+  if ($('[data-usd]') || $('[data-zar]')) {
     paint();
-    fetch('https://api.frankfurter.app/latest?base=ZAR&symbols=USD,GBP,EUR,AUD,CAD,CHF')
+    fetch('https://api.frankfurter.app/latest?base=USD&symbols=ZAR,GBP,EUR,AUD,CAD,CHF')
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (d && d.rates) {
@@ -170,7 +176,7 @@
       var priced  = picked.filter(function (cb) { return !cb.classList.contains('partner'); });
       var partner = picked.length - priced.length;
       var total   = priced.reduce(function (sum, cb) {
-        return sum + parseFloat(cb.getAttribute('data-zar'));
+        return sum + parseFloat(cb.getAttribute('data-zar')) / FX.ZAR;
       }, 0);
       if (out) out.textContent = money(total);
       if (count) {
@@ -328,7 +334,7 @@
         'Who answers them today: [For example: a receptionist, a shared inbox, the sales team]\n\n' +
         'WHY NOW\n' +
         '[The specific thing that made us look at this]\n\n' +
-        'I understand the Map is a fixed fee of R2,500, takes two weeks and about three hours of our team\'s time in total, and is refunded in full if it finds no quantified leak.\n\n' +
+        'I understand the Map is a fixed fee of $140, takes two weeks and about three hours of our team\'s time in total, and is refunded in full if it finds no quantified leak.\n\n' +
         'Regards\n[Your name]';
       window.location.href = 'mailto:' + MAIL +
         '?subject=' + encodeURIComponent('Reserving a Revenue Leak Map') +
