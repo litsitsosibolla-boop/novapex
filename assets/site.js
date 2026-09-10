@@ -263,21 +263,76 @@
      to a real endpoint later, post `pairs` instead of opening the mailto. */
   var MAIL = 'hello@novapex.co';
 
+  /* Each request form opens as a complete, ready-to-send email: a greeting, one
+     line saying what they want, their answers laid out cleanly, and a sign-off.
+     The visitor only has to press send. */
+  var INTROS = {
+    'leak-call': 'I would like to book a 20-minute Leak Call. Our details are below. Please send two or three times that suit you.',
+    'one-move':  'I would like a One-Move Strategy. Our situation is below.',
+    'contact':   'I have a question for Novapex. The details are below.'
+  };
+
   $$('[data-form-subject]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
       var lines = [];
+      var sender = '';
       $$('input, select, textarea', form).forEach(function (el) {
         if (!el.name || !el.value) return;
+        if (el.name === 'name') sender = el.value;
         var lab = $('label[for="' + el.id + '"]', form);
         var name = lab ? lab.textContent.replace(/\s*(required|optional)\s*$/i, '').trim()
                        : el.name;
-        lines.push(name + ':\n' + el.value);
+        lines.push(el.tagName === 'TEXTAREA'
+          ? name + '\n' + el.value
+          : name + ': ' + el.value);
       });
+      var intro = INTROS[form.id] || 'The details are below.';
+      var body = 'Hi Novapex,\n\n' + intro + '\n\n' + lines.join('\n\n') +
+                 '\n\nRegards\n' + (sender || '[Your name]');
       window.location.href = 'mailto:' + MAIL +
         '?subject=' + encodeURIComponent(form.getAttribute('data-form-subject')) +
-        '&body=' + encodeURIComponent(lines.join('\n\n'));
+        '&body=' + encodeURIComponent(body);
+    });
+  });
+
+  /* Reserve the Map. Opens a ready-typed reservation email with placeholders.
+     From the Leak Test result screen, the visitor's score and weakest stages
+     are written in for them, so we know where to start before the first reply. */
+  $$('[data-map-reserve]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var test = '';
+      if (link.hasAttribute('data-from-test')) {
+        var n = $('#score-n'), of = $('#score-of'), band = $('#score-band');
+        var weak = $$('#weak-list .weak-item h4').map(function (h) { return h.textContent.trim(); });
+        test = '\nMY LEAK TEST RESULT\n' +
+          'Score: ' + (n ? n.textContent.trim() : '') + ' ' + (of ? of.textContent.trim() : '') +
+          (band && band.textContent.trim() ? ' (' + band.textContent.trim() + ')' : '') + '\n' +
+          (weak.length ? 'Weakest stages: ' + weak.join(' and ') + '\n' : '');
+      }
+      var body =
+        'Hi Novapex,\n\n' +
+        'I would like to reserve a Revenue Leak Map for [Company name].\n' +
+        test +
+        '\nABOUT US\n' +
+        'Company: [Company name]\n' +
+        'Website: [Website]\n' +
+        'My name and role: [Your name, your role]\n' +
+        'Best number to reach me: [Phone or WhatsApp]\n\n' +
+        'OUR INQUIRIES\n' +
+        'Roughly how many inquiries we get a month: [Number, or "we do not track it"]\n' +
+        'Roughly what share become paying customers: [Percentage, or "we do not know"]\n' +
+        'Where most of them come from: [For example: search, referrals, social, walk-ins]\n' +
+        'Who answers them today: [For example: a receptionist, a shared inbox, the sales team]\n\n' +
+        'WHY NOW\n' +
+        '[The specific thing that made us look at this]\n\n' +
+        'I understand the Map is a fixed fee of R2,500, takes two weeks and about three hours of our team\'s time in total, and is refunded in full if it finds no quantified leak.\n\n' +
+        'Regards\n[Your name]';
+      window.location.href = 'mailto:' + MAIL +
+        '?subject=' + encodeURIComponent('Reserving a Revenue Leak Map') +
+        '&body=' + encodeURIComponent(body);
     });
   });
 

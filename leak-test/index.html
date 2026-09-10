@@ -28,6 +28,7 @@
 #np-gate #np-go{width:100%;justify-content:center;margin-top:4px}
 #np-gate .np-gate-fine{font-size:12px;color:#8a8e95;margin:14px 0 0;line-height:1.4}
 </style>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -221,9 +222,11 @@
 
     <p class="sub" style="margin-top:30px;font-size:15px;max-width:60ch">This is a
       self-assessment, so it is only as accurate as the answers. The Revenue Leak Map
-      measures the same four stages against what your system actually does rather
-      than what you believe it does.</p>
+      measures the same four stages against what your system actually does, puts an
+      estimated cost on every leak, and ranks the fixes. R2,500 once, two weeks, and
+      refunded in full if it finds nothing.</p>
     <div class="cta-row" style="margin-top:26px">
+      <a class="btn" data-map-reserve data-from-test href="mailto:hello@novapex.co?subject=Reserving%20a%20Revenue%20Leak%20Map">Reserve your Map<span class="arrow" aria-hidden="true">&rarr;</span></a>
       <a class="btn ghost" href="/leak-map">See what the Map contains<span class="arrow" aria-hidden="true">&rarr;</span></a>
     </div>
   </div>
@@ -377,7 +380,7 @@ const LEAK_TEST = {
         '<div class="np-gate-field"><label for="np-email">Work email</label><input id="np-email" type="email" autocomplete="email" placeholder="you@company.com"></div>' +
         '<p class="np-gate-err" id="np-err" hidden></p>' +
         '<button class="btn" id="np-go" type="button">Show my result<span class="arrow" aria-hidden="true">&rarr;</span></button>' +
-        '<p class="np-gate-fine">We use this to send your result and follow up once. No list selling, no spam.</p>' +
+        '<p class="np-gate-fine">We use this to send your result and follow up once. No list selling, no spam. <a href=\"/privacy\">Privacy</a></p>' +
       '</div>';
     document.body.appendChild(ov);
     document.body.style.overflow = 'hidden';
@@ -486,7 +489,7 @@ const LEAK_TEST = {
     </div>
   </div>
   <div class="foot-bot">
-    <span>&copy; 2026 Novapex. All rights reserved.</span>
+    <span>&copy; 2026 Novapex. All rights reserved. <a href="/privacy">Privacy</a></span>
     <span>Maseru, Lesotho</span>
   </div>
 </footer>
