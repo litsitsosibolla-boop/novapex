@@ -203,7 +203,7 @@
           ? '\n\nPartner-delivered, to be scoped and quoted separately:\n' + partner.join('\n')
           : '') +
         '\n\nPlease send a formal quote.';
-      window.location.href = 'mailto:hello@novapex.co?subject=' +
+      window.location.href = 'mailto:hello@novapex.agency?subject=' +
         encodeURIComponent('Custom quote request') + '&body=' + encodeURIComponent(body);
     });
   }
@@ -267,7 +267,7 @@
      submit, turned into a readable message and handed to the visitor's mail
      client. Nothing is lost, and there is no third party in the path. To move
      to a real endpoint later, post `pairs` instead of opening the mailto. */
-  var MAIL = 'hello@novapex.co';
+  var MAIL = 'hello@novapex.agency';
 
   /* Each request form opens as a complete, ready-to-send email: a greeting, one
      line saying what they want, their answers laid out cleanly, and a sign-off.
