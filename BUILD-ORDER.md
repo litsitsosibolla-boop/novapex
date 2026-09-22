@@ -88,7 +88,7 @@ In this order:
 3. **Replace the mailto forms with a real endpoint.** Every form on the site
    composes an email today, which works and costs nothing. When volume justifies
    it, swap the handler in `assets/site.js` and nothing else has to change.
-4. **The portrait.** `/assets/litsitso-sibolla.jpg`, 4:5, on the About page.
+4. **The portrait.** Removed. The About page no longer carries a portrait.
    Until it exists the frame shows a labelled placeholder, which is honest. A
    stock photograph here would undo the entire proof argument.
 

@@ -278,28 +278,54 @@
     'contact':   'I have a question for Novapex. The details are below.'
   };
 
+  /* Forms post to a Google Apps Script web app, which emails the answers to
+     MAIL straight away. If the post fails, the old ready-written email opens
+     instead, so nothing is lost. */
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbxKbwSz9MtLjW1cN0cC2YfnFmimm4YanmjNI-_xxce6I04zfz774n6O1xrowr6QeJEL/exec';
+
+  var send = function (subject, pairs) {
+    var data = new URLSearchParams();
+    data.append('_subject', subject);
+    pairs.forEach(function (pr) { data.append(pr[0], pr[1]); });
+    return fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: data });
+  };
+
+  var said = function (form, text) {
+    var done = document.createElement('p');
+    done.className = 'signup-said';
+    done.setAttribute('role', 'status');
+    done.textContent = text;
+    form.replaceWith(done);
+  };
+
   $$('[data-form-subject]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
-      var lines = [];
-      var sender = '';
+      var pairs = [], lines = [], sender = '';
       $$('input, select, textarea', form).forEach(function (el) {
         if (!el.name || !el.value) return;
         if (el.name === 'name') sender = el.value;
         var lab = $('label[for="' + el.id + '"]', form);
         var name = lab ? lab.textContent.replace(/\s*(required|optional)\s*$/i, '').trim()
                        : el.name;
-        lines.push(el.tagName === 'TEXTAREA'
-          ? name + '\n' + el.value
-          : name + ': ' + el.value);
+        pairs.push([el.name === 'email' ? 'email' : name, el.value]);
+        lines.push(el.tagName === 'TEXTAREA' ? name + '\n' + el.value : name + ': ' + el.value);
       });
-      var intro = INTROS[form.id] || 'The details are below.';
-      var body = 'Hi Novapex,\n\n' + intro + '\n\n' + lines.join('\n\n') +
-                 '\n\nRegards\n' + (sender || '[Your name]');
-      window.location.href = 'mailto:' + MAIL +
-        '?subject=' + encodeURIComponent(form.getAttribute('data-form-subject')) +
-        '&body=' + encodeURIComponent(body);
+      var subject = form.getAttribute('data-form-subject');
+      var btn = $('button[type="submit"]', form);
+      if (btn) { btn.disabled = true; btn.firstChild.textContent = 'Sending'; }
+      send(subject, pairs).then(function () {
+        said(form, 'Received. We will reply to ' + (sender ? sender.split(' ')[0] : 'you') +
+          ' within a working day.');
+      }).catch(function () {
+        var intro = INTROS[form.id] || 'The details are below.';
+        var body = 'Hi Novapex,\n\n' + intro + '\n\n' + lines.join('\n\n') +
+                   '\n\nRegards\n' + (sender || '[Your name]');
+        window.location.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(subject) +
+          '&body=' + encodeURIComponent(body);
+        if (btn) { btn.disabled = false; btn.firstChild.textContent = 'Try again'; }
+      });
     });
   });
 
@@ -342,20 +368,19 @@
     });
   });
 
-  /* Newsletter. Same mechanism, one field, and the form is replaced by a line
-     of text so the visitor knows the click did something. */
+  /* Newsletter. Same mechanism, one field. */
   $$('[data-signup]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
       var email = $('input', form).value;
-      window.location.href = 'mailto:' + MAIL +
-        '?subject=' + encodeURIComponent('Subscribe: The Visibility Brief') +
-        '&body=' + encodeURIComponent('Please add this address to the Brief:\n' + email);
-      var done = document.createElement('p');
-      done.className = 'signup-said';
-      done.textContent = 'Your mail app is opening. Send it and you are on the list.';
-      form.replaceWith(done);
+      send('Subscribe: The Visibility Brief', [['email', email]]).then(function () {
+        said(form, 'You are on the list. The next letter comes to ' + email + '.');
+      }).catch(function () {
+        window.location.href = 'mailto:' + MAIL +
+          '?subject=' + encodeURIComponent('Subscribe: The Visibility Brief') +
+          '&body=' + encodeURIComponent('Please add this address to the Brief:\n' + email);
+      });
     });
   });
 
