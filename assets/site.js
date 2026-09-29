@@ -56,7 +56,11 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  /* --- Reveal on scroll -------------------------------------------------- */
+  /* --- Reveal on scroll --------------------------------------------------
+     Threshold 0, not a percentage: a long article is one .rv block many
+     screens tall, and 10% of it can never be on screen at once, so a ratio
+     threshold would leave it invisible for good. The bottom margin still
+     holds each reveal until the element is a little way into view. */
   var rv = $$('.rv');
   if (rv.length) {
     if ('IntersectionObserver' in window) {
@@ -64,7 +68,7 @@
         entries.forEach(function (e) {
           if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
         });
-      }, { threshold: .1, rootMargin: '0px 0px -8% 0px' });
+      }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
       rv.forEach(function (el) { io.observe(el); });
     } else {
       rv.forEach(function (el) { el.classList.add('in'); });
