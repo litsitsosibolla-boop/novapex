@@ -60,6 +60,15 @@
           "value": "noindex, nofollow"
         }
       ]
+    },
+    {
+      "source": "/blog/:slug/social/:file",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
     }
   ]
 }
