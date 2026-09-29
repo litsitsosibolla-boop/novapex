@@ -376,6 +376,16 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
   margin:32px 0; padding:4px 0 4px 24px;
   border-left:2px solid var(--accent); font-size:19px; line-height:1.6;
 }
+.prose-body h3{ font-size:18.5px; margin:28px 0 8px; }
+.prose-body ul{ margin:0 0 22px 20px; color:#2B2D33; }
+.prose-body li{ margin-bottom:8px; }
+.prose-body a{ color:var(--accent-ink); text-decoration:underline; text-underline-offset:3px; }
+.prose-body .answer{ font-size:19px; line-height:1.65; padding:18px 22px; background:var(--surface-2); border-radius:var(--r-md); }
+.table-wrap{ overflow-x:auto; margin:8px 0 28px; }
+.prose-body table{ width:100%; border-collapse:collapse; font-size:15.5px; line-height:1.5; min-width:480px; }
+.prose-body th, .prose-body td{ text-align:left; padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
+.prose-body th{ font-weight:600; background:var(--surface-2); }
+.prose-body .sources{ font-size:14.5px; color:var(--muted); }
 .byline{ display:flex; flex-wrap:wrap; gap:14px; align-items:center; font-size:13.5px; color:var(--muted); margin-top:18px; }
 .dot{ width:3px; height:3px; border-radius:50%; background:var(--line-2); }
 
