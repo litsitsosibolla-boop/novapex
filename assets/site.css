@@ -943,3 +943,124 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
 @media (min-width:761px){
   .rung{ grid-template-columns:104px 1fr 224px; }
 }
+
+/* ==========================================================================
+   The one offer: The Reply Kit
+   Sales components. Everything here exists to sell the $197 Kit; the rest of
+   the design system is untouched.
+   ========================================================================== */
+
+/* Hero with the product beside the pitch */
+.kit-hero{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(32px,5vw,72px); align-items:center; }
+@media (max-width:900px){ .kit-hero{ grid-template-columns:1fr; } }
+.kit-hero h1 em{ font-style:normal; color:var(--accent-ink); }
+
+.buy-line{ display:flex; flex-wrap:wrap; align-items:center; gap:14px 22px; margin-top:30px; }
+.buy-line .btn{ font-size:16px; padding:17px 30px; }
+.buy-price{ display:flex; align-items:baseline; gap:8px; }
+.buy-price b{ font-family:'Space Grotesk',sans-serif; font-size:30px; font-weight:600; letter-spacing:-.03em; }
+.buy-price span{ font-size:14px; color:var(--muted); }
+.on-dark .buy-price span{ color:var(--muted-dark); }
+.trust-row{ display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:18px; font-size:13.5px; color:var(--muted); }
+.trust-row span{ display:inline-flex; align-items:center; gap:7px; }
+.trust-row span::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--accent-mid); }
+.on-dark .trust-row{ color:var(--muted-dark); }
+
+/* The chat: one quiet inquiry, revived */
+.chat{
+  background:#0E1512; border-radius:26px; padding:18px 16px 20px;
+  box-shadow:0 30px 80px rgba(20,22,26,.22); max-width:380px; width:100%;
+  margin-left:auto; border:1px solid #1E2A24; font-size:14px;
+}
+@media (max-width:900px){ .chat{ margin:0 auto; } }
+.chat-top{ display:flex; align-items:center; gap:10px; padding:2px 6px 14px; border-bottom:1px solid #1E2A24; margin-bottom:14px; }
+.chat-av{ width:34px; height:34px; border-radius:50%; background:#2A3A32; color:#CFE3D6; display:grid; place-items:center; font-weight:600; font-size:13px; }
+.chat-top b{ color:#E9EFEA; font-weight:500; display:block; font-size:14.5px; }
+.chat-top small{ color:#7C8F84; font-size:12px; }
+.msg{ max-width:82%; padding:9px 12px 18px; border-radius:12px; margin:6px 0; position:relative; line-height:1.45; color:#E9EFEA; }
+.msg small{ position:absolute; right:10px; bottom:4px; font-size:10.5px; color:#8FA197; }
+.msg.in{ background:#1E2A24; border-top-left-radius:4px; }
+.msg.out{ background:#1F4D3A; margin-left:auto; border-top-right-radius:4px; }
+.chat-gap{ text-align:center; margin:12px 0; }
+.chat-gap span{ display:inline-block; font-size:11.5px; color:#9AAAA0; background:#17201B; padding:4px 10px; border-radius:8px; }
+.chat-win{ text-align:center; margin-top:14px; }
+.chat-win span{ display:inline-flex; align-items:center; gap:8px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; color:var(--ink); background:var(--accent); padding:7px 14px; border-radius:100px; }
+
+/* Value stack */
+.stack{ border:1px solid var(--line); border-radius:var(--r-lg); background:var(--surface); overflow:hidden; }
+.stack-row{ display:grid; grid-template-columns:44px 1fr auto; gap:16px; align-items:start; padding:20px clamp(18px,2.6vw,28px); border-bottom:1px solid var(--line); }
+.stack-n{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; letter-spacing:.12em; color:var(--accent-ink); padding-top:3px; }
+.stack-row h3{ font-size:17.5px; }
+.stack-row p{ font-size:14.5px; color:var(--muted); margin-top:5px; }
+.stack-v{ font-family:'Space Grotesk',sans-serif; font-size:15px; color:var(--muted); white-space:nowrap; padding-top:2px; }
+.stack-total{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; padding:24px clamp(18px,2.6vw,28px); background:var(--ink); color:var(--on-dark); }
+.stack-total .was{ color:var(--muted-dark); text-decoration:line-through; margin-right:12px; font-family:'Space Grotesk',sans-serif; }
+.stack-total b{ font-family:'Space Grotesk',sans-serif; font-size:28px; letter-spacing:-.03em; }
+.stack-total .btn{ background:var(--accent); color:var(--ink); border-color:var(--accent); }
+@media (max-width:620px){ .stack-row{ grid-template-columns:1fr auto; } .stack-n{ grid-column:1 / -1; } }
+
+/* Before and after */
+.vs{ display:grid; grid-template-columns:1fr 1fr; gap:var(--gap); }
+@media (max-width:760px){ .vs{ grid-template-columns:1fr; } }
+.vs .card h3{ margin-bottom:10px; }
+.vs .card.after{ border-color:var(--accent-mid); box-shadow:0 0 0 3px rgba(194,222,85,.18); }
+
+/* Guarantee */
+.guarantee{ display:grid; grid-template-columns:auto 1fr; gap:clamp(20px,3vw,36px); align-items:center; }
+.seal{
+  width:clamp(110px,14vw,148px); aspect-ratio:1; border-radius:50%;
+  border:2px dashed var(--accent); display:grid; place-content:center; text-align:center;
+  font-family:'Space Grotesk',sans-serif; color:var(--accent); line-height:1.1;
+}
+.seal b{ display:block; font-size:clamp(30px,4vw,40px); letter-spacing:-.03em; }
+.seal span{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+@media (max-width:620px){ .guarantee{ grid-template-columns:1fr; } }
+
+/* FAQ */
+.faq{ border-top:1px solid var(--line); }
+.faq details{ border-bottom:1px solid var(--line); }
+.faq summary{ cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:20px; padding:20px 0; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:17px; letter-spacing:-.01em; }
+.faq summary::-webkit-details-marker{ display:none; }
+.faq summary::after{ content:"+"; color:var(--accent-ink); font-size:22px; line-height:1; transition:transform var(--mid) var(--ease); }
+.faq details[open] summary::after{ transform:rotate(45deg); }
+.faq details p{ padding:0 0 22px; color:var(--muted); max-width:66ch; font-size:15.5px; }
+
+/* Sticky buy bar: appears once the hero's buy button has scrolled away */
+.buybar{
+  position:fixed; left:0; right:0; bottom:0; z-index:60;
+  background:var(--ink); color:var(--on-dark); border-top:1px solid var(--line-dark);
+  transform:translateY(105%); transition:transform var(--mid) var(--ease);
+}
+.buybar.show{ transform:none; }
+.buybar-in{ max-width:var(--wrap); margin:0 auto; padding:12px clamp(16px,3vw,32px); display:flex; align-items:center; justify-content:space-between; gap:14px; }
+.buybar b{ font-family:'Space Grotesk',sans-serif; font-weight:600; }
+.buybar small{ display:block; color:var(--muted-dark); font-size:12.5px; }
+.buybar .btn{ background:var(--accent); color:var(--ink); border-color:var(--accent); white-space:nowrap; }
+@media (max-width:520px){ .buybar small{ display:none; } }
+body:has(.buybar.show) #top{ bottom:84px; }
+
+/* Freebies */
+.free-card{ display:flex; flex-direction:column; }
+.free-cover{
+  aspect-ratio:4/5; border-radius:var(--r); margin-bottom:20px; padding:22px;
+  background:var(--ink); color:var(--on-dark); display:flex; flex-direction:column; justify-content:space-between;
+  position:relative; overflow:hidden;
+}
+.free-cover::after{ content:""; position:absolute; right:-40px; bottom:-40px; width:160px; height:160px; border-radius:50%; background:rgba(194,222,85,.16); }
+.free-cover small{ font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:.16em; color:var(--accent); }
+.free-cover b{ font-family:'Space Grotesk',sans-serif; font-size:clamp(21px,2.2vw,25px); font-weight:600; letter-spacing:-.02em; line-height:1.15; position:relative; z-index:1; }
+.free-card p{ color:var(--muted); font-size:15px; }
+.free-card .cta-row{ margin-top:auto; padding-top:20px; }
+.kw{ display:inline-block; font-family:'Space Grotesk',sans-serif; font-weight:600; letter-spacing:.08em; font-size:12.5px; padding:3px 10px; border-radius:100px; background:rgba(194,222,85,.2); color:var(--accent-ink); }
+.on-dark .kw{ color:var(--accent); }
+
+/* Numbered steps */
+.steps{ counter-reset:s; display:grid; grid-template-columns:repeat(4,1fr); gap:var(--gap); }
+@media (max-width:900px){ .steps{ grid-template-columns:1fr 1fr; } }
+@media (max-width:520px){ .steps{ grid-template-columns:1fr; } }
+.steps .card::before{ counter-increment:s; content:"0" counter(s); display:block; font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:600; letter-spacing:.16em; color:var(--accent-ink); margin-bottom:14px; }
+.on-dark .steps .card::before{ color:var(--accent); }
+
+/* Offer card on the pricing page: the Kit is the one that is lit */
+.price-card.feature{ border-width:2px; }
+.price-card .btn{ width:100%; }

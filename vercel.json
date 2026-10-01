@@ -2,6 +2,16 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/leak-map",
+      "destination": "/done-for-you",
+      "permanent": true
+    },
+    {
+      "source": "/get",
+      "destination": "/kit",
+      "permanent": false
+    },
+    {
       "source": "/services",
       "destination": "/method",
       "permanent": true

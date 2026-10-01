@@ -75,96 +75,73 @@
     }
   }
 
-  /* --- Currency ----------------------------------------------------------
-     Prices are set in US dollars and every visitor starts on USD, so the
-     published price never moves. Other currencies are shown only when a
-     visitor asks, converted at the previous business day's close, with the
-     fallbacks below used if that request fails. [data-usd] is the source of
-     truth. [data-zar] remains only for old internal quote pages. */
-  var FX = { USD: 1, ZAR: 18.1, GBP: 0.787, EUR: 0.923,
-             AUD: 1.52, CAD: 1.37, CHF: 0.887 };
-  var SYM = { ZAR: 'R', USD: '$', GBP: '£', EUR: '€',
-              AUD: 'A$', CAD: 'C$', CHF: 'CHF ' };
-  var STEP = { ZAR: 100, USD: 1, GBP: 10, EUR: 10, AUD: 10, CAD: 10, CHF: 10 };
-  // USD is always what loads. Switching is a deliberate act by the visitor and
-  // deliberately does not persist across page loads.
-  var cur = 'USD';
-
-  function money(usd, c) {
-    c = c || cur;
-    var step = STEP[c] || 1;
-    var v = Math.round(usd * FX[c] / step) * step;
-    return SYM[c] + v.toLocaleString('en');
-  }
+  /* --- Prices ------------------------------------------------------------
+     Every price on the site is in US dollars, and only US dollars. There is
+     no converter: buyers who can afford the offer read dollars fine, and one
+     number is easier to decide on than seven. [data-usd] is still painted so
+     a price can be changed from one attribute. [data-zar] remains only for
+     old internal quote pages, converted at a fixed rate. */
+  var ZAR_PER_USD = 18.1;
+  function money(usd) { return '$' + Math.round(usd).toLocaleString('en'); }
   window.npxMoney = money;
+  var FX = { ZAR: ZAR_PER_USD };
 
-  function paint() {
-    $$('[data-usd]').forEach(function (el) {
-      el.textContent = (el.getAttribute('data-pre') || '') +
-                       money(parseFloat(el.getAttribute('data-usd')));
-    });
-    $$('[data-zar]').forEach(function (el) {
-      el.textContent = (el.getAttribute('data-pre') || '') +
-                       money(parseFloat(el.getAttribute('data-zar')) / FX.ZAR);
-    });
-    $$('.convert-cur').forEach(function (el) { el.textContent = cur; });
-    $$('.convert-menu button').forEach(function (b) {
-      b.setAttribute('aria-selected', String(b.getAttribute('data-cur') === cur));
-    });
-    if (typeof window.npxQuote === 'function') window.npxQuote();
-  }
+  $$('[data-usd]').forEach(function (el) {
+    el.textContent = (el.getAttribute('data-pre') || '') +
+                     money(parseFloat(el.getAttribute('data-usd')));
+  });
+  $$('[data-zar]').forEach(function (el) {
+    el.textContent = (el.getAttribute('data-pre') || '') +
+                     money(parseFloat(el.getAttribute('data-zar')) / ZAR_PER_USD);
+  });
 
-  /* Convert controls: a button next to the prices that opens a currency list.
-     A page may carry more than one, because the price appears in more than one
-     place, so they are wired as a set rather than by id. Switching in any one
-     of them repaints every price and every other control on the page. */
-  var controls = $$('.convert');
-  if (controls.length) {
-    var closeMenus = function () {
-      controls.forEach(function (c) {
-        var m = $('.convert-menu', c), b = $('.convert-btn', c);
-        if (m) m.classList.remove('open');
-        if (b) b.setAttribute('aria-expanded', 'false');
-      });
-    };
-    controls.forEach(function (c) {
-      var btn = $('.convert-btn', c), menu = $('.convert-menu', c);
-      if (!btn || !menu) return;
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var open = !menu.classList.contains('open');
-        closeMenus();
-        menu.classList.toggle('open', open);
-        btn.setAttribute('aria-expanded', String(open));
-      });
-      $$('button', menu).forEach(function (b) {
-        b.addEventListener('click', function () {
-          cur = b.getAttribute('data-cur');
-          paint();
-          closeMenus();
-        });
-      });
+  /* --- Checkout ----------------------------------------------------------
+     The one place the buy link lives. Paste the checkout URL from the
+     payment platform into CHECKOUT.kit and every "Buy" button on the site
+     goes straight to it. Until then, buttons open WhatsApp with a ready-typed
+     message, so a buyer is never sent nowhere.
+     ?src= on the page URL (set in every PDF and DM link) is passed through,
+     so sales can be traced back to the freebie that produced them. */
+  var CHECKOUT = {
+    kit: '',      // e.g. https://novapex.gumroad.com/l/reply-kit
+    install: ''   // optional: a checkout for the $997 Done-For-You
+  };
+  var WA = '26656702102';
+  var WA_TEXT = {
+    kit: 'Hi Novapex, I want the Reply Kit ($197). How do I pay?',
+    install: 'Hi Novapex, I want the Done-For-You Install ($997). What happens next?'
+  };
+  window.npxWA = function (text) {
+    return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text);
+  };
+  var src = (location.search.match(/[?&]src=([\w-]+)/) || [])[1] || '';
+  $$('[data-buy]').forEach(function (a) {
+    var what = a.getAttribute('data-buy');
+    var url = CHECKOUT[what];
+    if (url) {
+      a.href = url + (src ? (url.indexOf('?') < 0 ? '?' : '&') + 'src=' + src : '');
+    } else {
+      a.href = window.npxWA(WA_TEXT[what] + (src ? ' (from ' + src + ')' : ''));
+    }
+    a.addEventListener('click', function () {
+      if (typeof gtag === 'function') gtag('event', 'begin_checkout', { item: what, src: src });
     });
-    document.addEventListener('click', function (e) {
-      var t = e.target;
-      if (!(t && t.closest && t.closest('.convert'))) closeMenus();
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeMenus();
-    });
-  }
+  });
 
-  if ($('[data-usd]') || $('[data-zar]')) {
-    paint();
-    fetch('https://api.frankfurter.app/latest?base=USD&symbols=ZAR,GBP,EUR,AUD,CAD,CHF')
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        if (d && d.rates) {
-          Object.keys(d.rates).forEach(function (k) { if (FX[k]) FX[k] = d.rates[k]; });
-          paint();
-        }
-      })
-      .catch(function () { /* fallbacks already applied */ });
+  /* Freebies: each one is requested by keyword on WhatsApp, the same word
+     used as the comment keyword on Instagram, so one DM automation can
+     answer both. */
+  $$('[data-free]').forEach(function (a) {
+    a.href = window.npxWA(a.getAttribute('data-free'));
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+
+  /* Sticky buy bar: shown once the hero's buy button has scrolled away. */
+  var bar = $('.buybar'), heroBuy = $('[data-buy-hero]');
+  if (bar && heroBuy && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      bar.classList.toggle('show', !es[0].isIntersecting && es[0].boundingClientRect.top < 0);
+    }).observe(heroBuy);
   }
 
   /* --- Build-your-own quote --------------------------------------------- */
@@ -333,7 +310,7 @@
     });
   });
 
-  /* Reserve the Map. Opens a ready-typed reservation email with placeholders.
+  /* Book the Done-For-You Install. Opens a ready-typed reservation email with placeholders.
      From the Leak Test result screen, the visitor's score and weakest stages
      are written in for them, so we know where to start before the first reply. */
   $$('[data-map-reserve]').forEach(function (link) {
@@ -350,7 +327,7 @@
       }
       var body =
         'Hi Novapex,\n\n' +
-        'I would like to reserve a Revenue Leak Map for [Company name].\n' +
+        'I would like the Done-For-You Install for [Company name].\n' +
         test +
         '\nABOUT US\n' +
         'Company: [Company name]\n' +
@@ -364,10 +341,10 @@
         'Who answers them today: [For example: a receptionist, a shared inbox, the sales team]\n\n' +
         'WHY NOW\n' +
         '[The specific thing that made us look at this]\n\n' +
-        'I understand the Map is a fixed fee of $140, takes two weeks and about three hours of our team\'s time in total, and is refunded in full if it finds no quantified leak.\n\n' +
+        'I understand the Done-For-You Install is a fixed fee of $997: a Leak Map of our inquiry flow, then the Reply System written for our business and installed in our WhatsApp and Instagram within 14 days, refunded in full if the Map finds no quantified leak.\n\n' +
         'Regards\n[Your name]';
       window.location.href = 'mailto:' + MAIL +
-        '?subject=' + encodeURIComponent('Reserving a Revenue Leak Map') +
+        '?subject=' + encodeURIComponent('Booking the Done-For-You Install') +
         '&body=' + encodeURIComponent(body);
     });
   });
