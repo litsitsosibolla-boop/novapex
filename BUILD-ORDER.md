@@ -27,8 +27,11 @@ Everything else (Done-For-You Install at $997, Custom monthly work) lives on
    Squeezy or Payhip. Confirm it pays out to Lesotho (usually via PayPal or a bank)
    before you pick. Set the price to $197, USD only.
 3. **Paste the checkout link** into `CHECKOUT.kit` in `assets/site.js`. Every buy
-   button on the site switches to it. Until then, buttons open WhatsApp with a
-   ready-typed "I want the Reply Kit" message, so nothing is broken in the meantime.
+   button on the site switches to it. Until then, buttons go to `/checkout`, which
+   takes the order (email, name, WhatsApp, chosen payment method) and emails it to
+   hello@novapex.agency with the subject "ORDER NPX-…". Reply to each order with a
+   payment link by hand (PayPal request, bank details, etc.), then send the Kit zip
+   once paid. No card details are ever collected on the page.
 4. **Set the platform's post-purchase redirect** to `https://novapex.agency/thanks`.
    That page carries the one upsell: Done-For-You for $800 (the $997 minus the $197
    already paid).

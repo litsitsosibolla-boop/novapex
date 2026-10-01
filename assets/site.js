@@ -98,8 +98,8 @@
   /* --- Checkout ----------------------------------------------------------
      The one place the buy link lives. Paste the checkout URL from the
      payment platform into CHECKOUT.kit and every "Buy" button on the site
-     goes straight to it. Until then, buttons open WhatsApp with a ready-typed
-     message, so a buyer is never sent nowhere.
+     goes straight to it. Until then, buttons go to /checkout, which takes
+     the order and emails it to us so a payment link can be sent by hand.
      ?src= on the page URL (set in every PDF and DM link) is passed through,
      so sales can be traced back to the freebie that produced them. */
   var CHECKOUT = {
@@ -121,7 +121,7 @@
     if (url) {
       a.href = url + (src ? (url.indexOf('?') < 0 ? '?' : '&') + 'src=' + src : '');
     } else {
-      a.href = window.npxWA(WA_TEXT[what] + (src ? ' (from ' + src + ')' : ''));
+      a.href = '/checkout?item=' + what + (src ? '&src=' + src : '');
     }
     a.addEventListener('click', function () {
       if (typeof gtag === 'function') gtag('event', 'begin_checkout', { item: what, src: src });
@@ -364,6 +364,102 @@
       });
     });
   });
+
+  /* --- Checkout page -----------------------------------------------------
+     Used until a payment platform is connected. It takes the order (never
+     card details), emails it to us through the same endpoint as every other
+     form, and tells the buyer a secure payment link is on its way. If the
+     post fails, the order opens as a ready-typed WhatsApp message instead. */
+  var coForm = $('#checkout-form');
+  if (coForm) {
+    var ITEMS = {
+      kit: {
+        name: 'The Reply Kit', price: 197, sub: 'Digital download · instant access',
+        list: ['40 First-Reply Scripts', 'The Price-Reply Formula', 'The 3-Touch Revival Sequence',
+               '60-Minute WhatsApp Business Setup', 'The Inquiry Tracker', 'Bonus: Comment-to-DM Funnel'],
+        guar: 'If the Kit doesn’t bring back at least one quiet chat in 30 days, you get the full $197 back.',
+        after: 'Once it’s paid, your download arrives straight away.'
+      },
+      install: {
+        name: 'Done-For-You Install', price: 997, sub: 'Live within 14 days · includes the Kit',
+        list: ['A Leak Map of your inquiry flow', 'Scripts rewritten in your voice', 'Installed in your WhatsApp and Instagram',
+               'Comment-to-DM automation on one post', '30 days of WhatsApp support', 'Everything in the Reply Kit'],
+        guar: 'If the Leak Map finds no leak worth fixing, we stop there and refund the full $997.',
+        after: 'Once it’s paid, we book your 45-minute kickoff call.'
+      }
+    };
+    var itemKey = (location.search.match(/[?&]item=(\w+)/) || [])[1];
+    var item = ITEMS[itemKey] || ITEMS.kit;
+    if (!ITEMS[itemKey]) itemKey = 'kit';
+
+    $$('[data-co="name"]').forEach(function (el) { el.textContent = item.name; });
+    $$('[data-co="price"]').forEach(function (el) { el.textContent = money(item.price); });
+    $$('[data-co="sub"]').forEach(function (el) { el.textContent = item.sub; });
+    $$('[data-co="guar"]').forEach(function (el) { el.textContent = item.guar; });
+    $$('[data-co="list"]').forEach(function (el) {
+      el.innerHTML = '';
+      item.list.forEach(function (t) { var li = document.createElement('li'); li.textContent = t; el.appendChild(li); });
+    });
+    document.title = 'Checkout: ' + item.name + ' | Novapex';
+    if (typeof gtag === 'function') gtag('event', 'view_checkout', { item: itemKey, src: src });
+
+    var coErr = $('#co-error'), coBtn = $('#co-submit');
+    var showErr = function (msg) { coErr.textContent = msg; coErr.hidden = !msg; };
+
+    coForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      showErr('');
+      var bad = null;
+      $$('input[required]', coForm).forEach(function (el) {
+        var ok = el.type === 'checkbox' ? el.checked : el.checkValidity() && el.value.trim() !== '';
+        el.setAttribute('aria-invalid', String(!ok));
+        if (!ok && !bad) bad = el;
+      });
+      if (bad) {
+        showErr(bad.type === 'checkbox' ? 'Please tick the box to confirm.' :
+                bad.type === 'email' ? 'Please enter a valid email address.' : 'Please fill in the highlighted fields.');
+        bad.focus();
+        return;
+      }
+      var v = function (n) { var el = coForm.elements[n]; return el ? (el.value || '').trim() : ''; };
+      var pay = ($('input[name="payment"]:checked', coForm) || {}).value || '';
+      var order = 'NPX-' + Date.now().toString(36).toUpperCase().slice(-6);
+      var pairs = [
+        ['Order', order], ['Product', item.name], ['Price', money(item.price) + ' USD'],
+        ['name', v('name')], ['email', v('email')], ['WhatsApp', v('whatsapp')],
+        ['Business', v('business')], ['Country', v('country')], ['Payment method', pay],
+        ['Source', src || 'direct']
+      ];
+      coBtn.disabled = true;
+      $('.co-btn-label', coBtn).textContent = 'Placing your order…';
+
+      var waText = 'Hi Novapex, I’ve just ordered ' + item.name + ' (' + money(item.price) +
+        '). Order ' + order + '. Name: ' + v('name') + '. Email: ' + v('email') +
+        '. I’d like to pay by ' + pay + '.';
+
+      var done = function () {
+        if (typeof gtag === 'function') gtag('event', 'generate_lead', { item: itemKey, value: item.price, currency: 'USD', src: src });
+        $('#co-first').textContent = v('name').split(' ')[0] || 'friend';
+        $('#co-sent-email').textContent = v('email');
+        var after = $('#co-done .lead');
+        if (after) after.lastChild.textContent = ' and your WhatsApp now. ' + item.after;
+        $('#co-wa-now').href = window.npxWA(waText);
+        coForm.hidden = true;
+        $$('.co-steps li').forEach(function (li, i) { li.className = i < 2 ? 'done' : i === 2 ? 'now' : ''; });
+        var d = $('#co-done'); d.hidden = false; d.focus();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
+      send('ORDER ' + order + ': ' + item.name + ' (' + money(item.price) + ')', pairs)
+        .then(done)
+        .catch(function () {
+          // The order could not be sent from the page: hand it to WhatsApp
+          // so it is never lost.
+          done();
+          window.open(window.npxWA(waText), '_blank', 'noopener');
+        });
+    });
+  }
 
   /* --- The Leak Test -----------------------------------------------------
      Twelve questions, each scored 0 to 3, grouped into four stages of the

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0J16MWF4YX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-0J16MWF4YX');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | Novapex</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FAFAF8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='58 58 164 168'%3E%3Crect x='58' y='58' width='164' height='168' rx='16' fill='%2317181B'/%3E%3Cpath d='M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z' fill-rule='evenodd' fill='%23C2DE55'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="landing checkout-page">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/" aria-label="Novapex home"><svg viewBox="58 58 164 168" aria-hidden="true" fill="currentColor"><path d="M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z" fill-rule="evenodd"/></svg><span>NOVAPEX</span></a>
+    <div class="nav-right">
+      <span class="co-secure"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.8"/></svg>Secure checkout</span>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="sec-sm co-sec">
+  <div class="wrap">
+    <ol class="co-steps" aria-label="Checkout progress">
+      <li class="done">Choose</li>
+      <li class="now" aria-current="step">Your details</li>
+      <li>Payment</li>
+      <li>Download</li>
+    </ol>
+
+    <div class="co-grid">
+      <!-- Order form -->
+      <div class="co-main">
+        <form id="checkout-form" class="co-form" novalidate>
+          <h1 class="co-h">Complete your order</h1>
+
+          <fieldset>
+            <legend>1. Where should we send it?</legend>
+            <div class="co-f">
+              <label for="co-email">Email <span class="req" aria-hidden="true">required</span></label>
+              <input id="co-email" type="email" name="email" required autocomplete="email" placeholder="you@business.com">
+              <p class="field-help">Your download link and receipt go here.</p>
+            </div>
+            <div class="co-row">
+              <div class="co-f">
+                <label for="co-name">Full name <span class="req" aria-hidden="true">required</span></label>
+                <input id="co-name" type="text" name="name" required autocomplete="name">
+              </div>
+              <div class="co-f">
+                <label for="co-wa">WhatsApp number <span class="req" aria-hidden="true">required</span></label>
+                <input id="co-wa" type="tel" name="whatsapp" required autocomplete="tel" placeholder="+27 82 000 0000">
+              </div>
+            </div>
+            <div class="co-row">
+              <div class="co-f">
+                <label for="co-biz">Business name <span class="opt-tag">optional</span></label>
+                <input id="co-biz" type="text" name="business" autocomplete="organization">
+              </div>
+              <div class="co-f">
+                <label for="co-country">Country <span class="req" aria-hidden="true">required</span></label>
+                <input id="co-country" type="text" name="country" required autocomplete="country-name" placeholder="e.g. South Africa">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>2. How would you like to pay?</legend>
+            <div class="co-pay" role="radiogroup" aria-label="Payment method">
+              <label class="co-paym"><input type="radio" name="payment" value="Card" checked><span><b>Card</b><small>Visa, Mastercard, Amex</small></span></label>
+              <label class="co-paym"><input type="radio" name="payment" value="Apple Pay / Google Pay"><span><b>Apple Pay / Google Pay</b><small>One tap on your phone</small></span></label>
+              <label class="co-paym"><input type="radio" name="payment" value="PayPal"><span><b>PayPal</b><small>Pay with your PayPal balance</small></span></label>
+              <label class="co-paym"><input type="radio" name="payment" value="Bank transfer / EFT"><span><b>Bank transfer / EFT</b><small>Southern Africa</small></span></label>
+            </div>
+            <p class="co-how"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.8"/></svg>
+              <span>No card details are entered on this page. We send you a <b>secure payment link</b> for your chosen method by email and WhatsApp, and your download arrives the moment it is paid.</span></p>
+          </fieldset>
+
+          <label class="co-agree"><input type="checkbox" name="agree" required> <span>I understand this is a one-off payment in US dollars, covered by the 30-day money-back guarantee.</span></label>
+
+          <div class="co-error" id="co-error" role="alert" hidden></div>
+
+          <button class="btn co-submit" type="submit" id="co-submit"><span class="co-btn-label">Place order &middot; <span data-co="price">$197</span></span><span class="arrow" aria-hidden="true">&rarr;</span></button>
+          <p class="co-fine">Prices in US dollars. Your bank converts at checkout if you pay in another currency.</p>
+        </form>
+
+        <!-- Shown after the order is placed -->
+        <div class="co-done" id="co-done" hidden tabindex="-1">
+          <div class="co-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5 L10 17.5 L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <p class="eyebrow">Order received</p>
+          <h1 class="co-h">Nearly there, <span id="co-first">friend</span>.</h1>
+          <p class="lead" style="color:var(--on-paper)">Your order for <b data-co="name">The Reply Kit</b> is in. We&rsquo;re sending your secure payment link to <b id="co-sent-email">your email</b> and your WhatsApp now. Once it&rsquo;s paid, your download arrives straight away.</p>
+          <ul class="ticks" style="margin-top:22px">
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Payment link: usually within the hour, during business hours (GMT+2)</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Download: the moment payment clears</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>30-day money-back guarantee from the day you pay</span></li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn" id="co-wa-now" href="https://wa.me/26656702102" target="_blank" rel="noopener">Want it faster? WhatsApp us now<span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order summary -->
+      <aside class="co-side" aria-label="Order summary">
+        <div class="co-card">
+          <p class="eyebrow">Your order</p>
+          <div class="co-item">
+            <div class="co-thumb" aria-hidden="true"><svg viewBox="58 58 164 168" fill="currentColor"><path d="M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z" fill-rule="evenodd"/></svg></div>
+            <div><b data-co="name">The Reply Kit</b><small data-co="sub">Digital download &middot; instant access</small></div>
+            <span class="co-amt" data-co="price">$197</span>
+          </div>
+          <ul class="co-incl" data-co="list">
+            <li>40 First-Reply Scripts</li>
+            <li>The Price-Reply Formula</li>
+            <li>The 3-Touch Revival Sequence</li>
+            <li>60-Minute WhatsApp Business Setup</li>
+            <li>The Inquiry Tracker</li>
+            <li>Bonus: Comment-to-DM Funnel</li>
+          </ul>
+          <div class="co-line"><span>Subtotal</span><span data-co="price">$197</span></div>
+          <div class="co-line"><span>Tax</span><span>$0</span></div>
+          <div class="co-line co-total"><span>Total <small>USD</small></span><span data-co="price">$197</span></div>
+          <div class="co-guar">
+            <div class="co-seal"><b>30</b><small>DAYS</small></div>
+            <p><b>Money-back guarantee.</b> <span data-co="guar">If the Kit doesn&rsquo;t bring back at least one quiet chat in 30 days, you get the full $197 back.</span></p>
+          </div>
+        </div>
+        <p class="co-help">Questions? <a class="link" href="https://wa.me/26656702102" target="_blank" rel="noopener">WhatsApp +266 5670 2102</a></p>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot foot-slim">
+  <div class="wrap">
+    <p class="blurb">Novapex &middot; Maseru, Lesotho &middot; &copy; 2026 &middot; <a class="link" href="/privacy">Privacy</a></p>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

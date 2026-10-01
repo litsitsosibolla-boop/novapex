@@ -1064,3 +1064,80 @@ body:has(.buybar.show) #top{ bottom:84px; }
 /* Offer card on the pricing page: the Kit is the one that is lit */
 .price-card.feature{ border-width:2px; }
 .price-card .btn{ width:100%; }
+
+/* Checkout --------------------------------------------------------------
+   Takes the order and sends it to the inbox; payment follows by secure
+   link until a payment platform is connected (CHECKOUT in site.js). No card
+   fields, by design. */
+.co-sec{ padding-top:clamp(28px,4vw,48px); }
+.co-secure{ display:inline-flex; align-items:center; gap:7px; font-size:13.5px; color:var(--muted); }
+.co-secure svg{ width:15px; height:15px; }
+.co-steps{ list-style:none; display:flex; gap:8px; flex-wrap:wrap; margin-bottom:clamp(24px,3vw,36px); font-size:13px; color:var(--muted); }
+.co-steps li{ display:flex; align-items:center; gap:8px; }
+.co-steps li + li::before{ content:""; width:22px; height:1px; background:var(--line-2); }
+.co-steps li.done{ color:var(--accent-ink); }
+.co-steps li.now{ color:var(--on-paper); font-weight:600; }
+
+.co-grid{ display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:clamp(28px,4vw,56px); align-items:start; }
+@media (max-width:900px){ .co-grid{ grid-template-columns:1fr; } .co-side{ order:-1; } }
+.co-h{ font-size:clamp(26px,3.2vw,36px); margin-bottom:22px; }
+.co-form fieldset{ border:0; margin:0 0 26px; padding:0; }
+.co-form legend{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin-bottom:16px; }
+
+.co-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media (max-width:620px){ .co-row{ grid-template-columns:1fr; gap:0; } }
+.co-form input[aria-invalid="true"]{ border-color:#C2452D; }
+
+.co-pay{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+@media (max-width:620px){ .co-pay{ grid-template-columns:1fr; } }
+.co-paym{ display:flex; gap:12px; align-items:flex-start; padding:14px 16px; border:1px solid var(--line-2); border-radius:var(--r-sm); background:var(--surface); cursor:pointer; transition:border-color var(--mid) var(--ease), box-shadow var(--mid) var(--ease); }
+.co-paym input{ margin-top:4px; accent-color:var(--ink); }
+.co-paym b{ display:block; font-weight:600; font-size:14.5px; }
+.co-paym small{ color:var(--muted); font-size:12.5px; }
+.co-paym:has(input:checked){ border-color:var(--ink); box-shadow:0 0 0 3px rgba(194,222,85,.25); }
+.co-how{ display:flex; gap:10px; margin-top:14px; padding:12px 14px; border-radius:var(--r-sm); background:var(--surface-2); font-size:13.5px; color:var(--muted); }
+.co-how svg{ flex:none; width:16px; height:16px; margin-top:2px; color:var(--accent-ink); }
+.co-agree{ display:flex; gap:10px; align-items:flex-start; font-size:14px; color:var(--muted); margin:4px 0 18px; cursor:pointer; }
+.co-agree input{ margin-top:3px; accent-color:var(--ink); }
+.co-error{ margin-bottom:14px; padding:11px 14px; border-radius:var(--r-sm); background:#FBEDEA; border:1px solid #F0D2CB; color:#9A3B2A; font-size:14px; }
+.co-submit{ width:100%; font-size:16.5px; padding:18px 26px; }
+.co-submit[disabled]{ opacity:.65; cursor:progress; transform:none; }
+.co-fine{ margin-top:12px; font-size:12.5px; color:var(--muted); text-align:center; }
+
+.co-side{ position:sticky; top:92px; }
+@media (max-width:900px){ .co-side{ position:static; } }
+.co-card{ border:1px solid var(--line); border-radius:var(--r-lg); background:var(--surface); padding:clamp(20px,2.6vw,28px); box-shadow:var(--lift-1); }
+.co-item{ display:grid; grid-template-columns:52px 1fr auto; gap:14px; align-items:center; padding:6px 0 18px; border-bottom:1px solid var(--line); }
+.co-thumb{ width:52px; height:52px; border-radius:12px; background:var(--ink); color:var(--accent); display:grid; place-items:center; }
+.co-thumb svg{ width:24px; height:24px; }
+.co-item b{ display:block; font-family:'Space Grotesk',sans-serif; font-size:16px; }
+.co-item small{ color:var(--muted); font-size:12.5px; }
+.co-amt{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; }
+.co-incl{ list-style:none; padding:14px 0; border-bottom:1px solid var(--line); display:grid; gap:7px; font-size:13.5px; color:var(--muted); }
+.co-incl li{ display:flex; gap:9px; align-items:center; }
+.co-incl li::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--accent-mid); flex:none; }
+.co-line{ display:flex; justify-content:space-between; padding:9px 0 0; font-size:14px; color:var(--muted); }
+.co-total{ margin-top:8px; padding-top:14px; border-top:1px solid var(--line); color:var(--on-paper); font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:20px; }
+.co-total small{ font-family:Inter,sans-serif; font-weight:450; font-size:12px; color:var(--muted); }
+.co-guar{ display:flex; gap:14px; align-items:center; margin-top:20px; padding:14px; border-radius:var(--r-sm); background:rgba(194,222,85,.12); border:1px solid rgba(194,222,85,.4); font-size:13px; color:var(--muted); }
+.co-guar b{ color:var(--on-paper); }
+.co-seal{ flex:none; width:52px; height:52px; border-radius:50%; border:1.6px dashed var(--accent-ink); color:var(--accent-ink); display:grid; place-content:center; text-align:center; font-family:'Space Grotesk',sans-serif; line-height:1; }
+.co-seal b{ color:var(--accent-ink); font-size:17px; display:block; }
+.co-seal small{ font-size:7px; letter-spacing:.14em; }
+.co-help{ margin-top:14px; font-size:13.5px; color:var(--muted); text-align:center; }
+
+.co-done{ outline:none; }
+.co-tick{ width:56px; height:56px; border-radius:50%; background:var(--accent); color:var(--ink); display:grid; place-items:center; margin-bottom:20px; }
+.co-tick svg{ width:26px; height:26px; }
+.co-f{ margin-bottom:18px; }
+.co-f label{ display:flex; align-items:baseline; gap:10px; margin-bottom:8px; font-size:14.5px; font-weight:500; color:var(--on-paper); }
+.co-f input{
+  width:100%; padding:13px 15px; border-radius:var(--r-sm);
+  background:var(--surface); border:1px solid var(--line-2);
+  font-family:inherit; font-size:16px; color:var(--on-paper);
+  transition:border-color var(--mid) var(--ease), box-shadow var(--mid) var(--ease);
+}
+.co-f input:focus{ outline:none; border-color:var(--ink); box-shadow:0 0 0 3px rgba(194,222,85,.25); }
+.co-f input[aria-invalid="true"]{ border-color:#C2452D; }
+.co-f .field-help{ margin-top:6px; font-size:12.5px; }
+@media (max-width:620px){ .co-secure{ font-size:12.5px; } }
