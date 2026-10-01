@@ -19,10 +19,9 @@ Everything else (Done-For-You Install at $997, Custom monthly work) lives on
 
 ## Gate: before anything is promoted
 
-1. **Build the Kit.** Six files: First-Reply Scripts (40), Price-Reply Formula,
-   3-Touch Revival Sequence, 60-Minute WhatsApp Business Setup, Inquiry Tracker
-   (Google Sheet), Comment-to-DM Funnel bonus. The site describes exactly these, so
-   the product must match the page.
+1. ~~**Build the Kit.**~~ Done. The files live at `C:\Users\LENOVO\novapex-kit`
+   (deliberately outside this public repo), with `The-Reply-Kit.zip` ready to upload.
+   The site describes exactly these files, so if one changes, change the page too.
 2. **Create the checkout.** Use a platform that takes cards, Apple Pay and Google
    Pay, delivers the files automatically and pays out to you: Gumroad, Lemon
    Squeezy or Payhip. Confirm it pays out to Lesotho (usually via PayPal or a bank)
@@ -33,7 +32,13 @@ Everything else (Done-For-You Install at $997, Custom monthly work) lives on
 4. **Set the platform's post-purchase redirect** to `https://novapex.agency/thanks`.
    That page carries the one upsell: Done-For-You for $800 (the $997 minus the $197
    already paid).
-5. **Build the three free PDFs** listed on `/free` (GHOST, PRICE, AUDIT).
+5. ~~**Build the three free PDFs.**~~ Done, and hosted on the site. These are the
+   links your DM automation sends:
+   - GHOST → `https://novapex.agency/free/ghost.pdf`
+   - PRICE → `https://novapex.agency/free/price.pdf`
+   - AUDIT → `https://novapex.agency/free/audit.pdf`
+
+   Each already contains its three tracked links to `/kit?src=…`.
 
 ## The funnel, step by step
 
