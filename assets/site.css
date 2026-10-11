@@ -307,10 +307,12 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
   letter-spacing:.14em; text-transform:uppercase;
   padding:4px 11px; border-radius:100px;
 }
-.price-name{ font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:600; }
-.price-line{ font-size:14px; color:var(--muted); min-height:42px; }
-.price-fig{ font-family:'Space Grotesk',sans-serif; font-size:clamp(30px,3.4vw,38px); font-weight:500; letter-spacing:-.03em; margin-top:10px; }
-.price-per{ font-size:13px; color:var(--muted); margin-bottom:20px; }
+/* Scoped to .price-card so they outrank `.card p`, which otherwise shrinks the
+   price to body size. */
+.price-card .price-name{ font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:600; color:var(--on-paper); }
+.price-card .price-line{ font-size:14px; color:var(--muted); min-height:42px; }
+.price-card .price-fig{ font-family:'Space Grotesk',sans-serif; font-size:clamp(30px,3.4vw,38px); font-weight:500; letter-spacing:-.03em; margin-top:10px; color:var(--on-paper); }
+.price-per, .price-card .price-per{ font-size:13px; color:var(--muted); margin-bottom:20px; }
 .price-card .ticks{ flex:1; margin-bottom:22px; }
 .price-card .ticks li{ font-size:14.5px; padding:7px 0; }
 
