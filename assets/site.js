@@ -342,40 +342,6 @@
     });
   });
 
-  /* Free guides by email. The form posts the address and the guide's key to
-     the forms endpoint, which emails the guide to the visitor and copies us.
-     The visitor also gets a direct link on screen, in case the email is slow
-     or lands in spam. */
-  var GUIDES = {
-    GHOST: { title: 'The 5 Replies That Bring Ghosted Leads Back', pdf: '/free/ghost.pdf' },
-    PRICE: { title: 'How to Answer "How Much?" Without Losing the Sale', pdf: '/free/price.pdf' },
-    AUDIT: { title: 'The 10-Minute WhatsApp Business Audit', pdf: '/free/audit.pdf' }
-  };
-  $$('[data-free-email]').forEach(function (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!form.reportValidity()) return;
-      var key = form.getAttribute('data-free-email'), guide = GUIDES[key];
-      var email = $('input[type="email"]', form).value.trim();
-      var btn = $('button[type="submit"]', form);
-      if (btn) { btn.disabled = true; btn.firstChild.textContent = 'Sending'; }
-      var done = function () {
-        var box = document.createElement('div');
-        box.className = 'free-sent';
-        box.setAttribute('role', 'status');
-        box.innerHTML = '<b>Sent. Check your inbox.</b>It is on its way to <span></span>. ' +
-          'Not there in a few minutes? Check spam, or <a class="link" target="_blank" rel="noopener">open it here</a>.';
-        $('span', box).textContent = email;
-        $('a', box).href = guide.pdf;
-        form.replaceWith(box);
-      };
-      send('Free guide: ' + guide.title, [
-        ['email', email], ['Guide', guide.title], ['Source', src || 'direct'], ['_free', key]
-      ]).then(done, done);
-      if (typeof gtag === 'function') gtag('event', 'generate_lead', { item: 'free-' + key.toLowerCase(), src: src });
-    });
-  });
-
   /* WhatsApp tips sign-up. A country-code picker sits beside the number. It
      starts on the visitor's country, read from the device's time zone (then
      its language region), and remembers a manual change. */
@@ -479,8 +445,12 @@
     '</optgroup><optgroup label="All countries">' + COUNTRIES.map(ccOption).join('') + '</optgroup>';
   var homeCC = guessCountry();
 
-  $$('[data-wa-signup]').forEach(function (form) {
-    var sel = $('[data-cc]', form), show = $('[data-cc-show]', form), num = $('input[type="tel"]', form);
+  /* Wires one picker and number box. read() returns the country, the full
+     number and whether it looks real. A number typed with its own +code (or
+     00) is taken as it is; otherwise the leading 0 goes and the picked code
+     goes in front. */
+  var phoneField = function (scope) {
+    var sel = $('[data-cc]', scope), show = $('[data-cc-show]', scope), num = $('input[type="tel"]', scope);
     sel.innerHTML = ccOptions;
     var paint = function () {
       var c = BY_ISO[sel.value] || BY_ISO.ZA;
@@ -492,34 +462,90 @@
       try { localStorage.setItem('npx-cc', sel.value); } catch (err) {}
     });
     num.addEventListener('input', function () { num.setCustomValidity(''); });
+    return {
+      input: num,
+      read: function () {
+        var c = BY_ISO[sel.value] || BY_ISO.ZA;
+        var raw = num.value.trim(), digits = raw.replace(/\D/g, ''), full, ok;
+        if (raw.charAt(0) === '+' || raw.indexOf('00') === 0) {
+          full = '+' + digits.replace(/^00/, '');
+          ok = full.length >= 9 && full.length <= 16;
+        } else {
+          var local = digits.replace(/^0+/, '');
+          full = '+' + c.dial + local;
+          ok = local.length >= 6 && full.length <= 16;
+        }
+        num.setCustomValidity(ok ? '' : 'Enter your WhatsApp number, without the country code.');
+        return { country: c, full: full, ok: ok };
+      }
+    };
+  };
+  var SAVE_US = 'Save +266 5670 2102 in your contacts as Novapex so the tips reach you.';
 
+  $$('[data-wa-signup]').forEach(function (form) {
+    var phone = phoneField(form);
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var c = BY_ISO[sel.value] || BY_ISO.ZA;
-      /* A number typed with its own +code (or 00) is taken as it is.
-         Otherwise the leading 0 goes and the picked code goes in front. */
-      var raw = num.value.trim(), digits = raw.replace(/\D/g, ''), full, ok;
-      if (raw.charAt(0) === '+' || raw.indexOf('00') === 0) {
-        full = '+' + digits.replace(/^00/, '');
-        ok = full.length >= 9 && full.length <= 16;
-      } else {
-        var local = digits.replace(/^0+/, '');
-        full = '+' + c.dial + local;
-        ok = local.length >= 6 && full.length <= 16;
-      }
-      if (!ok) {
-        num.setCustomValidity('Enter your WhatsApp number, without the country code.');
-      }
+      var p = phone.read();
       if (!form.reportValidity()) return;
       var btn = $('button[type="submit"]', form);
       if (btn) { btn.disabled = true; btn.textContent = 'Joining'; }
-      var done = function () {
-        said(form, 'You are in. Save +266 5670 2102 in your contacts as Novapex so the tips reach you.');
-      };
+      var done = function () { said(form, 'You are in. ' + SAVE_US); };
       send('WhatsApp tips: join', [
-        ['WhatsApp', full], ['Country', c.name], ['Page', location.pathname]
+        ['WhatsApp', p.full], ['Country', p.country.name], ['Page', location.pathname]
       ]).then(done, done);
       if (typeof gtag === 'function') gtag('event', 'sign_up', { method: 'whatsapp', src: src });
+    });
+  });
+
+  /* Free guides by email. The form posts the address and the guide's key to
+     the forms endpoint, which emails the guide (attached, plus a link) to the
+     visitor and copies us. A tick box adds them to WhatsApp tips as well. The
+     visitor also gets a direct link on screen, in case the email is slow or
+     lands in spam. */
+  var GUIDES = {
+    GHOST: { title: 'The 5 Replies That Bring Ghosted Leads Back', pdf: '/free/ghost.pdf' },
+    PRICE: { title: 'How to Answer "How Much?" Without Losing the Sale', pdf: '/free/price.pdf' },
+    AUDIT: { title: 'The 10-Minute WhatsApp Business Audit', pdf: '/free/audit.pdf' }
+  };
+  $$('[data-free-email]').forEach(function (form) {
+    var opt = $('[data-wa-opt]', form), extra = $('[data-wa-extra]', form);
+    var phone = extra ? phoneField(extra) : null;
+    if (opt && extra) {
+      opt.addEventListener('change', function () {
+        extra.hidden = !opt.checked;
+        phone.input.required = opt.checked;
+        if (opt.checked) phone.input.focus();
+        else phone.input.setCustomValidity('');
+      });
+    }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var wants = opt && opt.checked, p = wants ? phone.read() : null;
+      if (!form.reportValidity()) return;
+      var key = form.getAttribute('data-free-email'), guide = GUIDES[key];
+      var email = $('input[type="email"]', form).value.trim();
+      var btn = $('button[type="submit"]', form);
+      if (btn) { btn.disabled = true; btn.firstChild.textContent = 'Sending'; }
+      var done = function () {
+        var box = document.createElement('div');
+        box.className = 'free-sent';
+        box.setAttribute('role', 'status');
+        box.innerHTML = '<b>Sent. Check your inbox.</b>It is on its way to <span></span>. ' +
+          'Not there in a few minutes? Check spam, or <a class="link" target="_blank" rel="noopener">open it here</a>.' +
+          (wants ? ' <em></em>' : '');
+        $('span', box).textContent = email;
+        $('a', box).href = guide.pdf;
+        if (wants) $('em', box).textContent = SAVE_US;
+        form.replaceWith(box);
+      };
+      var pairs = [['email', email], ['Guide', guide.title], ['Source', src || 'direct'], ['_free', key]];
+      if (wants) pairs.push(['WhatsApp tips', p.full], ['Country', p.country.name]);
+      send('Free guide: ' + guide.title + (wants ? ' + WhatsApp tips' : ''), pairs).then(done, done);
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', { item: 'free-' + key.toLowerCase(), src: src });
+        if (wants) gtag('event', 'sign_up', { method: 'whatsapp', src: src });
+      }
     });
   });
 
