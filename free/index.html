@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free guides | Novapex</title>
-<meta name="description" content="Free PDFs that fix one thing in how you reply to WhatsApp and Instagram inquiries. Sent to your WhatsApp in seconds.">
+<meta name="description" content="Free PDFs that fix one thing in how you reply to WhatsApp and Instagram inquiries. Sent to your inbox in about a minute.">
 <meta name="theme-color" content="#FAFAF8">
 <meta property="og:title" content="Free guides | Novapex">
-<meta property="og:description" content="Free PDFs that fix one thing in how you reply to WhatsApp and Instagram inquiries. Sent to your WhatsApp in seconds.">
+<meta property="og:description" content="Free PDFs that fix one thing in how you reply to WhatsApp and Instagram inquiries. Sent to your inbox in about a minute.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='58 58 164 168'%3E%3Crect x='58' y='58' width='164' height='168' rx='16' fill='%2317181B'/%3E%3Cpath d='M140,65 L215,215 L65,215 Z M194.6,210.5 L118.6,97.5 L105.4,106.5 L181.4,219.5 Z' fill-rule='evenodd' fill='%23C2DE55'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,9 +53,8 @@
   <div class="wrap">
     <p class="eyebrow rv">Free guides</p>
     <h1 class="rv">Free, short, and<br><em>usable before lunch.</em></h1>
-    <p class="lead rv">Each guide fixes one thing in how you handle inquiries. Tap the
-      button and it arrives on WhatsApp in seconds. Or comment the keyword on any of our
-      posts and we will DM it to you.</p>
+    <p class="lead rv">Each guide fixes one thing in how you handle inquiries. Enter your
+      email and it lands in your inbox in about a minute.</p>
   </div>
 </section>
 
@@ -66,22 +65,31 @@
         <div class="free-cover"><small>FREE PDF &middot; 6 PAGES</small><b>The 5 Replies That Bring Ghosted Leads Back</b></div>
         <h3>The 5 Replies That Bring Ghosted Leads Back</h3>
         <p style="margin-top:8px">Five short messages for the chat that went quiet. Send one today and watch what moves.</p>
-        <p style="margin-top:12px">Keyword: <span class="kw">GHOST</span></p>
-        <div class="cta-row"><a class="btn" data-free="GHOST" href="https://wa.me/26656702102">Send it to my WhatsApp<span class="arrow" aria-hidden="true">&rarr;</span></a></div>
+        <div class="cta-row"><form class="free-form" data-free-email="GHOST">
+          <label class="vh" for="free-ghost">Your email</label>
+          <input id="free-ghost" type="email" name="email" required placeholder="you@example.com" autocomplete="email">
+          <button class="btn" type="submit">Email it to me<span class="arrow" aria-hidden="true">&rarr;</span></button>
+        </form></div>
       </div>
       <div class="free-card rv">
         <div class="free-cover"><small>FREE PDF &middot; 5 PAGES</small><b>How to Answer &ldquo;How Much?&rdquo; Without Losing the Sale</b></div>
         <h3>How to Answer &ldquo;How Much?&rdquo;</h3>
         <p style="margin-top:8px">Three ways to send your price so the chat keeps going, for low, mid and premium prices.</p>
-        <p style="margin-top:12px">Keyword: <span class="kw">PRICE</span></p>
-        <div class="cta-row"><a class="btn" data-free="PRICE" href="https://wa.me/26656702102">Send it to my WhatsApp<span class="arrow" aria-hidden="true">&rarr;</span></a></div>
+        <div class="cta-row"><form class="free-form" data-free-email="PRICE">
+          <label class="vh" for="free-price">Your email</label>
+          <input id="free-price" type="email" name="email" required placeholder="you@example.com" autocomplete="email">
+          <button class="btn" type="submit">Email it to me<span class="arrow" aria-hidden="true">&rarr;</span></button>
+        </form></div>
       </div>
       <div class="free-card rv">
         <div class="free-cover"><small>FREE CHECKLIST &middot; 4 PAGES</small><b>The 10-Minute WhatsApp Business Audit</b></div>
         <h3>The 10-Minute WhatsApp Audit</h3>
         <p style="margin-top:8px">Twelve checks on how your WhatsApp handles inquiries, each with a one-minute fix.</p>
-        <p style="margin-top:12px">Keyword: <span class="kw">AUDIT</span></p>
-        <div class="cta-row"><a class="btn" data-free="AUDIT" href="https://wa.me/26656702102">Send it to my WhatsApp<span class="arrow" aria-hidden="true">&rarr;</span></a></div>
+        <div class="cta-row"><form class="free-form" data-free-email="AUDIT">
+          <label class="vh" for="free-audit">Your email</label>
+          <input id="free-audit" type="email" name="email" required placeholder="you@example.com" autocomplete="email">
+          <button class="btn" type="submit">Email it to me<span class="arrow" aria-hidden="true">&rarr;</span></button>
+        </form></div>
       </div>
     </div>
   </div>
@@ -152,14 +160,16 @@
     
     <div class="signup-foot">
       <div>
-        <h5>The Visibility Brief</h5>
-        <p>One letter a month on where revenue leaks and how to close it. No pitch.</p>
+        <h5>WhatsApp tips</h5>
+        <p>Short reply tips that turn chats into bookings, sent to your WhatsApp. Leave any time.</p>
       </div>
-      <form class="signup" data-signup>
-        <label class="vh" for="nl-foot">Your email</label>
-        <input id="nl-foot" type="email" name="email" required placeholder="you@company.com" autocomplete="email">
-        <button class="btn btn-sm" type="submit">Subscribe</button>
+      <form class="signup wa-signup" data-wa-signup>
+        <div class="wa-cc"><label class="vh" for="wa-foot-cc">Country code</label><select id="wa-foot-cc" name="country" data-cc></select><span aria-hidden="true" data-cc-show>+27</span></div>
+        <label class="vh" for="wa-foot">Your WhatsApp number</label>
+        <input id="wa-foot" type="tel" name="whatsapp" required placeholder="WhatsApp number" autocomplete="tel-national" inputmode="tel">
+        <button class="btn btn-sm" type="submit">Join</button>
       </form>
+
     </div>
   </div>
   <div class="foot-bot">

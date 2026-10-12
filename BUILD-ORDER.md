@@ -87,8 +87,12 @@ down on the keyword that converts best. Volume is the lever.
 | AUDIT | The 10-Minute WhatsApp Business Audit | `novapex.agency/kit?src=audit` |
 | KIT | Straight to the offer | `novapex.agency/kit?src=dm` |
 
-The `/free` page sends the same keywords to WhatsApp, so one automation answers
-both Instagram comments and WhatsApp messages.
+On the `/free` page, visitors enter their email and the "Novapex Forms" Apps Script
+emails them the guide (link to the PDF plus a Kit CTA tracked as `src=email-<guide>`)
+and copies hello@novapex.agency. The site-wide "WhatsApp tips" sign-up collects
+WhatsApp numbers (country code picked automatically from the device) and emails each
+one to hello@novapex.agency. Add them to a WhatsApp broadcast list; broadcasts only
+reach people who saved +266 5670 2102, which the sign-up tells them to do.
 
 **DM 1 (instant, on comment):**
 > Here you go 👇 [PDF link]

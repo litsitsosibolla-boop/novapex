@@ -748,6 +748,39 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
 .signup-foot p{ font-size:14.5px; color:var(--muted-dark); max-width:44ch; }
 .signup-foot input{ background:var(--ink-soft); border-color:var(--line-dark); color:var(--on-dark); }
 .signup-foot input:focus{ border-color:var(--accent); }
+/* WhatsApp sign-up: a country-code picker beside the number. The native select
+   sits invisibly over a short "LS +266" label, so the box stays narrow while the
+   phone's own picker still lists every country by name. */
+.wa-signup{ align-items:stretch; }
+.wa-signup input{ flex:1 1 150px; }
+.wa-cc{ position:relative; flex:0 0 auto; }
+.wa-cc select{ position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:pointer; font-size:16px; }
+.wa-cc span{
+  display:flex; align-items:center; gap:6px; padding:13px 30px 13px 13px;
+  border-radius:var(--r-sm); background:var(--surface); border:1px solid var(--line-2);
+  font-size:15px; color:var(--on-paper); white-space:nowrap; font-variant-numeric:tabular-nums;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%238A8D93' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 12px center;
+}
+.wa-cc:focus-within span{ border-color:var(--ink); }
+.signup-foot .btn{ background:var(--accent); color:var(--ink); border-color:var(--accent); }
+.signup-foot .btn:hover{ background:var(--accent-mid); border-color:var(--accent-mid); }
+.signup-foot .wa-cc span{ background-color:var(--ink-soft); border-color:var(--line-dark); color:var(--on-dark); }
+.signup-foot .wa-cc:focus-within span{ border-color:var(--accent); }
+
+/* Free guides by email: the form sits at the foot of each guide card. */
+.free-form{ display:flex; flex-direction:column; gap:10px; width:100%; }
+.free-form input{
+  width:100%; padding:13px 15px; border-radius:var(--r-sm);
+  background:var(--surface); border:1px solid var(--line-2);
+  font-family:inherit; font-size:15px; color:var(--on-paper);
+}
+.free-form input:focus{ outline:none; border-color:var(--ink); }
+.free-form .btn{ width:100%; justify-content:center; }
+.free-sent{ font-size:14.5px; color:var(--on-paper); }
+.free-sent b{ display:block; color:var(--accent-ink); font-weight:600; margin-bottom:4px; }
+.free-sent a{ font-size:13.5px; }
+
 .signup-said{ font-size:14.5px; color:var(--accent-ink); font-weight:500; }
 .on-dark .signup-said,.signup-foot .signup-said{ color:var(--accent); }
 @media (max-width:820px){

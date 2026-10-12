@@ -133,7 +133,6 @@
     <div class="rv"><p class="eyebrow">Questions</p>
       <h2>About paying.</h2></div>
     <div class="faq rv" style="margin-top:28px">
-      <details><summary>Why only US dollars?</summary><p>One price is easier to trust than seven. Your card, Apple Pay or Google Pay converts it at checkout, the same as any other online purchase.</p></details>
       <details><summary>Is anything a subscription?</summary><p>The Kit and the Install are one-off payments. Only Custom work runs monthly, and that is agreed with you in writing first.</p></details>
       <details><summary>Which one should I pick?</summary><p>If you are happy spending an afternoon setting it up, the Kit. If you would rather hand it over and have it done properly in two weeks, the Install. If you have a team or a CRM, book a call.</p></details>
       <details><summary>Can I upgrade later?</summary><p>Yes. Upgrade from the Kit to the Install within 30 days and the $197 you paid comes off.</p></details>
@@ -193,14 +192,16 @@
     
     <div class="signup-foot">
       <div>
-        <h5>The Visibility Brief</h5>
-        <p>One letter a month on where revenue leaks and how to close it. No pitch.</p>
+        <h5>WhatsApp tips</h5>
+        <p>Short reply tips that turn chats into bookings, sent to your WhatsApp. Leave any time.</p>
       </div>
-      <form class="signup" data-signup>
-        <label class="vh" for="nl-foot">Your email</label>
-        <input id="nl-foot" type="email" name="email" required placeholder="you@company.com" autocomplete="email">
-        <button class="btn btn-sm" type="submit">Subscribe</button>
+      <form class="signup wa-signup" data-wa-signup>
+        <div class="wa-cc"><label class="vh" for="wa-foot-cc">Country code</label><select id="wa-foot-cc" name="country" data-cc></select><span aria-hidden="true" data-cc-show>+27</span></div>
+        <label class="vh" for="wa-foot">Your WhatsApp number</label>
+        <input id="wa-foot" type="tel" name="whatsapp" required placeholder="WhatsApp number" autocomplete="tel-national" inputmode="tel">
+        <button class="btn btn-sm" type="submit">Join</button>
       </form>
+
     </div>
   </div>
   <div class="foot-bot">
