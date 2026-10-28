@@ -779,6 +779,7 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
 .free-form .btn{ width:100%; justify-content:center; }
 .free-wa-opt{ display:flex; align-items:center; gap:9px; font-size:14.5px; color:var(--on-paper); cursor:pointer; padding:2px 0; }
 .free-wa-opt input{ width:18px; height:18px; margin:0; accent-color:var(--ink); flex:0 0 auto; }
+.free-wa-alt{ margin-top:12px; font-size:14px; color:var(--muted); }
 .free-wa:not([hidden]){ display:flex; gap:10px; align-items:stretch; }
 .free-wa input[type="tel"]{ flex:1 1 auto; min-width:0; }
 .free-sent em{ display:block; margin-top:8px; font-style:normal; color:var(--muted); }
