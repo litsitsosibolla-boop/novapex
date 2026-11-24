@@ -102,14 +102,16 @@ async function handle(m, name) {
   switch (choice) {
     case 'MENU':
       return sendWA(who, menu(first));
-    case 'TEST':
-      return sendWA(who, { type: 'text', text: { body: R.TEXT.TEST, preview_url: true } });
+    case 'BRAND':
+    case 'PAGE':
+    case 'ADS':
+    case 'PRICING':
     case 'KIT':
-      await sendWA(who, { type: 'text', text: { body: R.TEXT.KIT } });
-      return notify('WhatsApp: asked about the Reply Kit', who, name, 'Reply Kit', text);
-    case 'DFY':
-      await sendWA(who, { type: 'text', text: { body: R.TEXT.DFY } });
-      return notify('WhatsApp: asked about Done-For-You', who, name, 'Done-For-You', text);
+      // An offer or a price question: answer, and tell the team about the lead.
+      await sendWA(who, { type: 'text', text: { body: R.TEXT[choice], preview_url: true } });
+      return notify('WhatsApp: asked about ' + label(choice), who, name, label(choice), text);
+    case 'WORK':
+      return sendWA(who, { type: 'text', text: { body: R.TEXT.WORK, preview_url: true } });
     case 'PAY':
       await sendWA(who, { type: 'text', text: { body: R.TEXT.PAY } });
       await pause(who);
@@ -117,7 +119,7 @@ async function handle(m, name) {
     case 'BOOK':
       await sendWA(who, { type: 'text', text: { body: R.TEXT.BOOK } });
       await pause(who);
-      return notify('WhatsApp: WANTS A CALL (Done-For-You)', who, name, 'Book a call', text);
+      return notify('WhatsApp: WANTS A FREE CALL', who, name, 'Book a free call', text);
     case 'HUMAN':
       await sendWA(who, { type: 'text', text: { body: R.TEXT.HUMAN } });
       await pause(who);
@@ -153,12 +155,15 @@ function understand(text) {
   for (var i = 0; i < R.OPTIONS.length; i++) if (R.OPTIONS[i].n === num) return R.OPTIONS[i].id;
   if (num === '0') return 'MENU';
 
-  // Code words in capitals, from the site's prefilled messages.
-  var caps = text.match(/\b(GHOST|PRICE|AUDIT|KIT|TEST)\b/);
+  // Code words in capitals, from older pages' prefilled messages and the PDFs.
+  var caps = text.match(/\b(GHOST|PRICE|AUDIT|KIT|BOOK)\b/);
   if (caps) return caps[1];
 
-  // Clear product names anywhere.
-  if (has(t, 'done-for-you') || has(t, 'done for you') || (has(t, 'install') && has(t, '997'))) return 'DFY';
+  // Clear offer names anywhere, even in a long message.
+  if (has(t, 'brand launch')) return 'BRAND';
+  if (has(t, 'page management') || has(t, 'social media') || has(t, 'done-for-you') || has(t, 'done for you')) return 'PAGE';
+  if (has(t, 'ad campaigns') || has(t, 'ad campaign')) return 'ADS';
+  if (has(t, 'free call')) return 'BOOK';
   if (has(t, 'reply kit')) return 'KIT';
 
   if (words > 6) return null;
@@ -181,18 +186,25 @@ function menu(first) {
     interactive: {
       type: 'list',
       body: { text: R.menuIntro(first) },
-      footer: { text: 'Novapex Â· novapex.agency' },
+      footer: { text: 'Novapex, novapex.agency' },
       action: {
         button: 'See options',
         sections: [
-          { title: 'Free', rows: R.OPTIONS.slice(0, 4).map(row) },
-          { title: 'Work with us', rows: R.OPTIONS.slice(4).map(row) }
+          { title: 'Our services', rows: R.OPTIONS.slice(0, 3).map(row) },
+          { title: 'Next steps', rows: R.OPTIONS.slice(3).map(row) }
         ]
       }
     }
   };
 }
 function row(o) { return { id: o.id, title: o.title.slice(0, 24), description: o.desc.slice(0, 72) }; }
+
+// The name of an option or extra, for the email the team gets.
+function label(id) {
+  var all = R.OPTIONS.concat(R.EXTRA);
+  for (var i = 0; i < all.length; i++) if (all[i].id === id) return all[i].label || all[i].id;
+  return id;
+}
 
 function buttons(text, list) {
   return {

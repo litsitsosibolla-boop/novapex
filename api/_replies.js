@@ -2,10 +2,17 @@
    without touching how the bot works. Files starting with _ in /api are not
    served as pages.
 
-   Each option can be reached three ways: tapping it in the menu, typing its
-   number, or typing any of its words. */
+   Each menu option can be reached three ways: tapping it in the menu, typing
+   its number, or typing any of its words. The bot speaks as the Novapex team.
+
+   Updated 24 November 2026 for the three offers: Brand Launch, Page
+   Management and Ad Campaigns. The free guides and the Reply Kit are no longer
+   in the menu, but their code words (GHOST, PRICE, AUDIT, KIT) still work for
+   people arriving from older pages and PDFs. */
 
 var SITE = 'https://www.novapex.agency';
+var CORE = 'We plan it, run it and show you the results every month.';
+var SCARCE = 'We only take on a few new clients each month, so every client gets proper attention.';
 
 var GUIDES = {
   GHOST: {
@@ -33,42 +40,98 @@ var GUIDES = {
   }
 };
 
-// The menu, in order. "n" is the number people can type.
+// The menu, in order. "n" is the number people can type. "label" names the
+// option in the email the team gets. Titles max 24 characters, descriptions 72.
 var OPTIONS = [
-  { id: 'GHOST', n: '1', title: 'Ghosted leads guide', desc: 'Free PDF: 5 replies that bring quiet chats back',
-    words: ['ghost', 'ghosted', 'quiet', 'ignored', 'no reply', 'left on read'] },
-  { id: 'PRICE', n: '2', title: '"How much?" guide', desc: 'Free PDF: send your price without losing the sale',
-    words: ['price'] },
-  { id: 'AUDIT', n: '3', title: 'WhatsApp audit', desc: 'Free checklist: 12 checks, 10 minutes',
-    words: ['audit', 'checklist'] },
-  { id: 'TEST', n: '4', title: 'The Leak Test', desc: 'Free: 12 questions and a score in 4 minutes',
-    words: ['test', 'leak', 'score', 'quiz'] },
-  { id: 'KIT', n: '5', title: 'The Reply Kit, $197', desc: 'Every reply written for you, 30-day guarantee',
-    words: ['kit', 'reply kit', 'buy', 'purchase'] },
-  { id: 'DFY', n: '6', title: 'Done-For-You, $997', desc: 'We build and install it in your WhatsApp',
-    words: ['done for you', 'done-for-you', 'install', 'setup for me', 'do it for me'] },
-  { id: 'HUMAN', n: '7', title: 'Talk to Litsitso', desc: 'A real person replies here',
-    words: ['human', 'person', 'talk', 'speak', 'call', 'litsitso', 'agent', 'help'] }
+  { id: 'BRAND', n: '1', title: 'Brand Launch', label: 'Brand Launch',
+    desc: 'Once-off: logo, strategy and 3 months of content, built in one go',
+    words: ['brand', 'branding', 'rebrand', 'logo', 'brand launch', 'identity'] },
+  { id: 'PAGE', n: '2', title: 'Page Management', label: 'Page Management',
+    desc: 'Monthly: we run your page and report the results every month',
+    words: ['page', 'page management', 'social media', 'manage my page', 'posting', 'content', 'done for you'] },
+  { id: 'ADS', n: '3', title: 'Ad Campaigns', label: 'Ad Campaigns',
+    desc: 'Monthly: Meta ads that bring the right people, numbers shown',
+    words: ['ads', 'ad', 'advert', 'adverts', 'advertising', 'boost', 'campaign', 'campaigns', 'meta ads', 'facebook ads'] },
+  { id: 'WORK', n: '4', title: 'Results and how we work', label: 'Results',
+    desc: 'Real numbers from our team\'s past work',
+    words: ['results', 'work', 'portfolio', 'examples', 'proof', 'method'] },
+  { id: 'BOOK', n: '5', title: 'Book a free call', label: 'Free call',
+    desc: '30 minutes, then a written quote in your currency',
+    words: ['book', 'booking', 'call', 'free call', 'schedule', 'meeting', 'appointment'] },
+  { id: 'HUMAN', n: '6', title: 'Talk to the team', label: 'Talk to the team',
+    desc: 'A real person replies here',
+    words: ['human', 'person', 'talk', 'speak', 'agent', 'help', 'team', 'litsitso'] }
 ];
 
 // Words that bring up the menu.
 var MENU_WORDS = ['hi', 'hey', 'hello', 'helo', 'hie', 'good morning', 'good afternoon', 'good evening',
-  'lumela', 'lumelang', 'dumela', 'howzit', 'menu', 'start', 'options', 'info', 'more', '0'];
+  'lumela', 'lumelang', 'dumela', 'howzit', 'menu', 'start', 'options', 'info', 'more', 'services', '0'];
 
 var STOP_WORDS = ['stop', 'unsubscribe', 'opt out', 'optout'];
 
 function menuIntro(name) {
   return (name ? 'Hi ' + name + ', welcome to Novapex.' : 'Hi, welcome to Novapex.') + '\n\n' +
-    'We help businesses turn WhatsApp and Instagram inquiries into bookings.\n\n' +
+    CORE + '\n\n' +
     'Tap the menu below, or type a number or a word:\n' +
     OPTIONS.map(function (o) { return o.n + '  ' + o.title; }).join('\n');
 }
 
 var TEXT = {
-  TEST: 'The Leak Test is 12 questions about how you handle inquiries. You get a score and ' +
-    'your two weakest points, with the fix for each. It takes about 4 minutes:\n' +
-    SITE + '/leak-test?src=wa-bot',
+  BRAND: 'Brand Launch (once-off)\n\n' +
+    'Everything your brand needs to look the part and show up properly, built in one go:\n\n' +
+    '- Logo, fonts and colours that work together\n' +
+    '- Brand strategy: who you are for and how you sound\n' +
+    '- A 3-month content calendar, planned post by post\n' +
+    '- Ready-to-use post templates in your new look\n\n' +
+    'For new businesses, rebrands, professionals and leaders building a name.\n\n' +
+    'More here: ' + SITE + '/brand-launch?src=wa-bot\n\n' +
+    'Reply BOOK for a free call. We quote in your currency.',
 
+  PAGE: 'Page Management (monthly)\n\n' +
+    'We run your page so people know you and trust you:\n\n' +
+    '- Strategy and a content plan, before anything is posted\n' +
+    '- Writing and design, in your voice\n' +
+    '- Posting on schedule, every week\n' +
+    '- Replies to comments and messages\n' +
+    '- A plain-language report every month: what we did, what happened, what is next\n\n' +
+    'Love the plan or don\'t pay: you see your full plan first. If you still don\'t love it ' +
+    'after we rework it, you don\'t pay for the first month.\n\n' +
+    'More here: ' + SITE + '/page-management?src=wa-bot\n\n' +
+    'Reply BOOK for a free call. We quote in your currency.',
+
+  ADS: 'Ad Campaigns (monthly)\n\n' +
+    'Paid ads that bring the right people to you, with the numbers shown every month:\n\n' +
+    '- We plan, build, run and improve your Meta ads\n' +
+    '- Your own card pays Meta directly, so your ad money stays yours\n' +
+    '- An agreed monthly spending limit, so nothing gets overspent\n' +
+    '- Results in plain numbers, every month\n\n' +
+    'Love the plan or don\'t pay: nothing is spent on ads until you approve the plan.\n\n' +
+    'More here: ' + SITE + '/ad-campaigns?src=wa-bot\n\n' +
+    'Reply BOOK for a free call. We quote in your currency.',
+
+  WORK: 'What our team\'s work has done:\n\n' +
+    '- 2M+ views in 60 days for a national public figure\n' +
+    '- 1.3M views for a legal professional\'s personal brand\n' +
+    '- 600,000+ views for Maluti Neurodiagnostics after launch\n' +
+    '- 4.2% ad click-through across 8 countries, about 2x the benchmark\n\n' +
+    'How we work: get attention, answer fast, find the serious buyers, turn them into customers.\n\n' +
+    'See the results: ' + SITE + '/work?src=wa-bot\n\n' +
+    'Reply BOOK for a free call.',
+
+  PRICING: 'We don\'t have fixed prices, because every business is different. ' +
+    'After a free 30-minute call, we send you a written quote in your currency: ' +
+    'rands, maloti or US dollars.\n\n' +
+    'Reply BOOK and we will set up the call.',
+
+  BOOK: 'Great. Someone from the Novapex team will message you here to find a time for ' +
+    'your free 30-minute call.\n\n' +
+    'To make it useful, tell us what you do, and which you are curious about: ' +
+    'Brand Launch, Page Management, Ad Campaigns, or not sure yet.\n\n' + SCARCE,
+
+  HUMAN: 'Done. Someone from the Novapex team will reply here personally, usually within a few ' +
+    'hours (Mon to Fri, 8am to 6pm). Type your question below so it is ready.',
+
+  // The Reply Kit is no longer in the menu, but its page and order flow still exist.
   KIT: 'The Reply Kit, $197 once:\n\n' +
     '- 40 first-reply scripts you copy and paste\n' +
     '- The Price-Reply Formula for "how much?"\n' +
@@ -78,41 +141,29 @@ var TEXT = {
     '- Bonus: the comment-to-DM funnel\n\n' +
     'If it does not bring back at least one quiet chat in 30 days, you get the full $197 back.\n\n' +
     'Order here: ' + SITE + '/checkout?item=kit&src=wa-bot\n' +
-    'Or reply PAY and Litsitso will send you a payment link here.',
+    'Or reply PAY and we will send you a payment link here.',
 
-  DFY: 'The Done-For-You Install, $997:\n\n' +
-    'We map where your inquiries leak, rewrite the replies in your voice and install ' +
-    'everything in your WhatsApp and Instagram within 14 days. It includes the Reply Kit and ' +
-    '30 days of WhatsApp support.\n\n' +
-    'If the Leak Map finds no leak worth fixing, we stop there and refund the full $997.\n\n' +
-    'Reply BOOK and Litsitso will message you to set up a 20-minute call.',
-
-  HUMAN: 'Done. Litsitso has been told and will reply here personally, usually within a few hours ' +
-    '(Mon to Fri, 8am to 6pm). Type your question below so it is ready.',
-
-  PAY: 'Thanks. Litsitso will send your payment link here shortly. Once it is paid, the Kit ' +
+  PAY: 'Thanks. We will send your payment link here shortly. Once it is paid, the Kit ' +
     'arrives straight away.',
-
-  BOOK: 'Great. Litsitso will message you here to find a time for the call. If it helps, tell us ' +
-    'what you sell and roughly how many inquiries you get a week.',
 
   STOP: 'You will not get any more tips from us. You can still message any time, and typing ' +
     'MENU brings the options back.',
 
-  AFTER_GUIDE: 'Want the next step?'
+  AFTER_GUIDE: 'Want a team to handle the rest of your marketing? ' + CORE
 };
 
 // Buttons sent after a guide (max 3, titles up to 20 characters).
 var AFTER_GUIDE_BUTTONS = [
-  { id: 'KIT', title: 'See the Reply Kit' },
-  { id: 'TEST', title: 'Take the Leak Test' },
-  { id: 'MENU', title: 'Back to menu' }
+  { id: 'BOOK', title: 'Book a free call' },
+  { id: 'PAGE', title: 'Page Management' },
+  { id: 'MENU', title: 'See all options' }
 ];
 
-// Extra words that are not menu items but still get an answer.
+// Words that are not menu items but still get an answer. Checked before the menu words.
 var EXTRA = [
-  { id: 'PAY', words: ['pay', 'payment link', 'send link'] },
-  { id: 'BOOK', words: ['book', 'booking', 'schedule'] }
+  { id: 'PAY', label: 'Reply Kit payment', words: ['pay', 'payment link', 'send link'] },
+  { id: 'KIT', label: 'Reply Kit', words: ['kit', 'reply kit'] },
+  { id: 'PRICING', label: 'Pricing', words: ['price', 'prices', 'pricing', 'cost', 'costs', 'how much', 'rates', 'fees', 'quote'] }
 ];
 
 module.exports = {
