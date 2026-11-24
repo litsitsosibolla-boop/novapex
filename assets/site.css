@@ -827,7 +827,7 @@ a.card:hover, .card.interactive:hover{ transform:translateY(-3px); box-shadow:va
   .rung-price{ padding-top:0; }
 }
 
-/* The Leak Test ------------------------------------------------------------- */
+/* Scored quiz (retired) ------------------------------------------------------------- */
 .qcard{ padding:clamp(22px,3vw,30px) 0; }
 .qcard h3{ font-size:clamp(17px,1.9vw,20px); letter-spacing:-.015em; max-width:44ch; }
 .qopts{ display:grid; gap:9px; margin-top:16px; }
@@ -1182,3 +1182,56 @@ body:has(.buybar.show) #top{ bottom:84px; }
 .co-f input[aria-invalid="true"]{ border-color:#C2452D; }
 .co-f .field-help{ margin-top:6px; font-size:12.5px; }
 @media (max-width:620px){ .co-secure{ font-size:12.5px; } }
+
+/* ==========================================================================
+   Work samples and offer ladder (simple-offer revamp)
+   ========================================================================== */
+.collage{ position:relative; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.collage img{ width:100%; height:auto; display:block; border-radius:var(--r); box-shadow:var(--lift-1); background:var(--surface-2); }
+.collage img:nth-child(1){ transform:rotate(-2deg); }
+.collage img:nth-child(2){ transform:rotate(1.5deg) translateY(28px); }
+.collage img:nth-child(3){ transform:rotate(1deg); }
+.collage img:nth-child(4){ transform:rotate(-1.5deg) translateY(28px); }
+.collage .tag{
+  position:absolute; left:50%; bottom:-22px; transform:translateX(-50%) rotate(-2deg);
+  background:var(--accent); color:var(--ink); padding:7px 14px; border-radius:100px;
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:.02em;
+  white-space:nowrap; box-shadow:var(--lift-1);
+}
+.shots{ display:grid; gap:var(--gap); grid-template-columns:repeat(3,1fr); margin-top:clamp(32px,4vw,48px); }
+.shots.g-2{ grid-template-columns:repeat(2,1fr); }
+.shots.g-4{ grid-template-columns:repeat(4,1fr); }
+.shot{ margin:0; }
+.shot img{ width:100%; height:auto; display:block; border-radius:var(--r); border:1px solid var(--line); background:var(--surface-2); }
+.on-dark .shot img{ border-color:var(--line-dark); }
+.shot figcaption{ margin-top:10px; font-size:13.5px; color:var(--muted); line-height:1.5; }
+.on-dark .shot figcaption{ color:var(--muted-dark); }
+.case{ display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(28px,5vw,64px); align-items:center; }
+.case + .case{ margin-top:clamp(56px,7vw,96px); }
+.case .big{ font-family:'Space Grotesk',sans-serif; font-size:clamp(40px,6vw,64px); font-weight:500; letter-spacing:-.04em; line-height:1; }
+.case .big + p{ margin-top:10px; }
+.case .shots{ margin-top:0; grid-template-columns:repeat(2,1fr); }
+.step-tag{ font-family:'Space Grotesk',sans-serif; font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-ink); }
+.price-card .price-fig.words{ font-size:clamp(20px,2.2vw,24px); line-height:1.25; letter-spacing:-.02em; }
+.report{ background:var(--surface); color:var(--on-paper); border-radius:var(--r-lg); padding:clamp(22px,3vw,32px); box-shadow:var(--lift-1); }
+.report-top{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding-bottom:14px; border-bottom:1px solid var(--line); }
+.report-top b{ font-family:'Space Grotesk',sans-serif; font-size:17px; }
+.report-top small{ font-size:12.5px; color:var(--muted); }
+.report-row{ padding:14px 0; border-bottom:1px solid var(--line); }
+.report-row:last-child{ border-bottom:0; padding-bottom:0; }
+.report-row h4{ font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-ink); margin-bottom:6px; }
+.report-row p{ font-size:14.5px; color:var(--muted); line-height:1.55; }
+.yes-set{ list-style:none; display:grid; gap:10px; margin:22px auto 0; max-width:46ch; text-align:left; }
+.yes-set li{ display:flex; gap:12px; align-items:flex-start; font-size:16.5px; }
+.yes-set li::before{ content:""; flex:none; width:8px; height:8px; margin-top:9px; border-radius:50%; background:var(--accent); }
+.note-line{ margin-top:18px; font-size:14px; color:var(--muted); }
+.on-dark .note-line{ color:var(--muted-dark); }
+@media (max-width:900px){
+  .shots, .shots.g-4{ grid-template-columns:repeat(2,1fr); }
+  .case{ grid-template-columns:1fr; }
+}
+@media (max-width:560px){
+  .shots.g-2.one-col{ grid-template-columns:1fr; }
+  .collage .tag{ font-size:11.5px; }
+}
+.offer .eyebrow{ justify-content:center; }

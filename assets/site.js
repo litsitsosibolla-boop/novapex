@@ -76,9 +76,8 @@
   }
 
   /* --- Prices ------------------------------------------------------------
-     Every price on the site is in US dollars, and only US dollars. There is
-     no converter: buyers who can afford the offer read dollars fine, and one
-     number is easier to decide on than seven. [data-usd] is still painted so
+     Service work is quoted per client, in the client's own currency, so the
+     main pages show no prices. The hidden Reply Kit pages still price in US dollars. [data-usd] is still painted so
      a price can be changed from one attribute. [data-zar] remains only for
      old internal quote pages, converted at a fixed rate. */
   var ZAR_PER_USD = 18.1;
@@ -103,13 +102,11 @@
      ?src= on the page URL (set in every PDF and DM link) is passed through,
      so sales can be traced back to the freebie that produced them. */
   var CHECKOUT = {
-    kit: '',      // e.g. https://novapex.gumroad.com/l/reply-kit
-    install: ''   // optional: a checkout for the $997 Done-For-You
+    kit: ''      // e.g. https://novapex.gumroad.com/l/reply-kit
   };
   var WA = '26656702102';
   var WA_TEXT = {
-    kit: 'Hi Novapex, I want the Reply Kit ($197). How do I pay?',
-    install: 'Hi Novapex, I want the Done-For-You Install ($997). What happens next?'
+    kit: 'Hi Novapex, I want the Reply Kit ($197). How do I pay?'
   };
   window.npxWA = function (text) {
     return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text);
@@ -247,8 +244,7 @@
      line saying what they want, their answers laid out cleanly, and a sign-off.
      The visitor only has to press send. */
   var INTROS = {
-    'leak-call': 'I would like to book a 20-minute Leak Call. Our details are below. Please send two or three times that suit you.',
-    'one-move':  'I would like a One-Move Strategy. Our situation is below.',
+    'book':      'I would like to book a free call with the Novapex team. My details are below. Please send two or three times that suit you.',
     'contact':   'I have a question for Novapex. The details are below.'
   };
 
@@ -300,45 +296,6 @@
           '&body=' + encodeURIComponent(body);
         if (btn) { btn.disabled = false; btn.firstChild.textContent = 'Try again'; }
       });
-    });
-  });
-
-  /* Book the Done-For-You Install. Opens a ready-typed reservation email with placeholders.
-     From the Leak Test result screen, the visitor's score and weakest stages
-     are written in for them, so we know where to start before the first reply. */
-  $$('[data-map-reserve]').forEach(function (link) {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      var test = '';
-      if (link.hasAttribute('data-from-test')) {
-        var n = $('#score-n'), of = $('#score-of'), band = $('#score-band');
-        var weak = $$('#weak-list .weak-item h4').map(function (h) { return h.textContent.trim(); });
-        test = '\nMY LEAK TEST RESULT\n' +
-          'Score: ' + (n ? n.textContent.trim() : '') + ' ' + (of ? of.textContent.trim() : '') +
-          (band && band.textContent.trim() ? ' (' + band.textContent.trim() + ')' : '') + '\n' +
-          (weak.length ? 'Weakest stages: ' + weak.join(' and ') + '\n' : '');
-      }
-      var body =
-        'Hi Novapex,\n\n' +
-        'I would like the Done-For-You Install for [Company name].\n' +
-        test +
-        '\nABOUT US\n' +
-        'Company: [Company name]\n' +
-        'Website: [Website]\n' +
-        'My name and role: [Your name, your role]\n' +
-        'Best number to reach me: [Phone or WhatsApp]\n\n' +
-        'OUR INQUIRIES\n' +
-        'Roughly how many inquiries we get a month: [Number, or "we do not track it"]\n' +
-        'Roughly what share become paying customers: [Percentage, or "we do not know"]\n' +
-        'Where most of them come from: [For example: search, referrals, social, walk-ins]\n' +
-        'Who answers them today: [For example: a receptionist, a shared inbox, the sales team]\n\n' +
-        'WHY NOW\n' +
-        '[The specific thing that made us look at this]\n\n' +
-        'I understand the Done-For-You Install is a fixed fee of $997: a Leak Map of our inquiry flow, then the Reply System written for our business and installed in our WhatsApp and Instagram within 14 days, refunded in full if the Map finds no quantified leak.\n\n' +
-        'Regards\n[Your name]';
-      window.location.href = 'mailto:' + MAIL +
-        '?subject=' + encodeURIComponent('Booking the Done-For-You Install') +
-        '&body=' + encodeURIComponent(body);
     });
   });
 
@@ -563,13 +520,6 @@
                '60-Minute WhatsApp Business Setup', 'The Inquiry Tracker', 'Bonus: Comment-to-DM Funnel'],
         guar: 'If the Kit doesn’t bring back at least one quiet chat in 30 days, you get the full $197 back.',
         after: 'Once it’s paid, your download arrives straight away.'
-      },
-      install: {
-        name: 'Done-For-You Install', price: 997, sub: 'Live within 14 days · includes the Kit',
-        list: ['A Leak Map of your inquiry flow', 'Scripts rewritten in your voice', 'Installed in your WhatsApp and Instagram',
-               'Comment-to-DM automation on one post', '30 days of WhatsApp support', 'Everything in the Reply Kit'],
-        guar: 'If the Leak Map finds no leak worth fixing, we stop there and refund the full $997.',
-        after: 'Once it’s paid, we book your 45-minute kickoff call.'
       }
     };
     var itemKey = (location.search.match(/[?&]item=(\w+)/) || [])[1];
@@ -642,94 +592,6 @@
           done();
           window.open(window.npxWA(waText), '_blank', 'noopener');
         });
-    });
-  }
-
-  /* --- The Leak Test -----------------------------------------------------
-     Twelve questions, each scored 0 to 3, grouped into four stages of the
-     system. The total places the company in a band; the two lowest-scoring
-     stages are named back with what they typically cost. All of it runs here,
-     because a scored assessment that needs a server is a scored assessment
-     nobody finishes. */
-  var test = $('#leak-test');
-  if (test && typeof LEAK_TEST !== 'undefined') {
-    var answers = {};
-    var qs = $$('.qcard', test);
-
-    var progress = function () {
-      var n = Object.keys(answers).length;
-      var el = $('#test-progress');
-      if (el) el.textContent = n + ' of ' + qs.length + ' answered';
-      var btn = $('#test-submit');
-      if (btn) btn.disabled = n < qs.length;
-    };
-
-    $$('.qopt input', test).forEach(function (radio) {
-      radio.addEventListener('change', function () {
-        answers[radio.name] = parseInt(radio.value, 10);
-        $$('.qopt', radio.closest('.qopts')).forEach(function (o) {
-          o.classList.toggle('picked', $('input', o).checked);
-        });
-        progress();
-      });
-    });
-    progress();
-
-    var submit = $('#test-submit');
-    if (submit) submit.addEventListener('click', function () {
-      var total = 0, stage = {};
-      LEAK_TEST.questions.forEach(function (q) {
-        var v = answers[q.id] || 0;
-        total += v;
-        stage[q.stage] = (stage[q.stage] || 0) + v;
-      });
-      var max = LEAK_TEST.questions.length * 3;
-
-      var band = LEAK_TEST.bands.filter(function (b) { return total >= b.min; })[0];
-      var perStage = {};
-      LEAK_TEST.questions.forEach(function (q) {
-        perStage[q.stage] = (perStage[q.stage] || 0) + 3;
-      });
-      var ranked = Object.keys(stage).map(function (k) {
-        return { key: k, pct: stage[k] / perStage[k] };
-      }).sort(function (a, b) { return a.pct - b.pct; });
-      // A stage at full marks is not a weak stage, and four stages sitting at the
-      // same score have no weakest among them. Naming two anyway would be the
-      // kind of false precision this whole test exists to argue against.
-      var spread  = ranked[ranked.length - 1].pct - ranked[0].pct;
-      var weakest = spread === 0 ? [] : ranked.filter(function (w) { return w.pct < 1; })
-                                              .slice(0, 2);
-
-      $('#score-n').textContent = total;
-      $('#score-of').textContent = 'out of ' + max;
-      $('#score-band').textContent = band.label;
-      $('#score-read').textContent = band.read;
-      $('#score-fill').style.width = Math.round(total / max * 100) + '%';
-
-      var weakHead = $('#weak-head');
-      if (weakest.length) {
-        if (weakHead) weakHead.textContent = weakest.length === 1
-          ? 'Your weakest stage' : 'Your two weakest stages';
-        $('#weak-list').innerHTML = weakest.map(function (w) {
-          var s = LEAK_TEST.stages[w.key];
-          return '<div class="weak-item"><h4>' + s.name + '</h4><p>' + s.problem +
-                 '</p><p class="weak-cost">' + s.cost + '</p></div>';
-        }).join('');
-      } else {
-        if (weakHead) weakHead.textContent = 'No single weak stage';
-        $('#weak-list').innerHTML = '<div class="weak-item"><p>All four stages scored ' +
-          'the same, so there is no weakest one to name. Read that as a system that ' +
-          'is consistent rather than one that is fine: consistency at a low score ' +
-          'means every stage needs the same work.</p></div>';
-      }
-
-      // Hide the whole section, not just the list inside it: an emptied section
-      // keeps its vertical padding and leaves a dead band above the result.
-      var qWrap = $('#test-questions');
-      if (qWrap) (qWrap.closest('section') || qWrap).hidden = true;
-      var res = $('#test-result');
-      res.hidden = false;
-      res.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
 

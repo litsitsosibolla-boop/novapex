@@ -2,8 +2,33 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/done-for-you",
+      "destination": "/brand-launch",
+      "permanent": true
+    },
+    {
+      "source": "/conversion-system",
+      "destination": "/page-management",
+      "permanent": true
+    },
+    {
+      "source": "/one-move",
+      "destination": "/ad-campaigns",
+      "permanent": true
+    },
+    {
+      "source": "/leak-test",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/leak-call",
+      "destination": "/book",
+      "permanent": true
+    },
+    {
       "source": "/leak-map",
-      "destination": "/done-for-you",
+      "destination": "/pricing",
       "permanent": true
     },
     {
@@ -13,7 +38,7 @@
     },
     {
       "source": "/services",
-      "destination": "/method",
+      "destination": "/pricing",
       "permanent": true
     },
     {
