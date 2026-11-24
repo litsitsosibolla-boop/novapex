@@ -1235,3 +1235,4 @@ body:has(.buybar.show) #top{ bottom:84px; }
   .collage .tag{ font-size:11.5px; }
 }
 .offer .eyebrow{ justify-content:center; }
+section:not(.on-dark) .seal{ border-color:var(--accent-ink); color:var(--accent-ink); }
